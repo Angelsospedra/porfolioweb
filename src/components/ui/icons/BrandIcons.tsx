@@ -21,3 +21,11 @@ export function IconX({ size = 18 }: { size?: number }) {
     </svg>
   )
 }
+
+export function IconArtstation({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 0 0-2.098-1.129H11.3l9.108 15.802 2.092 3.63A2.4 2.4 0 0 0 24 17.748zm-9.53-17.18l-4.014 6.962 4.721 8.177 4.014-6.962z" />
+    </svg>
+  )
+}

@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next'
-import { IconGithub, IconLinkedin, IconX } from '../ui/icons/BrandIcons'
+import { IconGithub, IconLinkedin, IconArtstation } from '../ui/icons/BrandIcons'
 import styles from './Footer.module.css'
 
 const SOCIAL = [
   { icon: IconGithub, href: 'https://github.com', label: 'GitHub' },
   { icon: IconLinkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: IconX, href: 'https://x.com', label: 'X' },
+  { icon: IconArtstation, href: 'https://www.artstation.com/angelsospedra', label: 'ArtStation' },
 ]
 
 export function Footer() {
