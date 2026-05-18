@@ -1,0 +1,70 @@
+{
+  "header": {
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "role": "Frontend Developer",
+    "bio": "Creo experiencias web rápidas, limpias y centradas en el usuario. Apasionado por las interfaces de calidad y los detalles que marcan la diferencia.",
+    "cta_projects": "Ver mi trabajo",
+    "cta_contact": "Contáctame"
+  },
+  "about": {
+    "subtitle": "Conóceme",
+    "title": "Sobre",
+    "title_accent": "mí",
+    "p1": "Soy Frontend Developer con experiencia profesional creando páginas web para marketplaces. Me apasiona construir interfaces rápidas, limpias y centradas en el usuario.",
+    "p2": "Mi stack principal es <strong>React</strong> y <strong>Next.js</strong> con JavaScript, aunque me siento igual de cómodo trabajando directamente con <strong>HTML y CSS</strong> cuando el proyecto lo pide.",
+    "p3": "Soy titulado en <strong>Grado Superior de Desarrollo de Aplicaciones Web</strong>, donde asenté las bases que luego he aplicado en entornos reales de producción.",
+    "skills": {
+      "frontend": "Frontend",
+      "tools": "Herramientas",
+      "other": "Conceptos"
+    }
+  },
+  "projects": {
+    "subtitle": "Lo que he construido",
+    "title": "Proyectos",
+    "title_accent": "destacados"
+  },
+  "contact": {
+    "subtitle": "Hablemos",
+    "title": "Ponte en",
+    "title_accent": "contacto",
+    "info_text": "Estoy abierto a nuevas oportunidades. Tanto si tienes un proyecto en mente, una pregunta, o simplemente quieres saludar, mi bandeja de entrada siempre está abierta.",
+    "form": {
+      "name": "Nombre",
+      "name_placeholder": "Ana García",
+      "email": "Email",
+      "email_placeholder": "ana@ejemplo.com",
+      "message": "Mensaje",
+      "message_placeholder": "Cuéntame tu proyecto...",
+      "send": "Enviar mensaje",
+      "sending": "Enviando...",
+      "success": "¡Mensaje enviado! Me pondré en contacto contigo pronto."
+    }
+  },
+  "project_items": {
+    "1": {
+      "title": "VextParts",
+      "description": "Plataforma marketplace multi-tenant para desguaces, orientada a la venta de piezas de recambio a particulares y talleres. Incluye gestión de usuarios por tenant, catálogo de productos, sistema de pedidos con checkout completo e integración con pasarela de pago."
+    },
+    "2": {
+      "title": "Sistema de Diseño",
+      "description": "Librería de componentes reutilizables con soporte completo de accesibilidad, documentación en Storybook y tests de regresión visual automatizados."
+    },
+    "3": {
+      "title": "App de Chat en Tiempo Real",
+      "description": "Aplicación de mensajería instantánea con integración WebSocket, indicadores de escritura y mensajes cifrados de extremo a extremo."
+    },
+    "4": {
+      "title": "Proyecto Vivir PWA",
+      "description": "Aplicación web móvil progresiva (PWA) desarrollada para una ONG de apoyo a mujeres en riesgo de exclusión social. Combina gestión documental y colaboración en equipo para coordinar a voluntarias y beneficiarias, centralizando la comunicación y el intercambio de recursos desde cualquier dispositivo móvil."
+    }
+  },
+  "footer": {
+    "built_by": "Diseñado y desarrollado por"
+  }
+}

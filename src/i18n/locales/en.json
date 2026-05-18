@@ -1,0 +1,70 @@
+{
+  "header": {
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "role": "Frontend Developer",
+    "bio": "I build fast, clean and user-focused web experiences. Passionate about quality interfaces and the details that make the difference.",
+    "cta_projects": "View my work",
+    "cta_contact": "Get in touch"
+  },
+  "about": {
+    "subtitle": "Get to know me",
+    "title": "About",
+    "title_accent": "me",
+    "p1": "I'm a Frontend Developer with professional experience building websites for marketplaces. I'm passionate about creating fast, clean interfaces focused on the user.",
+    "p2": "My main stack is <strong>React</strong> and <strong>Next.js</strong> with JavaScript, though I'm equally comfortable working directly with <strong>HTML and CSS</strong> when the project calls for it.",
+    "p3": "I hold a <strong>Higher Degree in Web Application Development</strong>, where I built the foundations I've since applied in real production environments.",
+    "skills": {
+      "frontend": "Frontend",
+      "tools": "Tools & Dev",
+      "other": "Concepts"
+    }
+  },
+  "projects": {
+    "subtitle": "What I've built",
+    "title": "Featured",
+    "title_accent": "projects"
+  },
+  "contact": {
+    "subtitle": "Let's talk",
+    "title": "Get in",
+    "title_accent": "touch",
+    "info_text": "I'm currently open to new opportunities. Whether you have a project in mind, a question, or just want to say hi — my inbox is always open.",
+    "form": {
+      "name": "Name",
+      "name_placeholder": "Jane Smith",
+      "email": "Email",
+      "email_placeholder": "jane@example.com",
+      "message": "Message",
+      "message_placeholder": "Tell me about your project...",
+      "send": "Send message",
+      "sending": "Sending...",
+      "success": "Message sent! I'll get back to you soon."
+    }
+  },
+  "project_items": {
+    "1": {
+      "title": "VextParts",
+      "description": "Multi-tenant marketplace platform for car salvage yards, enabling the sale of spare parts to end customers and garages. Features per-tenant user management, product catalogue, a full order system with checkout flow and payment gateway integration."
+    },
+    "2": {
+      "title": "Design System",
+      "description": "A reusable component library with full accessibility support, Storybook documentation and automated visual regression tests."
+    },
+    "3": {
+      "title": "Real-time Chat App",
+      "description": "Instant messaging application with WebSocket integration, typing indicators and end-to-end encrypted messages."
+    },
+    "4": {
+      "title": "Proyecto Vivir PWA",
+      "description": "Mobile Progressive Web App built for a women's NGO focused on social inclusion. Combines document management and team collaboration to coordinate volunteers and beneficiaries, centralising communication and resource sharing from any mobile device."
+    }
+  },
+  "footer": {
+    "built_by": "Designed & built by"
+  }
+}

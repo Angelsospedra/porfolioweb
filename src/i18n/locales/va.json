@@ -1,0 +1,70 @@
+{
+  "header": {
+    "about": "Sobre mi",
+    "projects": "Projectes",
+    "contact": "Contacte"
+  },
+  "hero": {
+    "greeting": "Hola, soc",
+    "role": "Frontend Developer",
+    "bio": "Creo experiències web ràpides, netes i centrades en l'usuari. Apassionat per les interfícies de qualitat i els detalls que marquen la diferència.",
+    "cta_projects": "Veure el meu treball",
+    "cta_contact": "Contacta'm"
+  },
+  "about": {
+    "subtitle": "Coneix-me",
+    "title": "Sobre",
+    "title_accent": "mi",
+    "p1": "Soc Frontend Developer amb experiència professional creant pàgines web per a marketplaces. M'apassiona construir interfícies ràpides, netes i centrades en l'usuari.",
+    "p2": "El meu stack principal és <strong>React</strong> i <strong>Next.js</strong> amb JavaScript, encara que em trobe igual de còmode treballant directament amb <strong>HTML i CSS</strong> quan el projecte ho requereix.",
+    "p3": "Soc titulat en <strong>Grau Superior de Desenvolupament d'Aplicacions Web</strong>, on vaig assentar les bases que després he aplicat en entorns reals de producció.",
+    "skills": {
+      "frontend": "Frontend",
+      "tools": "Eines",
+      "other": "Conceptes"
+    }
+  },
+  "projects": {
+    "subtitle": "El que he construït",
+    "title": "Projectes",
+    "title_accent": "destacats"
+  },
+  "contact": {
+    "subtitle": "Parlem",
+    "title": "Posa't en",
+    "title_accent": "contacte",
+    "info_text": "Estic obert a noves oportunitats. Tant si tens un projecte en ment, una pregunta, o simplement vols saludar, la meua safata d'entrada sempre està oberta.",
+    "form": {
+      "name": "Nom",
+      "name_placeholder": "Anna Garcia",
+      "email": "Correu",
+      "email_placeholder": "anna@exemple.com",
+      "message": "Missatge",
+      "message_placeholder": "Explica'm el teu projecte...",
+      "send": "Enviar missatge",
+      "sending": "Enviant...",
+      "success": "Missatge enviat! Em posaré en contacte amb tu prompte."
+    }
+  },
+  "project_items": {
+    "1": {
+      "title": "VextParts",
+      "description": "Plataforma marketplace multi-tenant per a desballestaments, orientada a la venda de peces de recanvi a particulars i tallers. Inclou gestió d'usuaris per tenant, catàleg de productes, sistema de comandes amb checkout complet i integració amb passarel·la de pagament."
+    },
+    "2": {
+      "title": "Sistema de Disseny",
+      "description": "Llibreria de components reutilitzables amb suport complet d'accessibilitat, documentació en Storybook i tests de regressió visual automatitzats."
+    },
+    "3": {
+      "title": "App de Xat en Temps Real",
+      "description": "Aplicació de missatgeria instantània amb integració WebSocket, indicadors d'escriptura i missatges xifrats d'extrem a extrem."
+    },
+    "4": {
+      "title": "Proyecto Vivir PWA",
+      "description": "Aplicació web mòbil progressiva (PWA) desenvolupada per a una ONG de suport a dones en risc d'exclusió social. Combina gestió documental i col·laboració en equip per coordinar voluntàries i beneficiàries, centralitzant la comunicació i l'intercanvi de recursos des de qualsevol dispositiu mòbil."
+    }
+  },
+  "footer": {
+    "built_by": "Dissenyat i desenvolupat per"
+  }
+}

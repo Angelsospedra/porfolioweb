@@ -1,0 +1,35 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.375rem;
+  color: var(--text-muted);
+  border-radius: 4px;
+  transition: color 0.2s;
+  letter-spacing: 0.04em;
+}
+
+.btn:hover {
+  color: var(--text-primary);
+}
+
+.active {
+  color: var(--accent);
+}
+
+.sep {
+  font-size: 0.65rem;
+  color: var(--border-hover);
+  padding: 0 1px;
+  user-select: none;
+}

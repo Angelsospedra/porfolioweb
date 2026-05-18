@@ -1,0 +1,37 @@
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.copy {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.social {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  color: var(--text-muted);
+  transition: color 0.2s, background 0.2s;
+}
+.socialLink:hover {
+  color: var(--accent);
+  background: var(--accent-dim);
+}
