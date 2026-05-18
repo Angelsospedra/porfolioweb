@@ -35,7 +35,7 @@
     "title_accent": "contacte",
     "info_text": "Estic obert a noves oportunitats. Tant si tens un projecte en ment, una pregunta, o simplement vols saludar, la meua safata d'entrada sempre està oberta.",
     "form": {
-      "name": "Nom",
+      "name": "Nom complet",
       "name_placeholder": "Anna Garcia",
       "email": "Correu",
       "email_placeholder": "anna@exemple.com",
@@ -43,7 +43,8 @@
       "message_placeholder": "Explica'm el teu projecte...",
       "send": "Enviar missatge",
       "sending": "Enviant...",
-      "success": "Missatge enviat! Em posaré en contacte amb tu prompte."
+      "success": "Missatge enviat! Em posaré en contacte amb tu prompte.",
+      "error": "Alguna cosa ha anat malament. Torna-ho a intentar o escriu-me directament al correu."
     }
   },
   "project_items": {
@@ -52,12 +53,12 @@
       "description": "Plataforma marketplace multi-tenant per a desballestaments, orientada a la venda de peces de recanvi a particulars i tallers. Inclou gestió d'usuaris per tenant, catàleg de productes, sistema de comandes amb checkout complet i integració amb passarel·la de pagament."
     },
     "2": {
-      "title": "Sistema de Disseny",
-      "description": "Llibreria de components reutilitzables amb suport complet d'accessibilitat, documentació en Storybook i tests de regressió visual automatitzats."
+      "title": "Fitmap",
+      "description": "App mòbil PWA de directori esportiu per trobar pistes i instal·lacions prop de l'usuari. Inclou registre d'usuaris, cerca i filtratge d'espais esportius, i passarel·la de pagament per reservar pistes."
     },
     "3": {
-      "title": "App de Xat en Temps Real",
-      "description": "Aplicació de missatgeria instantània amb integració WebSocket, indicadors d'escriptura i missatges xifrats d'extrem a extrem."
+      "title": "Vinilocos",
+      "description": "Marketplace per a la compravenda de vinilos de segona mà en bon estat. Inclou panell d'administrador per gestionar el catàleg i les comandes, i àrea de client per navegar, comprar i fer seguiment de les seues compres."
     },
     "4": {
       "title": "Proyecto Vivir PWA",

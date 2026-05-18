@@ -35,7 +35,7 @@
     "title_accent": "touch",
     "info_text": "I'm currently open to new opportunities. Whether you have a project in mind, a question, or just want to say hi — my inbox is always open.",
     "form": {
-      "name": "Name",
+      "name": "Full name",
       "name_placeholder": "Jane Smith",
       "email": "Email",
       "email_placeholder": "jane@example.com",
@@ -43,7 +43,8 @@
       "message_placeholder": "Tell me about your project...",
       "send": "Send message",
       "sending": "Sending...",
-      "success": "Message sent! I'll get back to you soon."
+      "success": "Message sent! I'll get back to you soon.",
+      "error": "Something went wrong. Try again or email me directly."
     }
   },
   "project_items": {
@@ -52,12 +53,12 @@
       "description": "Multi-tenant marketplace platform for car salvage yards, enabling the sale of spare parts to end customers and garages. Features per-tenant user management, product catalogue, a full order system with checkout flow and payment gateway integration."
     },
     "2": {
-      "title": "Design System",
-      "description": "A reusable component library with full accessibility support, Storybook documentation and automated visual regression tests."
+      "title": "Fitmap",
+      "description": "A PWA mobile app acting as a sports directory to find courts and facilities near the user. Features user registration, search and filtering of sports venues, and a payment gateway to book courts."
     },
     "3": {
-      "title": "Real-time Chat App",
-      "description": "Instant messaging application with WebSocket integration, typing indicators and end-to-end encrypted messages."
+      "title": "Vinilocos",
+      "description": "Marketplace for buying and selling second-hand vinyl records in good condition. Features an admin panel for managing the catalogue and orders, and a customer area to browse, purchase and track orders."
     },
     "4": {
       "title": "Proyecto Vivir PWA",

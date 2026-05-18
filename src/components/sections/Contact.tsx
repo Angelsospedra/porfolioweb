@@ -2,10 +2,15 @@ import { useState, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Mail, Send } from 'lucide-react'
+import emailjs from '@emailjs/browser'
 import { IconGithub, IconLinkedin } from '../ui/icons/BrandIcons'
 import { Button } from '../ui/Button'
 import { useInView } from '../../hooks/useInView'
 import styles from './Contact.module.css'
+
+const EMAILJS_SERVICE = 'service_e8uvbsp'
+const EMAILJS_TEMPLATE = 'template_at30ads'
+const EMAILJS_PUBLIC_KEY = 'iTKEQpCSpbKV73e4o'
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
@@ -21,8 +26,18 @@ export function Contact() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setStatus('sending')
-    await new Promise(r => setTimeout(r, 1200))
-    setStatus('sent')
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE,
+        EMAILJS_TEMPLATE,
+        { from_name: form.name, from_email: form.email, message: form.message },
+        EMAILJS_PUBLIC_KEY
+      )
+      setStatus('sent')
+      setForm({ name: '', email: '', message: '' })
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -46,17 +61,17 @@ export function Contact() {
           >
             <p className={styles.infoText}>{t('contact.info_text')}</p>
             <div className={styles.contactLinks}>
-              <a href="mailto:your@email.com" className={styles.contactLink}>
+              <a href="mailto:angelsospedramartinez@gmail.com" className={styles.contactLink}>
                 <Mail size={18} />
-                <span>your@email.com</span>
+                <span>angelsospedramartinez@gmail.com</span>
               </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
+              <a href="https://github.com/Angelsospedra" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
                 <IconGithub size={18} />
-                <span>github.com/yourhandle</span>
+                <span>github.com/Angelsospedra</span>
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
+              <a href="https://www.linkedin.com/in/angel-sospedra/" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
                 <IconLinkedin size={18} />
-                <span>linkedin.com/in/yourhandle</span>
+                <span>linkedin.com/in/angel-sospedra</span>
               </a>
             </div>
           </motion.div>
@@ -68,23 +83,21 @@ export function Contact() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className={styles.row}>
-              <div className={styles.field}>
-                <label htmlFor="name" className={styles.label}>{t('contact.form.name')}</label>
-                <input
-                  id="name" name="name" type="text" required
-                  className={styles.input} placeholder={t('contact.form.name_placeholder')}
-                  value={form.name} onChange={handleChange}
-                />
-              </div>
-              <div className={styles.field}>
-                <label htmlFor="email" className={styles.label}>{t('contact.form.email')}</label>
-                <input
-                  id="email" name="email" type="email" required
-                  className={styles.input} placeholder={t('contact.form.email_placeholder')}
-                  value={form.email} onChange={handleChange}
-                />
-              </div>
+            <div className={styles.field}>
+              <label htmlFor="name" className={styles.label}>{t('contact.form.name')}</label>
+              <input
+                id="name" name="name" type="text" required
+                className={styles.input} placeholder={t('contact.form.name_placeholder')}
+                value={form.name} onChange={handleChange}
+              />
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="email" className={styles.label}>{t('contact.form.email')}</label>
+              <input
+                id="email" name="email" type="email" required
+                className={styles.input} placeholder={t('contact.form.email_placeholder')}
+                value={form.email} onChange={handleChange}
+              />
             </div>
 
             <div className={styles.field}>
@@ -96,13 +109,15 @@ export function Contact() {
               />
             </div>
 
-            {status === 'sent' ? (
-              <p className={styles.success}>{t('contact.form.success')}</p>
-            ) : (
-              <Button type="submit" size="lg" disabled={status === 'sending'}>
-                <Send size={16} />
-                {status === 'sending' ? t('contact.form.sending') : t('contact.form.send')}
-              </Button>
+            {status === 'sent' && <p className={styles.success}>{t('contact.form.success')}</p>}
+            {status === 'error' && <p className={styles.error}>{t('contact.form.error')}</p>}
+            {status !== 'sent' && (
+              <div className={styles.submitRow}>
+                <Button type="submit" size="lg" disabled={status === 'sending'}>
+                  <Send size={16} />
+                  {status === 'sending' ? t('contact.form.sending') : t('contact.form.send')}
+                </Button>
+              </div>
             )}
           </motion.form>
         </div>

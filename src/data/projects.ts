@@ -17,16 +17,16 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: 'Design System',
+    title: 'Fitmap',
     description: '',
-    tags: ['React', 'Storybook', 'CSS Modules', 'Jest'],
+    tags: ['PWA', 'JavaScript', 'PHP', 'MySQL', 'Stripe'],
     featured: true,
   },
   {
     id: 3,
-    title: 'Real-time Chat App',
+    title: 'Vinilocos',
     description: '',
-    tags: ['React', 'WebSockets', 'Node.js', 'TypeScript'],
+    tags: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
     featured: true,
   },
 ]

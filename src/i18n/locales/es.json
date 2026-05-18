@@ -35,7 +35,7 @@
     "title_accent": "contacto",
     "info_text": "Estoy abierto a nuevas oportunidades. Tanto si tienes un proyecto en mente, una pregunta, o simplemente quieres saludar, mi bandeja de entrada siempre está abierta.",
     "form": {
-      "name": "Nombre",
+      "name": "Nombre completo",
       "name_placeholder": "Ana García",
       "email": "Email",
       "email_placeholder": "ana@ejemplo.com",
@@ -43,7 +43,8 @@
       "message_placeholder": "Cuéntame tu proyecto...",
       "send": "Enviar mensaje",
       "sending": "Enviando...",
-      "success": "¡Mensaje enviado! Me pondré en contacto contigo pronto."
+      "success": "¡Mensaje enviado! Me pondré en contacto contigo pronto.",
+      "error": "Algo salió mal. Inténtalo de nuevo o escríbeme directamente al email."
     }
   },
   "project_items": {
@@ -52,12 +53,12 @@
       "description": "Plataforma marketplace multi-tenant para desguaces, orientada a la venta de piezas de recambio a particulares y talleres. Incluye gestión de usuarios por tenant, catálogo de productos, sistema de pedidos con checkout completo e integración con pasarela de pago."
     },
     "2": {
-      "title": "Sistema de Diseño",
-      "description": "Librería de componentes reutilizables con soporte completo de accesibilidad, documentación en Storybook y tests de regresión visual automatizados."
+      "title": "Fitmap",
+      "description": "App móvil PWA de directorio deportivo para encontrar pistas e instalaciones cerca del usuario. Incluye registro de usuarios, búsqueda y filtrado de espacios deportivos, y pasarela de pago para reservar pistas."
     },
     "3": {
-      "title": "App de Chat en Tiempo Real",
-      "description": "Aplicación de mensajería instantánea con integración WebSocket, indicadores de escritura y mensajes cifrados de extremo a extremo."
+      "title": "Vinilocos",
+      "description": "Marketplace para la compraventa de vinilos de segunda mano en buen estado. Incluye panel de administrador para gestionar el catálogo y los pedidos, y área de cliente para navegar, comprar y hacer seguimiento de sus compras."
     },
     "4": {
       "title": "Proyecto Vivir PWA",

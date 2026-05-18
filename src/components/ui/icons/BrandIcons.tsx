@@ -25,7 +25,12 @@ export function IconX({ size = 18 }: { size?: number }) {
 export function IconArtstation({ size = 18 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 0 0-2.098-1.129H11.3l9.108 15.802 2.092 3.63A2.4 2.4 0 0 0 24 17.748zm-9.53-17.18l-4.014 6.962 4.721 8.177 4.014-6.962z" />
+      {/* bottom bar */}
+      <path d="M0 17.723 L2.028 21.228 A2.424 2.424 0 0 0 4.192 22.561 H17.649 L14.857 17.723 Z" />
+      {/* right diagonal stroke */}
+      <path d="M24 17.748 C24 17.264 23.857 16.813 23.612 16.434 L15.728 2.728 A2.424 2.424 0 0 0 13.63 1.599 H11.3 L20.408 17.401 L22.5 21.031 A2.4 2.4 0 0 0 24 17.748 Z" />
+      {/* inner triangle */}
+      <path d="M14.47 0.568 L10.456 7.53 L15.177 15.707 L19.191 8.745 Z" />
     </svg>
   )
 }

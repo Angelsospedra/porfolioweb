@@ -1,11 +1,13 @@
 import { useTranslation } from 'react-i18next'
-import { IconGithub, IconLinkedin, IconArtstation } from '../ui/icons/BrandIcons'
+import { SiGithub, SiArtstation } from 'react-icons/si'
+import { FaLinkedin } from 'react-icons/fa'
+import type { IconType } from 'react-icons'
 import styles from './Footer.module.css'
 
-const SOCIAL = [
-  { icon: IconGithub, href: 'https://github.com', label: 'GitHub' },
-  { icon: IconLinkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: IconArtstation, href: 'https://www.artstation.com/angelsospedra', label: 'ArtStation' },
+const SOCIAL: { icon: IconType; href: string; label: string }[] = [
+  { icon: SiGithub, href: 'https://github.com/Angelsospedra', label: 'GitHub' },
+  { icon: FaLinkedin, href: 'https://www.linkedin.com/in/angel-sospedra/', label: 'LinkedIn' },
+  { icon: SiArtstation, href: 'https://www.artstation.com/angelsospedra', label: 'ArtStation' },
 ]
 
 export function Footer() {
