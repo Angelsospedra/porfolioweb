@@ -27,7 +27,8 @@
   "projects": {
     "subtitle": "What I've built",
     "title": "Featured",
-    "title_accent": "projects"
+    "title_accent": "projects",
+    "drag_hint": "(Grab the cards and arrange them however you like)"
   },
   "contact": {
     "subtitle": "Let's talk",
@@ -50,19 +51,23 @@
   "project_items": {
     "1": {
       "title": "VextParts",
-      "description": "Multi-tenant marketplace platform for car salvage yards, enabling the sale of spare parts to end customers and garages. Features per-tenant user management, product catalogue, a full order system with checkout flow and payment gateway integration."
+      "description": "Multi-tenant marketplace platform for car salvage yards.",
+      "features": ["Per-tenant user management", "Product catalogue for parts", "Full order system with checkout", "Payment gateway integration"]
     },
     "2": {
       "title": "Fitmap",
-      "description": "A PWA mobile app acting as a sports directory to find courts and facilities near the user. Features user registration, search and filtering of sports venues, and a payment gateway to book courts."
+      "description": "PWA mobile app sports directory to find courts and facilities.",
+      "features": ["User registration and management", "Search and filtering of sports venues", "Court booking with payment gateway"]
     },
     "3": {
       "title": "Vinilocos",
-      "description": "Marketplace for buying and selling second-hand vinyl records in good condition. Features an admin panel for managing the catalogue and orders, and a customer area to browse, purchase and track orders."
+      "description": "Marketplace for buying and selling second-hand vinyl records.",
+      "features": ["Admin panel for store managers", "Catalogue and order management", "Customer area to browse and track orders"]
     },
     "4": {
       "title": "Proyecto Vivir PWA",
-      "description": "Mobile Progressive Web App built for a women's NGO focused on social inclusion. Combines document management and team collaboration to coordinate volunteers and beneficiaries, centralising communication and resource sharing from any mobile device."
+      "description": "PWA built for a women's NGO focused on social inclusion.",
+      "features": ["Collaborative document management", "Coordination of volunteers and beneficiaries", "Centralised communication from mobile"]
     }
   },
   "footer": {

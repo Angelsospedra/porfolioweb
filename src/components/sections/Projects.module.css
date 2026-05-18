@@ -15,6 +15,8 @@
 }
 
 .card {
+  user-select: none;
+  height: 100%;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -28,7 +30,29 @@
 .card:hover {
   border-color: var(--border-hover);
   box-shadow: var(--shadow-card);
-  transform: translateY(-3px);
+}
+
+.dragging {
+  opacity: 1;
+}
+
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.dragHint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  animation: blink 4s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { color: var(--text-muted); }
+  50% { color: var(--accent); }
 }
 
 .featured {
@@ -91,11 +115,33 @@
   text-overflow: ellipsis;
 }
 
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
 .description {
   font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.65;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.featureList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.featureList li::before {
+  content: '•  ';
+  color: var(--accent);
 }
 
 .tags {

@@ -27,7 +27,8 @@
   "projects": {
     "subtitle": "Lo que he construido",
     "title": "Proyectos",
-    "title_accent": "destacados"
+    "title_accent": "destacados",
+    "drag_hint": "(Agarra los bloques y ordénalos a tu gusto)"
   },
   "contact": {
     "subtitle": "Hablemos",
@@ -50,19 +51,23 @@
   "project_items": {
     "1": {
       "title": "VextParts",
-      "description": "Plataforma marketplace multi-tenant para desguaces, orientada a la venta de piezas de recambio a particulares y talleres. Incluye gestión de usuarios por tenant, catálogo de productos, sistema de pedidos con checkout completo e integración con pasarela de pago."
+      "description": "Plataforma marketplace multi-tenant para desguaces.",
+      "features": ["Gestión de usuarios por tenant", "Catálogo de productos y piezas", "Sistema de pedidos con checkout completo", "Integración con pasarela de pago"]
     },
     "2": {
       "title": "Fitmap",
-      "description": "App móvil PWA de directorio deportivo para encontrar pistas e instalaciones cerca del usuario. Incluye registro de usuarios, búsqueda y filtrado de espacios deportivos, y pasarela de pago para reservar pistas."
+      "description": "App móvil PWA de directorio deportivo para encontrar pistas e instalaciones.",
+      "features": ["Registro y gestión de usuarios", "Búsqueda y filtrado de espacios deportivos", "Reserva de pistas con pasarela de pago"]
     },
     "3": {
       "title": "Vinilocos",
-      "description": "Marketplace para la compraventa de vinilos de segunda mano en buen estado. Incluye panel de administrador para gestionar el catálogo y los pedidos, y área de cliente para navegar, comprar y hacer seguimiento de sus compras."
+      "description": "Marketplace para la compraventa de vinilos de segunda mano en buen estado.",
+      "features": ["Panel de administrador para el encargado", "Gestión de catálogo y pedidos", "Área de cliente para comprar y hacer seguimiento"]
     },
     "4": {
       "title": "Proyecto Vivir PWA",
-      "description": "Aplicación web móvil progresiva (PWA) desarrollada para una ONG de apoyo a mujeres en riesgo de exclusión social. Combina gestión documental y colaboración en equipo para coordinar a voluntarias y beneficiarias, centralizando la comunicación y el intercambio de recursos desde cualquier dispositivo móvil."
+      "description": "PWA desarrollada para una ONG de apoyo a mujeres en riesgo de exclusión social.",
+      "features": ["Gestión documental colaborativa", "Coordinación de voluntarias y beneficiarias", "Comunicación centralizada desde móvil"]
     }
   },
   "footer": {

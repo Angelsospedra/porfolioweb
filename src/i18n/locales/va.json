@@ -27,7 +27,8 @@
   "projects": {
     "subtitle": "El que he construït",
     "title": "Projectes",
-    "title_accent": "destacats"
+    "title_accent": "destacats",
+    "drag_hint": "(Agafa els blocs i ordena'ls com vulgues)"
   },
   "contact": {
     "subtitle": "Parlem",
@@ -50,19 +51,23 @@
   "project_items": {
     "1": {
       "title": "VextParts",
-      "description": "Plataforma marketplace multi-tenant per a desballestaments, orientada a la venda de peces de recanvi a particulars i tallers. Inclou gestió d'usuaris per tenant, catàleg de productes, sistema de comandes amb checkout complet i integració amb passarel·la de pagament."
+      "description": "Plataforma marketplace multi-tenant per a desballestaments.",
+      "features": ["Gestió d'usuaris per tenant", "Catàleg de productes i peces", "Sistema de comandes amb checkout complet", "Integració amb passarel·la de pagament"]
     },
     "2": {
       "title": "Fitmap",
-      "description": "App mòbil PWA de directori esportiu per trobar pistes i instal·lacions prop de l'usuari. Inclou registre d'usuaris, cerca i filtratge d'espais esportius, i passarel·la de pagament per reservar pistes."
+      "description": "App mòbil PWA de directori esportiu per trobar pistes i instal·lacions.",
+      "features": ["Registre i gestió d'usuaris", "Cerca i filtratge d'espais esportius", "Reserva de pistes amb passarel·la de pagament"]
     },
     "3": {
       "title": "Vinilocos",
-      "description": "Marketplace per a la compravenda de vinilos de segona mà en bon estat. Inclou panell d'administrador per gestionar el catàleg i les comandes, i àrea de client per navegar, comprar i fer seguiment de les seues compres."
+      "description": "Marketplace per a la compravenda de vinilos de segona mà en bon estat.",
+      "features": ["Panell d'administrador per al responsable", "Gestió de catàleg i comandes", "Àrea de client per comprar i fer seguiment"]
     },
     "4": {
       "title": "Proyecto Vivir PWA",
-      "description": "Aplicació web mòbil progressiva (PWA) desenvolupada per a una ONG de suport a dones en risc d'exclusió social. Combina gestió documental i col·laboració en equip per coordinar voluntàries i beneficiàries, centralitzant la comunicació i l'intercanvi de recursos des de qualsevol dispositiu mòbil."
+      "description": "PWA desenvolupada per a una ONG de suport a dones en risc d'exclusió social.",
+      "features": ["Gestió documental col·laborativa", "Coordinació de voluntàries i beneficiàries", "Comunicació centralitzada des de mòbil"]
     }
   },
   "footer": {
