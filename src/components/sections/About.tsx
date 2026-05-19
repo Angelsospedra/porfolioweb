@@ -6,7 +6,7 @@ import {
   SiGit, SiGithub, SiGitlab, SiFigma, SiSlack, SiNotion, SiJira,
 } from 'react-icons/si'
 import { VscSourceControl } from 'react-icons/vsc'
-import { TbBrandTeams } from 'react-icons/tb'
+import { TbBrandTeams, TbBrandAzure } from 'react-icons/tb'
 import { skills, skillCategories } from '../../data/skills'
 import { useInView } from '../../hooks/useInView'
 
@@ -25,6 +25,7 @@ const skillIcons: Record<string, React.ReactElement> = {
   'Fork': <VscSourceControl />,
   'Figma': <SiFigma />,
   'Slack': <SiSlack />,
+  'Azure': <TbBrandAzure />,
   'Teams': <TbBrandTeams />,
   'Notion': <SiNotion />,
   'Jira': <SiJira />,

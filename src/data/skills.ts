@@ -14,6 +14,7 @@ export const skills: Skill[] = [
   { name: 'GitLab', category: 'tools' },
   { name: 'Fork', category: 'tools' },
   { name: 'Figma', category: 'tools' },
+  { name: 'Azure', category: 'tools' },
   { name: 'Slack', category: 'tools' },
   { name: 'Teams', category: 'tools' },
   { name: 'Notion', category: 'tools' },
