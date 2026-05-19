@@ -8,9 +8,9 @@ import { Button } from '../ui/Button'
 import { useInView } from '../../hooks/useInView'
 import styles from './Contact.module.css'
 
-const EMAILJS_SERVICE = 'service_e8uvbsp'
-const EMAILJS_TEMPLATE = 'template_at30ads'
-const EMAILJS_PUBLIC_KEY = 'iTKEQpCSpbKV73e4o'
+const EMAILJS_SERVICE = import.meta.env.VITE_EMAILJS_SERVICE
+const EMAILJS_TEMPLATE = import.meta.env.VITE_EMAILJS_TEMPLATE
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 

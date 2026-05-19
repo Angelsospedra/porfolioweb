@@ -7,14 +7,13 @@ import {
   useSensor,
   useSensors,
 } from '@dnd-kit/core'
-import type { DragEndEvent, DragStartEvent, DragOverEvent } from '@dnd-kit/core'
+import type { DragEndEvent, DragOverEvent } from '@dnd-kit/core'
 import {
   SortableContext,
   rectSortingStrategy,
   useSortable,
   arrayMove,
 } from '@dnd-kit/sortable'
-import { CSS } from '@dnd-kit/utilities'
 import { useTranslation } from 'react-i18next'
 import { ExternalLink } from 'lucide-react'
 import { IconGithub } from '../ui/icons/BrandIcons'
