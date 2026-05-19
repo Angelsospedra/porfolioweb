@@ -20,7 +20,16 @@ export function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.gradient} aria-hidden />
-      <div className={`container ${styles.content}`}>
+      <div className={`container ${styles.layout}`}>
+        <motion.div
+          className={styles.imageWrapper}
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <img src="/angel.png" alt="Ángel Sospedra" className={styles.photo} />
+        </motion.div>
+        <div className={styles.content}>
         <motion.p
           className={styles.greeting}
           initial="hidden"
@@ -85,17 +94,18 @@ export function Hero() {
           </div>
         </motion.div>
 
-        <motion.a
-          href="#about"
-          className={styles.scroll}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.6 }}
-          aria-label="Scroll down"
-        >
-          <ArrowDown size={18} />
-        </motion.a>
+        </div>
       </div>
+      <motion.a
+        href="#about"
+        className={styles.scroll}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 0.6 }}
+        aria-label="Scroll down"
+      >
+        <ArrowDown size={18} />
+      </motion.a>
     </section>
   )
 }

@@ -5,7 +5,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 7rem;
   align-items: start;
 }
 
@@ -30,6 +30,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding-top: 3.5rem;
 }
 
 .skillGroup {}
@@ -43,10 +44,36 @@
   margin-bottom: 0.75rem;
 }
 
-.tagCloud {
+.skillList {
+  list-style: none;
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-auto-flow: column;
+  grid-auto-columns: 64px;
+  gap: 2.25rem;
+}
+
+.skillItem {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-align: center;
+  width: 56px;
+}
+
+.skillIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: var(--accent);
+}
+
+:global([data-theme='light']) .skillIcon {
+  color: var(--text-primary);
 }
 
 @media (max-width: 768px) {

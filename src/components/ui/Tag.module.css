@@ -1,5 +1,6 @@
 .tag {
   display: inline-block;
+  white-space: nowrap;
   font-size: 0.75rem;
   font-weight: 500;
   padding: 0.25rem 0.625rem;

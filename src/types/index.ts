@@ -10,7 +10,7 @@ export interface Project {
 
 export interface Skill {
   name: string
-  category: 'frontend' | 'tools' | 'other'
+  category: 'frontend' | 'tools'
 }
 
 export interface NavLink {

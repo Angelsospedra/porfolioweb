@@ -15,13 +15,12 @@
     "subtitle": "Coneix-me",
     "title": "Sobre",
     "title_accent": "mi",
-    "p1": "Soc Frontend Developer amb experiència professional creant pàgines web per a marketplaces. M'apassiona construir interfícies ràpides, netes i centrades en l'usuari.",
-    "p2": "El meu stack principal és <strong>React</strong> i <strong>Next.js</strong> amb JavaScript, encara que em trobe igual de còmode treballant directament amb <strong>HTML i CSS</strong> quan el projecte ho requereix.",
-    "p3": "Soc titulat en <strong>Grau Superior de Desenvolupament d'Aplicacions Web</strong>, on vaig assentar les bases que després he aplicat en entorns reals de producció.",
+    "p1": "Soc Frontend Developer de València amb experiència professional creant pàgines web per a marketplaces. M'apassiona construir interfícies ràpides, netes i centrades en l'usuari.",
+    "p2": "Treballe principalment amb <strong>React</strong> i <strong>Next.js</strong>, tot i que també tinc experiència amb <strong>Angular</strong>. Per als estils use <strong>Tailwind CSS</strong> i <strong>Bootstrap</strong>, i <strong>Vite</strong> com a eina de build en projectes moderns.",
+    "p3": "Soc titulat en <strong>Grau Superior de Desenvolupament d'Aplicacions Web</strong> i compte amb un <strong>Màster en Art 3D</strong> fruit de la meua etapa a la <strong>indústria del videojoc</strong>. Eixa experiència em va donar una visió creativa i un ull per al disseny i l'experiència d'usuari que aplique directament en cada interfície que construïsc.",
     "skills": {
       "frontend": "Frontend",
-      "tools": "Eines",
-      "other": "Conceptes"
+      "tools": "Eines"
     }
   },
   "projects": {

@@ -34,6 +34,7 @@ function ProjectCard({ project }: { project: Project }) {
           <h3 className={styles.title}>{t(`project_items.${project.id}.title`)}</h3>
         </div>
         <div className={styles.cardLinks}>
+          <div className={styles.dragDots} aria-hidden />
           {project.githubUrl && (
             <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub repository" className={styles.link}>
               <IconGithub size={17} />

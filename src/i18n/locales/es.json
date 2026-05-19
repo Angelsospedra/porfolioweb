@@ -15,13 +15,12 @@
     "subtitle": "Conóceme",
     "title": "Sobre",
     "title_accent": "mí",
-    "p1": "Soy Frontend Developer con experiencia profesional creando páginas web para marketplaces. Me apasiona construir interfaces rápidas, limpias y centradas en el usuario.",
-    "p2": "Mi stack principal es <strong>React</strong> y <strong>Next.js</strong> con JavaScript, aunque me siento igual de cómodo trabajando directamente con <strong>HTML y CSS</strong> cuando el proyecto lo pide.",
-    "p3": "Soy titulado en <strong>Grado Superior de Desarrollo de Aplicaciones Web</strong>, donde asenté las bases que luego he aplicado en entornos reales de producción.",
+    "p1": "Soy Frontend Developer de Valencia con experiencia profesional creando páginas web para marketplaces. Me apasiona construir interfaces rápidas, limpias y centradas en el usuario.",
+    "p2": "Trabajo principalmente con <strong>React</strong> y <strong>Next.js</strong>, aunque también tengo experiencia con <strong>Angular</strong>. En el lado del estilo uso <strong>Tailwind CSS</strong> y <strong>Bootstrap</strong>, y <strong>Vite</strong> como herramienta de build en proyectos modernos.",
+    "p3": "Soy titulado en <strong>Grado Superior de Desarrollo de Aplicaciones Web</strong> y cuento con un <strong>Máster en Arte 3D</strong> fruto de mi etapa en la <strong>industria del videojuego</strong>. Esa experiencia me ha dado una visión creativa y un ojo para el diseño y la experiencia de usuario que aplico directamente en cada interfaz que construyo.",
     "skills": {
       "frontend": "Frontend",
-      "tools": "Herramientas",
-      "other": "Conceptos"
+      "tools": "Herramientas"
     }
   },
   "projects": {
