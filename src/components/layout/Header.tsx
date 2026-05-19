@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Menu, X } from 'lucide-react'
 import { ThemeToggle } from '../ui/ThemeToggle'
 import { LangSwitcher } from '../ui/LangSwitcher'
+import { AccentPicker } from '../ui/AccentPicker'
 import styles from './Header.module.css'
 
 const NAV_HREFS = ['#about', '#projects', '#contact'] as const
@@ -43,6 +44,7 @@ export function Header() {
         <div className={styles.actions}>
           <LangSwitcher />
           <ThemeToggle />
+          <AccentPicker />
           <button
             className={styles.menuBtn}
             onClick={() => setMenuOpen(o => !o)}

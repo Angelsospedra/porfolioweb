@@ -43,15 +43,6 @@ export function Contact() {
   return (
     <section id="contact" className={`section ${styles.contact}`} ref={ref as React.RefObject<HTMLElement>}>
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-        >
-          <p className="section-subtitle">{t('contact.subtitle')}</p>
-          <h2 className="section-title">{t('contact.title')} <span className="accent">{t('contact.title_accent')}</span></h2>
-        </motion.div>
-
         <div className={styles.grid}>
           <motion.div
             className={styles.info}
@@ -59,6 +50,14 @@ export function Contact() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5 }}
+            >
+              <p className="section-subtitle">{t('contact.subtitle')}</p>
+              <h2 className="section-title">{t('contact.title')} <span className="accent">{t('contact.title_accent')}</span></h2>
+            </motion.div>
             <p className={styles.infoText}>{t('contact.info_text')}</p>
             <div className={styles.contactLinks}>
               <a href="mailto:angelsospedramartinez@gmail.com" className={styles.contactLink}>
