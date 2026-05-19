@@ -27,7 +27,7 @@ export function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <img src="/angel.png" alt="Ángel Sospedra" className={styles.photo} />
+          <img src={`${import.meta.env.BASE_URL}angel.png`} alt="Ángel Sospedra" className={styles.photo} />
         </motion.div>
         <div className={styles.content}>
         <motion.p
