@@ -1,16 +1,18 @@
 import { motion } from 'framer-motion'
 import { useTranslation, Trans } from 'react-i18next'
 import {
-  SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiAngular,
+  SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiHtml5, SiCss, SiAngular,
   SiTailwindcss, SiBootstrap, SiVite,
-  SiGit, SiGithub, SiGitlab, SiFigma, SiSlack, SiNotion, SiJira,
+  SiGit, SiGithub, SiGitlab, SiFigma, SiSlack, SiNotion, SiJira, SiDavinciresolve,
 } from 'react-icons/si'
 import { VscSourceControl } from 'react-icons/vsc'
-import { TbBrandTeams, TbBrandAzure } from 'react-icons/tb'
+import { TbBrandTeams, TbBrandAzure, TbBrandAdobePhotoshop } from 'react-icons/tb'
 import { skills, skillCategories } from '../../data/skills'
 import { useInView } from '../../hooks/useInView'
 
 const skillIcons: Record<string, React.ReactElement> = {
+  'HTML5': <SiHtml5 />,
+  'CSS3': <SiCss />,
   'React': <SiReact />,
   'Next.js': <SiNextdotjs />,
   'TypeScript': <SiTypescript />,
@@ -26,6 +28,8 @@ const skillIcons: Record<string, React.ReactElement> = {
   'Figma': <SiFigma />,
   'Slack': <SiSlack />,
   'Azure': <TbBrandAzure />,
+  'Photoshop': <TbBrandAdobePhotoshop />,
+  'DaVinci Resolve': <SiDavinciresolve />,
   'Teams': <TbBrandTeams />,
   'Notion': <SiNotion />,
   'Jira': <SiJira />,
