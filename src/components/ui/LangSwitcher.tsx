@@ -6,10 +6,6 @@ const LANGS = [
   { code: 'es', label: 'Español' },
   { code: 'en', label: 'English' },
   { code: 'va', label: 'Valencià' },
-  { code: 'pt', label: 'Português' },
-  { code: 'it', label: 'Italiano' },
-  { code: 'ja', label: '日本語' },
-  { code: 'zh', label: '中文' },
 ]
 
 export function LangSwitcher() {

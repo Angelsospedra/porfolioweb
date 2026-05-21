@@ -29,7 +29,7 @@
     "subtitle": "El que he construït",
     "title": "Projectes",
     "title_accent": "destacats",
-    "drag_hint": "(Agafa els blocs i ordena'ls com vulgues)"
+    "drag_hint": "Agafa els blocs i ordena'ls com vulgues"
   },
   "contact": {
     "subtitle": "Parlem",
@@ -124,25 +124,25 @@
       {
         "year": "2019",
         "title": "Grupo Ceremón",
-        "place": "Pràctiques · 2 mesos",
+        "place": "Valencia",
         "description": "Experiències de realitat virtual amb Unreal Engine i realitat augmentada amb Vuforia. Modelat d'assets 3D en Maya optimitzats per a temps real."
       },
       {
-        "year": "2021",
+        "year": "2021 – 2023",
         "title": "Polygonal Mind",
-        "place": "Artista 3D · 2 anys",
+        "place": "Zaragoza",
         "description": "Creació d'entorns i assets 3D amb Maya, ZBrush i Substance Painter. Integració en Unity amb LODs i gestió directa amb clients internacionals."
       },
       {
         "year": "2025",
         "title": "StartGo Connection",
-        "place": "Pràctiques DAW",
+        "place": "Valencia - Treball en remot",
         "description": "Maquetació de llocs web corporatius amb HTML, CSS i JavaScript vanilla. Construcció i personalització de projectes WordPress."
       },
       {
         "year": "2026",
         "title": "Conmuta Soluciones",
-        "place": "Pràctiques DAW",
+        "place": "Paterna, València",
         "description": "Frontend d'una plataforma marketplace e-commerce amb React, Next.js i TypeScript. Maquetació responsiva amb Tailwind CSS i ús de SSR/SSG segons cada pàgina."
       }
     ]

@@ -28,7 +28,7 @@ export const art3dItems: Art3DItem[] = [
     thumb: `${import.meta.env.BASE_URL}thumbs/lamp.png`,
     model: `${import.meta.env.BASE_URL}models/lamp.glb`,
     link:"https://www.artstation.com/artwork/m803NE",
-    year: 2023,
+    year: 2022,
    },
    {
     id: 'ak',
@@ -45,7 +45,7 @@ export const art3dItems: Art3DItem[] = [
     `${import.meta.env.BASE_URL}images/AK/6.png`,
     ],
     link:"https://www.artstation.com/artwork/KeDzrr",
-    year: 2023,
+    year: 2021,
    },
    {
     id: 'terror',
@@ -60,7 +60,7 @@ export const art3dItems: Art3DItem[] = [
     `${import.meta.env.BASE_URL}images/Terror Environment/3.png`,
     ],
     link:"https://www.artstation.com/artwork/XnEXPl",
-    year: 2023,
+    year: 2021,
    },
    {
     id: 'wowsword',
@@ -74,6 +74,6 @@ export const art3dItems: Art3DItem[] = [
     `${import.meta.env.BASE_URL}images/Sword/3.png`,
     ],
     link:"https://www.artstation.com/artwork/m803NE",
-    year: 2023,
+    year: 2021,
    },
 ]

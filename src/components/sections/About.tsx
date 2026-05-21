@@ -61,6 +61,7 @@ export function About() {
   const lastCursorRef  = useRef({ x: 0, y: 0 })
 
   const [exploded, setExploded] = useState(false)
+  const [btnFading, setBtnFading] = useState(false)
   const [dragging, setDragging] = useState<{ icon: ReactElement } | null>(null)
 
   const stopAnim = () => {
@@ -76,10 +77,11 @@ export function About() {
     overlayRef.current = null
     if (bioRef.current) { bioRef.current.style.transition = ''; bioRef.current.style.opacity = '' }
     setExploded(false)
+    setBtnFading(false)
     setDragging(null)
   }, [])
 
-  const handleReset = useCallback(() => {
+  const handleReset = useCallback((fadBtn = false) => {
     stopAnim()
     isDraggingRef.current = false
     didExplodeRef.current = false
@@ -99,8 +101,13 @@ export function About() {
       bioRef.current.style.opacity    = '1'
     }
 
-    setTimeout(doCleanup, 580)
+    if (fadBtn) setTimeout(() => setBtnFading(true), 480)
+    setTimeout(doCleanup, fadBtn ? 780 : 580)
   }, [doCleanup])
+
+  const handleResetClick = useCallback(() => {
+    handleReset(true)
+  }, [handleReset])
 
   useEffect(() => { handleReset() }, [i18n.language])
   useEffect(() => () => { stopAnim(); overlayRef.current?.remove() }, [])
@@ -299,7 +306,7 @@ export function About() {
               <div className={styles.titleRow}>
                 <h2 className="section-title">{t('about.title')} <span className="accent">{t('about.title_accent')}</span></h2>
                 {exploded && (
-                  <button className={styles.explodeBtn} onClick={handleReset}>↺ Restablecer</button>
+                  <button className={`${styles.explodeBtn} ${btnFading ? styles.explodeBtnFading : ''}`} onClick={handleResetClick}>↺ Restablecer</button>
                 )}
               </div>
             </motion.div>

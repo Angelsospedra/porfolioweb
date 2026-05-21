@@ -88,6 +88,13 @@
   color: var(--text-muted);
   margin-bottom: 0.5rem;
   user-select: none;
+  text-align: right;
+  animation: blink 4s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { color: var(--text-muted); }
+  50% { color: var(--accent); }
 }
 
 .draggable {
@@ -137,12 +144,16 @@
   white-space: nowrap;
   flex-shrink: 0;
   transition: opacity 0.2s;
-  animation: btnFadeIn 1.8s ease 3s both;
+  animation: btnFadeIn 0.3s ease 0.2s both;
 }
 
 @keyframes btnFadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
+}
+
+.explodeBtnFading {
+  opacity: 0 !important;
 }
 
 .explodeBtn:hover:not(:disabled) {
