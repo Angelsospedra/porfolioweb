@@ -90,7 +90,7 @@ function MediaGallery({ video, images }: { video?: string; images?: string[] }) 
 function Viewer({ model, onClose }: { model: Art3DItem; onClose: () => void }) {
   const hasModel  = !!model.model
   const hasMedia  = !!model.video || !!model.images?.length
-  const [use3D, setUse3D] = useState(hasModel)
+  const [use3D] = useState(hasModel)
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
