@@ -70,14 +70,14 @@
 
 /* Purple */
 :root[data-accent='purple'][data-theme='dark'] {
-  --accent: #c084fc;
-  --accent-dim: rgba(192, 132, 252, 0.1);
-  --accent-glow: rgba(192, 132, 252, 0.25);
-  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(192, 132, 252, 0.12) 0%, transparent 60%);
+  --accent: #9690fc;
+  --accent-dim: rgba(150, 144, 252, 0.1);
+  --accent-glow: rgba(150, 144, 252, 0.25);
+  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(150, 144, 252, 0.12) 0%, transparent 60%);
 }
 :root[data-accent='purple'][data-theme='light'] {
-  --accent: #7c3aed;
-  --accent-dim: rgba(124, 58, 237, 0.08);
-  --accent-glow: rgba(124, 58, 237, 0.2);
-  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(124, 58, 237, 0.08) 0%, transparent 60%);
+  --accent: #9690fc;
+  --accent-dim: rgba(150, 144, 252, 0.08);
+  --accent-glow: rgba(150, 144, 252, 0.2);
+  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(150, 144, 252, 0.08) 0%, transparent 60%);
 }

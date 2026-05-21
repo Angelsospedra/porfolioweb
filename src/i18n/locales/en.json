@@ -2,6 +2,7 @@
   "header": {
     "about": "About",
     "projects": "Projects",
+    "journey": "Journey",
     "contact": "Contact"
   },
   "hero": {
@@ -68,6 +69,65 @@
       "description": "PWA built for a women's NGO focused on social inclusion.",
       "features": ["Collaborative document management", "Coordination of volunteers and beneficiaries", "Centralised communication from mobile"]
     }
+  },
+  "journey": {
+    "subtitle": "My story",
+    "title": "Professional",
+    "title_accent": "journey",
+    "education_label": "Education",
+    "work_label": "Experience",
+    "education": [
+      {
+        "year": "2016 – 2018",
+        "title": "Vocational Degree — TSMR",
+        "place": "La Florida · Catarroja, Valencia",
+        "description": "Computer systems, networking and hardware fundamentals. A solid technical foundation covering infrastructure and systems administration."
+      },
+      {
+        "year": "2018 – 2020",
+        "title": "Higher Degree — 3D Animation",
+        "place": "Progresa Centro de Formación · Valencia",
+        "description": "3D animation and interactive environments. First steps in creating digital content for video games and interactive media."
+      },
+      {
+        "year": "2021",
+        "title": "Master's in 3D Art",
+        "place": "La Florida · Catarroja, Valencia",
+        "description": "3D art for video games: character and environment modelling, texturing with Substance Painter, and production pipelines for the industry."
+      },
+      {
+        "year": "2024 – 2026",
+        "title": "Higher Degree — Web Development (DAW)",
+        "place": "Cámara FP · Paterna, Valencia",
+        "description": "Web Application Development. Transition to frontend development, cementing the technical foundations I apply today as a developer."
+      }
+    ],
+    "work": [
+      {
+        "year": "2019",
+        "title": "Grupo Ceremón",
+        "place": "Internship · 2 months",
+        "description": "VR experiences with Unreal Engine and AR with Vuforia. 3D asset modelling in Maya optimised for real-time rendering."
+      },
+      {
+        "year": "2021",
+        "title": "Polygonal Mind",
+        "place": "3D Artist · 2 years",
+        "description": "3D environment and asset creation with Maya, ZBrush and Substance Painter. Unity integration with LODs and direct management of international clients."
+      },
+      {
+        "year": "2025",
+        "title": "StartGo Connection",
+        "place": "Internship (DAW)",
+        "description": "Markup and development of corporate websites with HTML, CSS and vanilla JavaScript. WordPress site building and theme/plugin customisation."
+      },
+      {
+        "year": "2026",
+        "title": "Conmuta Soluciones",
+        "place": "Internship (DAW)",
+        "description": "Frontend of a marketplace e-commerce platform with React, Next.js and TypeScript. Responsive layouts with Tailwind CSS and SSR/SSG per page requirements."
+      }
+    ]
   },
   "footer": {
     "built_by": "Designed & built by"

@@ -5,7 +5,7 @@ const accents: { value: Accent; color: string }[] = [
   { value: 'green',  color: '#6ee7b7' },
   { value: 'red',    color: '#f87171' },
   { value: 'blue',   color: '#60a5fa' },
-  { value: 'purple', color: '#c084fc' },
+  { value: 'purple', color: '#9690fc' },
 ]
 
 export function AccentPicker() {

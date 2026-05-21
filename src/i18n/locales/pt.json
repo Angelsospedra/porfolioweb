@@ -1,0 +1,135 @@
+{
+  "header": {
+    "about": "Sobre mim",
+    "projects": "Projetos",
+    "journey": "Trajetória",
+    "contact": "Contato"
+  },
+  "hero": {
+    "greeting": "Olá, sou",
+    "role": "Desenvolvedor Frontend",
+    "bio": "Desenvolvo experiências web ágeis, limpas e centradas no utilizador. Apaixonado por interfaces de qualidade e pelos detalhes que fazem a diferença.",
+    "cta_projects": "Ver o meu trabalho",
+    "cta_contact": "Contactar"
+  },
+  "about": {
+    "subtitle": "Conheça-me",
+    "title": "Sobre",
+    "title_accent": "mim",
+    "p1": "Sou Desenvolvedor Frontend de Valência com experiência profissional a criar sites para marketplaces. Apaixonado por construir interfaces rápidas, limpas e centradas no utilizador.",
+    "p2": "Trabalho principalmente com <strong>React</strong> e <strong>Next.js</strong>, com experiência em <strong>Angular</strong>. No estilo utilizo <strong>Tailwind CSS</strong> e <strong>Bootstrap</strong>, e <strong>Vite</strong> como ferramenta de build em projetos modernos.",
+    "p3": "Tenho um <strong>Curso Superior de Desenvolvimento de Aplicações Web</strong> e um <strong>Mestrado em Arte 3D</strong> fruto da minha passagem pela <strong>indústria dos videojogos</strong>. Essa experiência deu-me um olhar criativo para o design e UX que aplico em cada interface que construo.",
+    "skills": {
+      "frontend": "Frontend",
+      "tools": "Ferramentas"
+    }
+  },
+  "projects": {
+    "subtitle": "O que construí",
+    "title": "Projetos",
+    "title_accent": "destacados",
+    "drag_hint": "(Arrasta os cartões e ordena-os como quiseres)"
+  },
+  "journey": {
+    "subtitle": "A minha história",
+    "title": "Trajetória",
+    "title_accent": "profissional",
+    "education_label": "Formação",
+    "work_label": "Experiência",
+    "education": [
+      {
+        "year": "2016 – 2018",
+        "title": "Curso Médio — TSMR",
+        "place": "La Florida · Catarroja, Valência",
+        "description": "Sistemas Microinformáticos e Redes. Fundamentos de hardware, redes e infraestrutura informática que me deram uma base técnica sólida."
+      },
+      {
+        "year": "2018 – 2020",
+        "title": "Curso Superior — Animação 3D",
+        "place": "Progresa Centro de Formación · Valência",
+        "description": "Animação 3D e ambientes interativos. Primeiros passos na criação de conteúdo digital para videojogos e meios interativos."
+      },
+      {
+        "year": "2021",
+        "title": "Mestrado em Arte 3D",
+        "place": "La Florida · Catarroja, Valência",
+        "description": "Arte 3D para videojogos: modelação de personagens e ambientes, texturização com Substance Painter e pipelines de produção para a indústria."
+      },
+      {
+        "year": "2024 – 2026",
+        "title": "Curso Superior — DAW",
+        "place": "Cámara FP · Paterna, Valência",
+        "description": "Desenvolvimento de Aplicações Web. Transição para o frontend, consolidando as bases técnicas que aplico hoje como developer."
+      }
+    ],
+    "work": [
+      {
+        "year": "2019",
+        "title": "Grupo Ceremón",
+        "place": "Estágio · 2 meses",
+        "description": "Experiências de realidade virtual com Unreal Engine e realidade aumentada com Vuforia. Modelação de assets 3D em Maya otimizados para tempo real."
+      },
+      {
+        "year": "2021",
+        "title": "Polygonal Mind",
+        "place": "Artista 3D · 2 anos",
+        "description": "Criação de ambientes e assets 3D com Maya, ZBrush e Substance Painter. Integração em Unity com LODs e gestão direta com clientes internacionais."
+      },
+      {
+        "year": "2025",
+        "title": "StartGo Connection",
+        "place": "Estágio DAW",
+        "description": "Maquetação de sites corporativos com HTML, CSS e JavaScript vanilla. Construção e personalização de projetos WordPress."
+      },
+      {
+        "year": "2026",
+        "title": "Conmuta Soluciones",
+        "place": "Estágio DAW",
+        "description": "Frontend de uma plataforma marketplace e-commerce com React, Next.js e TypeScript. Maquetação responsiva com Tailwind CSS e uso de SSR/SSG conforme cada página."
+      }
+    ]
+  },
+  "contact": {
+    "subtitle": "Vamos falar",
+    "title": "Entre em",
+    "title_accent": "contacto",
+    "info_text": "Estou aberto a novas oportunidades. Seja para um projeto, uma pergunta ou apenas para dizer olá — a minha caixa de entrada está sempre aberta.",
+    "form": {
+      "name": "Nome completo",
+      "name_placeholder": "João Silva",
+      "email": "Email",
+      "email_placeholder": "joao@exemplo.com",
+      "message": "Mensagem",
+      "message_placeholder": "Conta-me o teu projeto...",
+      "send": "Enviar mensagem",
+      "sending": "A enviar...",
+      "success": "Mensagem enviada! Entrarei em contacto em breve.",
+      "error": "Algo correu mal. Tenta novamente ou envia-me um email diretamente."
+    }
+  },
+  "project_items": {
+    "1": {
+      "title": "VextParts",
+      "description": "Plataforma marketplace multi-tenant para sucatas automóveis.",
+      "features": ["Gestão de utilizadores por tenant", "Catálogo de produtos e peças", "Sistema de encomendas com checkout completo", "Integração com gateway de pagamento"]
+    },
+    "2": {
+      "title": "Fitmap",
+      "description": "App móvel PWA de diretório desportivo para encontrar campos e instalações.",
+      "features": ["Registo e gestão de utilizadores", "Pesquisa e filtragem de espaços desportivos", "Reserva de campos com gateway de pagamento"]
+    },
+    "3": {
+      "title": "Vinilocos",
+      "description": "Marketplace de compra e venda de vinis em segunda mão.",
+      "features": ["Painel de administrador para o responsável", "Gestão de catálogo e encomendas", "Área de cliente para comprar e acompanhar"]
+    },
+    "4": {
+      "title": "Proyecto Vivir PWA",
+      "description": "PWA desenvolvida para uma ONG de apoio a mulheres em risco de exclusão social.",
+      "features": ["Gestão documental colaborativa", "Coordenação de voluntárias e beneficiárias", "Comunicação centralizada a partir do telemóvel"]
+    }
+  },
+  "footer": {
+    "built_by": "Desenhado e desenvolvido por"
+  }
+}

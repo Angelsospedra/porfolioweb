@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Mail, Send } from 'lucide-react'
 import emailjs from '@emailjs/browser'
+import { SiArtstation } from 'react-icons/si'
 import { IconGithub, IconLinkedin } from '../ui/icons/BrandIcons'
 import { Button } from '../ui/Button'
 import { useInView } from '../../hooks/useInView'
@@ -71,6 +72,10 @@ export function Contact() {
               <a href="https://www.linkedin.com/in/angel-sospedra/" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
                 <IconLinkedin size={18} />
                 <span>linkedin.com/in/angel-sospedra</span>
+              </a>
+              <a href="https://www.artstation.com/angelsospedra" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
+                <SiArtstation size={18} />
+                <span>artstation.com/angelsospedra</span>
               </a>
             </div>
           </motion.div>

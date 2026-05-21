@@ -2,6 +2,7 @@
   "header": {
     "about": "Sobre mí",
     "projects": "Proyectos",
+    "journey": "Trayectoria",
     "contact": "Contacto"
   },
   "hero": {
@@ -68,6 +69,65 @@
       "description": "PWA desarrollada para una ONG de apoyo a mujeres en riesgo de exclusión social.",
       "features": ["Gestión documental colaborativa", "Coordinación de voluntarias y beneficiarias", "Comunicación centralizada desde móvil"]
     }
+  },
+  "journey": {
+    "subtitle": "Mi recorrido",
+    "title": "Trayectoria",
+    "title_accent": "profesional",
+    "education_label": "Formación",
+    "work_label": "Experiencia",
+    "education": [
+      {
+        "year": "2016 – 2018",
+        "title": "Grado Medio — TSMR",
+        "place": "La Florida · Catarroja, Valencia",
+        "description": "Sistemas Microinformáticos y Redes. Fundamentos de hardware, redes e infraestructura informática que me dieron una base técnica sólida."
+      },
+      {
+        "year": "2018 – 2020",
+        "title": "Grado Superior — Animación 3D",
+        "place": "Progresa Centro de Formación · Valencia",
+        "description": "Animación 3D y entornos interactivos. Primeros pasos en creación de contenido digital para videojuegos y medios interactivos."
+      },
+      {
+        "year": "2021",
+        "title": "Máster en Arte 3D",
+        "place": "La Florida · Catarroja, Valencia",
+        "description": "Arte 3D para videojuegos: modelado de personajes y entornos, texturizado con Substance Painter y pipelines de producción para la industria."
+      },
+      {
+        "year": "2024 – 2026",
+        "title": "Grado Superior — DAW",
+        "place": "Cámara FP · Paterna, Valencia",
+        "description": "Desarrollo de Aplicaciones Web. Transición al desarrollo frontend, consolidando las bases técnicas que aplico hoy como developer."
+      }
+    ],
+    "work": [
+      {
+        "year": "2019",
+        "title": "Grupo Ceremón",
+        "place": "Prácticas · 2 meses",
+        "description": "Desarrollo de experiencias de realidad virtual con Unreal Engine y realidad aumentada con Vuforia. Modelado de assets 3D en Maya optimizados para tiempo real."
+      },
+      {
+        "year": "2021",
+        "title": "Polygonal Mind",
+        "place": "Artista 3D · 2 años",
+        "description": "Creación de entornos y assets 3D con Maya, ZBrush y Substance Painter. Integración en Unity con LODs y gestión directa con clientes internacionales."
+      },
+      {
+        "year": "2025",
+        "title": "StartGo Connection",
+        "place": "Prácticas DAW",
+        "description": "Maquetación de sitios web corporativos con HTML, CSS y JavaScript vanilla. Construcción y personalización de proyectos WordPress."
+      },
+      {
+        "year": "2026",
+        "title": "Conmuta Soluciones",
+        "place": "Prácticas DAW",
+        "description": "Frontend de una plataforma marketplace e-commerce con React, Next.js y TypeScript. Maquetación responsiva con Tailwind CSS y uso de SSR/SSG según cada página."
+      }
+    ]
   },
   "footer": {
     "built_by": "Diseñado y desarrollado por"

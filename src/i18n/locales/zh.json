@@ -1,0 +1,135 @@
+{
+  "header": {
+    "about": "关于我",
+    "projects": "项目",
+    "journey": "经历",
+    "contact": "联系"
+  },
+  "hero": {
+    "greeting": "你好，我是",
+    "role": "前端开发者",
+    "bio": "我构建敏捷、简洁、以用户为中心的Web体验。热衷于高质量界面和那些让人眼前一亮的细节。",
+    "cta_projects": "查看我的作品",
+    "cta_contact": "联系我"
+  },
+  "about": {
+    "subtitle": "了解我",
+    "title": "关于",
+    "title_accent": "我",
+    "p1": "我是来自瓦伦西亚的前端开发者，拥有为电商平台构建网站的专业经验。热衷于打造快速、简洁、以用户为中心的界面。",
+    "p2": "主要使用 <strong>React</strong> 和 <strong>Next.js</strong> 进行开发，也有 <strong>Angular</strong> 使用经验。样式方面使用 <strong>Tailwind CSS</strong> 和 <strong>Bootstrap</strong>，构建工具使用 <strong>Vite</strong>。",
+    "p3": "持有 <strong>Web应用开发高级职业资格证书</strong> 以及 <strong>3D艺术硕士学位</strong>，后者源于我在 <strong>游戏行业</strong> 的工作经历。那段经历培养了我对设计和用户体验的创意眼光，并将其融入每一个界面的构建中。",
+    "skills": {
+      "frontend": "前端",
+      "tools": "工具"
+    }
+  },
+  "projects": {
+    "subtitle": "我的作品",
+    "title": "精选",
+    "title_accent": "项目",
+    "drag_hint": "(拖拽卡片，随意排列)"
+  },
+  "journey": {
+    "subtitle": "我的故事",
+    "title": "职业",
+    "title_accent": "经历",
+    "education_label": "教育背景",
+    "work_label": "工作经历",
+    "education": [
+      {
+        "year": "2016 – 2018",
+        "title": "中级职业资格 — TSMR",
+        "place": "La Florida · 卡塔罗哈, 瓦伦西亚",
+        "description": "微型计算机系统与网络。掌握了硬件、网络和基础设施知识，为我打下了扎实的技术基础。"
+      },
+      {
+        "year": "2018 – 2020",
+        "title": "高级职业资格 — 3D动画",
+        "place": "Progresa Centro de Formación · 瓦伦西亚",
+        "description": "3D动画与交互环境。迈出了游戏和交互媒体数字内容创作的第一步。"
+      },
+      {
+        "year": "2021",
+        "title": "3D艺术硕士",
+        "place": "La Florida · 卡塔罗哈, 瓦伦西亚",
+        "description": "游戏3D艺术：角色与场景建模、Substance Painter贴图制作以及行业制作流程。"
+      },
+      {
+        "year": "2024 – 2026",
+        "title": "高级职业资格 — DAW",
+        "place": "Cámara FP · 帕特尔纳, 瓦伦西亚",
+        "description": "Web应用开发。成功转型为前端开发，奠定了如今作为开发者所运用的技术基础。"
+      }
+    ],
+    "work": [
+      {
+        "year": "2019",
+        "title": "Grupo Ceremón",
+        "place": "实习 · 2个月",
+        "description": "使用Unreal Engine开发VR体验，使用Vuforia开发AR应用。在Maya中建模并优化实时渲染的3D资产。"
+      },
+      {
+        "year": "2021",
+        "title": "Polygonal Mind",
+        "place": "3D艺术师 · 2年",
+        "description": "使用Maya、ZBrush和Substance Painter为游戏项目创建3D场景和资产。负责Unity中的LOD集成及与国际客户的直接沟通。"
+      },
+      {
+        "year": "2025",
+        "title": "StartGo Connection",
+        "place": "实习 (DAW)",
+        "description": "使用HTML、CSS和原生JavaScript开发企业网站。构建和定制WordPress项目。"
+      },
+      {
+        "year": "2026",
+        "title": "Conmuta Soluciones",
+        "place": "实习 (DAW)",
+        "description": "使用React、Next.js和TypeScript开发电商平台前端。使用Tailwind CSS进行响应式布局，并根据页面需求灵活运用SSR/SSG。"
+      }
+    ]
+  },
+  "contact": {
+    "subtitle": "与我联系",
+    "title": "取得",
+    "title_accent": "联系",
+    "info_text": "我目前对新机会持开放态度。无论您有项目想法、问题，还是只是想打个招呼——我的收件箱随时欢迎您。",
+    "form": {
+      "name": "姓名",
+      "name_placeholder": "张伟",
+      "email": "邮箱",
+      "email_placeholder": "zhang@example.com",
+      "message": "留言",
+      "message_placeholder": "请告诉我您的项目...",
+      "send": "发送消息",
+      "sending": "发送中...",
+      "success": "消息已发送！我会尽快与您联系。",
+      "error": "出现错误，请重试或直接发送邮件联系我。"
+    }
+  },
+  "project_items": {
+    "1": {
+      "title": "VextParts",
+      "description": "面向汽车拆解企业的多租户电商平台。",
+      "features": ["按租户管理用户", "零件产品目录", "含完整结账流程的订单系统", "支付网关集成"]
+    },
+    "2": {
+      "title": "Fitmap",
+      "description": "用于查找运动场地和设施的PWA移动端体育目录应用。",
+      "features": ["用户注册与管理", "运动场地搜索与筛选", "含支付网关的场地预订"]
+    },
+    "3": {
+      "title": "Vinilocos",
+      "description": "二手黑胶唱片买卖平台。",
+      "features": ["店铺管理员后台", "目录与订单管理", "客户购买与追踪专区"]
+    },
+    "4": {
+      "title": "Proyecto Vivir PWA",
+      "description": "为支持社会边缘化女性的NGO开发的PWA应用。",
+      "features": ["协作文档管理", "志愿者与受益人协调", "移动端集中沟通"]
+    }
+  },
+  "footer": {
+    "built_by": "设计与开发："
+  }
+}
