@@ -3,7 +3,8 @@
     "about": "Sobre mi",
     "projects": "Projectes",
     "journey": "Trajectòria",
-    "contact": "Contacte"
+    "contact": "Contacte",
+    "art3d": "Art 3D"
   },
   "hero": {
     "greeting": "Hola, soc",
@@ -52,22 +53,39 @@
     "1": {
       "title": "VextParts",
       "description": "Plataforma marketplace multi-tenant per a desballestaments.",
-      "features": ["Gestió d'usuaris per tenant", "Catàleg de productes i peces", "Sistema de comandes amb checkout complet", "Integració amb passarel·la de pagament"]
+      "features": [
+        "Gestió d'usuaris per tenant",
+        "Catàleg de productes i peces",
+        "Sistema de comandes amb checkout complet",
+        "Integració amb passarel·la de pagament"
+      ]
     },
     "2": {
       "title": "Fitmap",
       "description": "App mòbil PWA de directori esportiu per trobar pistes i instal·lacions.",
-      "features": ["Registre i gestió d'usuaris", "Cerca i filtratge d'espais esportius", "Reserva de pistes amb passarel·la de pagament"]
+      "features": [
+        "Registre i gestió d'usuaris",
+        "Cerca i filtratge d'espais esportius",
+        "Reserva de pistes amb passarel·la de pagament"
+      ]
     },
     "3": {
       "title": "Vinilocos",
       "description": "Marketplace per a la compravenda de vinilos de segona mà en bon estat.",
-      "features": ["Panell d'administrador per al responsable", "Gestió de catàleg i comandes", "Àrea de client per comprar i fer seguiment"]
+      "features": [
+        "Panell d'administrador per al responsable",
+        "Gestió de catàleg i comandes",
+        "Àrea de client per comprar i fer seguiment"
+      ]
     },
     "4": {
       "title": "Proyecto Vivir PWA",
       "description": "PWA desenvolupada per a una ONG de suport a dones en risc d'exclusió social.",
-      "features": ["Gestió documental col·laborativa", "Coordinació de voluntàries i beneficiàries", "Comunicació centralitzada des de mòbil"]
+      "features": [
+        "Gestió documental col·laborativa",
+        "Coordinació de voluntàries i beneficiàries",
+        "Comunicació centralitzada des de mòbil"
+      ]
     }
   },
   "journey": {

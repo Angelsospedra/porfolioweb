@@ -6,8 +6,8 @@ import { LangSwitcher } from '../ui/LangSwitcher'
 import { AccentPicker } from '../ui/AccentPicker'
 import styles from './Header.module.css'
 
-const NAV_HREFS = ['#about', '#projects', '#journey', '#contact'] as const
-const NAV_KEYS = ['header.about', 'header.projects', 'header.journey', 'header.contact'] as const
+const NAV_HREFS = ['#about', '#projects', '#journey', '#art3d', '#contact'] as const
+const NAV_KEYS = ['header.about', 'header.projects', 'header.journey', 'header.art3d', 'header.contact'] as const
 
 export function Header() {
   const { t } = useTranslation()

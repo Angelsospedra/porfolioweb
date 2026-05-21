@@ -4,6 +4,7 @@ import { Hero } from './components/sections/Hero'
 import { About } from './components/sections/About'
 import { Projects } from './components/sections/Projects'
 import { Journey } from './components/sections/Journey'
+import { Art3D } from './components/sections/Art3D'
 import { Contact } from './components/sections/Contact'
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <About />
         <Projects />
         <Journey />
+        <Art3D />
         <Contact />
       </main>
       <Footer />

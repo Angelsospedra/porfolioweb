@@ -3,7 +3,8 @@
     "about": "Sobre mim",
     "projects": "Projetos",
     "journey": "Trajetória",
-    "contact": "Contato"
+    "contact": "Contato",
+    "art3d": "Arte 3D"
   },
   "hero": {
     "greeting": "Olá, sou",
@@ -111,22 +112,39 @@
     "1": {
       "title": "VextParts",
       "description": "Plataforma marketplace multi-tenant para sucatas automóveis.",
-      "features": ["Gestão de utilizadores por tenant", "Catálogo de produtos e peças", "Sistema de encomendas com checkout completo", "Integração com gateway de pagamento"]
+      "features": [
+        "Gestão de utilizadores por tenant",
+        "Catálogo de produtos e peças",
+        "Sistema de encomendas com checkout completo",
+        "Integração com gateway de pagamento"
+      ]
     },
     "2": {
       "title": "Fitmap",
       "description": "App móvel PWA de diretório desportivo para encontrar campos e instalações.",
-      "features": ["Registo e gestão de utilizadores", "Pesquisa e filtragem de espaços desportivos", "Reserva de campos com gateway de pagamento"]
+      "features": [
+        "Registo e gestão de utilizadores",
+        "Pesquisa e filtragem de espaços desportivos",
+        "Reserva de campos com gateway de pagamento"
+      ]
     },
     "3": {
       "title": "Vinilocos",
       "description": "Marketplace de compra e venda de vinis em segunda mão.",
-      "features": ["Painel de administrador para o responsável", "Gestão de catálogo e encomendas", "Área de cliente para comprar e acompanhar"]
+      "features": [
+        "Painel de administrador para o responsável",
+        "Gestão de catálogo e encomendas",
+        "Área de cliente para comprar e acompanhar"
+      ]
     },
     "4": {
       "title": "Proyecto Vivir PWA",
       "description": "PWA desenvolvida para uma ONG de apoio a mulheres em risco de exclusão social.",
-      "features": ["Gestão documental colaborativa", "Coordenação de voluntárias e beneficiárias", "Comunicação centralizada a partir do telemóvel"]
+      "features": [
+        "Gestão documental colaborativa",
+        "Coordenação de voluntárias e beneficiárias",
+        "Comunicação centralizada a partir do telemóvel"
+      ]
     }
   },
   "footer": {

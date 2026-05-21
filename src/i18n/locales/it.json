@@ -3,7 +3,8 @@
     "about": "Su di me",
     "projects": "Progetti",
     "journey": "Percorso",
-    "contact": "Contatti"
+    "contact": "Contatti",
+    "art3d": "Arte 3D"
   },
   "hero": {
     "greeting": "Ciao, sono",
@@ -111,22 +112,39 @@
     "1": {
       "title": "VextParts",
       "description": "Piattaforma marketplace multi-tenant per demolitori di auto.",
-      "features": ["Gestione utenti per tenant", "Catalogo prodotti e ricambi", "Sistema ordini con checkout completo", "Integrazione con gateway di pagamento"]
+      "features": [
+        "Gestione utenti per tenant",
+        "Catalogo prodotti e ricambi",
+        "Sistema ordini con checkout completo",
+        "Integrazione con gateway di pagamento"
+      ]
     },
     "2": {
       "title": "Fitmap",
       "description": "App mobile PWA di directory sportiva per trovare campi e impianti.",
-      "features": ["Registrazione e gestione utenti", "Ricerca e filtraggio di spazi sportivi", "Prenotazione campi con gateway di pagamento"]
+      "features": [
+        "Registrazione e gestione utenti",
+        "Ricerca e filtraggio di spazi sportivi",
+        "Prenotazione campi con gateway di pagamento"
+      ]
     },
     "3": {
       "title": "Vinilocos",
       "description": "Marketplace per la compravendita di vinili di seconda mano.",
-      "features": ["Pannello admin per il gestore", "Gestione catalogo e ordini", "Area clienti per acquistare e tracciare gli ordini"]
+      "features": [
+        "Pannello admin per il gestore",
+        "Gestione catalogo e ordini",
+        "Area clienti per acquistare e tracciare gli ordini"
+      ]
     },
     "4": {
       "title": "Proyecto Vivir PWA",
       "description": "PWA sviluppata per un'ONG di supporto a donne a rischio di esclusione sociale.",
-      "features": ["Gestione documentale collaborativa", "Coordinamento di volontarie e beneficiarie", "Comunicazione centralizzata da mobile"]
+      "features": [
+        "Gestione documentale collaborativa",
+        "Coordinamento di volontarie e beneficiarie",
+        "Comunicazione centralizzata da mobile"
+      ]
     }
   },
   "footer": {
