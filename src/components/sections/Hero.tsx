@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { ArrowDown } from 'lucide-react'
+import { SiArtstation } from 'react-icons/si'
 import { IconGithub, IconLinkedin } from '../ui/icons/BrandIcons'
 import { Button } from '../ui/Button'
 import styles from './Hero.module.css'
@@ -90,6 +91,9 @@ export function Hero() {
             </a>
             <a href="https://www.linkedin.com/in/angel-sospedra/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIcon}>
               <IconLinkedin size={20} />
+            </a>
+            <a href="https://www.artstation.com/angelsospedra" target="_blank" rel="noopener noreferrer" aria-label="ArtStation" className={styles.socialIcon}>
+              <SiArtstation size={20} />
             </a>
           </div>
         </motion.div>

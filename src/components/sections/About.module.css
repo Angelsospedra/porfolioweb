@@ -19,6 +19,7 @@
   color: var(--text-secondary);
   line-height: 1.8;
   font-size: 1rem;
+  text-align: justify;
 }
 
 .bio strong {
