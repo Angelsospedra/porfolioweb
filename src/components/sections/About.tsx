@@ -67,20 +67,40 @@ export function About() {
     if (rafRef.current !== null) { cancelAnimationFrame(rafRef.current); rafRef.current = null }
   }
 
-  const handleReset = useCallback(() => {
-    stopAnim()
-    isDraggingRef.current = false
-    didExplodeRef.current = false
+  const doCleanup = useCallback(() => {
     launchedRef.current   = new Set()
     charsRef.current      = []
     spansRef.current      = []
     statesRef.current     = []
     overlayRef.current?.remove()
     overlayRef.current = null
-    if (bioRef.current) bioRef.current.style.visibility = ''
+    if (bioRef.current) { bioRef.current.style.transition = ''; bioRef.current.style.opacity = '' }
     setExploded(false)
     setDragging(null)
   }, [])
+
+  const handleReset = useCallback(() => {
+    stopAnim()
+    isDraggingRef.current = false
+    didExplodeRef.current = false
+
+    const spans = spansRef.current
+    if (spans.length === 0) { doCleanup(); return }
+
+    spans.forEach(span => {
+      span.style.textShadow = 'none'
+      span.style.transition = 'transform 0.45s cubic-bezier(0.4, 0, 1, 1), opacity 0.2s 0.35s'
+      span.style.transform  = 'translate(0px, 0px) rotate(0deg)'
+      span.style.opacity    = '0'
+    })
+
+    if (bioRef.current) {
+      bioRef.current.style.transition = 'opacity 0.2s 0.35s'
+      bioRef.current.style.opacity    = '1'
+    }
+
+    setTimeout(doCleanup, 580)
+  }, [doCleanup])
 
   useEffect(() => { handleReset() }, [i18n.language])
   useEffect(() => () => { stopAnim(); overlayRef.current?.remove() }, [])
@@ -198,7 +218,7 @@ export function About() {
     const sPadBottom = sEl ? parseFloat(window.getComputedStyle(sEl).paddingBottom) : 64
     groundRef.current = sRect ? sRect.bottom + sy - sPadBottom - 8 : document.documentElement.scrollHeight - 12
 
-    el.style.visibility = 'hidden'
+    el.style.opacity = '0'
     return true
   }, [])
 
