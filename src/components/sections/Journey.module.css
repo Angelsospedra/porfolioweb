@@ -1,7 +1,5 @@
 .journey {
   border-top: 1px solid var(--border);
-  padding-top: 3.5rem;
-  padding-bottom: 3.5rem;
 }
 
 .journey :global(.section-title) {
