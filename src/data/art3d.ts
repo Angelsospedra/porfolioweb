@@ -44,7 +44,7 @@ export const art3dItems: Art3DItem[] = [
     `${import.meta.env.BASE_URL}images/AK/5.png`,
     `${import.meta.env.BASE_URL}images/AK/6.png`,
     ],
-    link:"https://www.artstation.com/artwork/KeDzrr",
+    link:"https://www.artstation.com/artwork/EL51P8",
     year: 2021,
    },
    {
@@ -64,7 +64,7 @@ export const art3dItems: Art3DItem[] = [
    },
    {
     id: 'wowsword',
-    title: 'World Of Warcraft Stylized Sword',
+    title: 'World Of Warcraft Sword',
     description: 'Modelado en 3DMax. Texturizado en Substance Painter. Renderizado en Marmoset Toolbag',
     thumb: `${import.meta.env.BASE_URL}thumbs/sword.png`,
     model: ``,
@@ -73,7 +73,7 @@ export const art3dItems: Art3DItem[] = [
     `${import.meta.env.BASE_URL}images/Sword/2.png`,
     `${import.meta.env.BASE_URL}images/Sword/3.png`,
     ],
-    link:"https://www.artstation.com/artwork/m803NE",
+    link:"https://www.artstation.com/artwork/WKqrnX",
     year: 2021,
    },
 ]

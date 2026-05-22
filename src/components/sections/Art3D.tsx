@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, Suspense, Component, type ReactNode } from 'react'
+import { useState, useRef, useEffect, useCallback, Suspense, Component, type ReactNode } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, useGLTF, Environment, Html, Center } from '@react-three/drei'
@@ -30,29 +30,76 @@ class ModelErrorBoundary extends Component<{ children: ReactNode; fallback: Reac
 }
 
 function NoFullscreenVideo({ src }: { src: string }) {
-  const ref = useRef<HTMLVideoElement>(null)
+  const ref         = useRef<HTMLVideoElement>(null)
+  const rafRef      = useRef<number | null>(null)
+  const progressRef = useRef<HTMLInputElement>(null)
+  const [playing, setPlaying] = useState(true)
+  const [muted, setMuted]     = useState(true)
+  const [duration, setDuration] = useState(0)
+
+  const tick = useCallback(() => {
+    const v = ref.current; const bar = progressRef.current
+    if (v && bar) bar.value = String(v.currentTime)
+    rafRef.current = requestAnimationFrame(tick)
+  }, [])
 
   useEffect(() => {
-    const v = ref.current
-    if (!v) return
-    const block = () => { if (document.fullscreenElement) document.exitFullscreen() }
-    v.addEventListener('fullscreenchange', block)
-    return () => v.removeEventListener('fullscreenchange', block)
+    rafRef.current = requestAnimationFrame(tick)
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }
+  }, [tick])
+
+  const toggle = useCallback(() => {
+    const v = ref.current; if (!v) return
+    playing ? v.pause() : v.play()
+    setPlaying(p => !p)
+  }, [playing])
+
+  const toggleMute = useCallback(() => {
+    const v = ref.current; if (!v) return
+    v.muted = !v.muted
+    setMuted(m => !m)
+  }, [])
+
+  const seek = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const v = ref.current; if (!v) return
+    v.currentTime = Number(e.target.value)
   }, [])
 
   return (
-    <video
-      ref={ref}
-      className={styles.galleryImg}
-      src={src}
-      controls
-      controlsList="nofullscreen nodownload noremoteplayback"
-      disablePictureInPicture
-      autoPlay
-      loop
-      playsInline
-      onDoubleClick={e => e.preventDefault()}
-    />
+    <div className={styles.videoWrap}>
+      <video
+        ref={ref}
+        className={styles.galleryImg}
+        src={src}
+        autoPlay
+        loop
+        playsInline
+        muted
+        disablePictureInPicture
+        onLoadedMetadata={() => setDuration(ref.current?.duration ?? 0)}
+        onClick={toggle}
+      />
+      <div className={styles.videoControls}>
+        <button className={styles.videoBtn} onClick={toggle} aria-label={playing ? 'Pausar' : 'Reproducir'}>
+          {playing
+            ? <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            : <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><polygon points="5,3 19,12 5,21"/></svg>
+          }
+        </button>
+        <input
+          ref={progressRef}
+          className={styles.videoProgress}
+          type="range" min={0} max={duration || 1} step={0.01}
+          defaultValue={0} onChange={seek}
+        />
+        <button className={styles.videoBtn} onClick={toggleMute} aria-label={muted ? 'Activar sonido' : 'Silenciar'}>
+          {muted
+            ? <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+            : <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M16.5 12A4.5 4.5 0 0 0 14 7.97v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06A8.99 8.99 0 0 0 17.73 18l2 2L21 18.73 4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+          }
+        </button>
+      </div>
+    </div>
   )
 }
 
@@ -73,16 +120,53 @@ function GalleryImage({ src }: { src: string }) {
 }
 
 function MediaGallery({ video, images }: { video?: string; images?: string[] }) {
+  const galleryRef = useRef<HTMLDivElement>(null)
+  const [canUp, setCanUp]     = useState(false)
+  const [canDown, setCanDown] = useState(false)
+
+  const total = (video ? 1 : 0) + (images?.length ?? 0)
+
+  const updateArrows = useCallback(() => {
+    const el = galleryRef.current; if (!el) return
+    setCanUp(el.scrollTop > 10)
+    setCanDown(el.scrollTop < el.scrollHeight - el.clientHeight - 10)
+  }, [])
+
+  useEffect(() => {
+    updateArrows()
+    const el = galleryRef.current; if (!el) return
+    el.addEventListener('scroll', updateArrows, { passive: true })
+    return () => el.removeEventListener('scroll', updateArrows)
+  }, [updateArrows])
+
+  const scrollTo = (dir: 'up' | 'down') => {
+    const el = galleryRef.current; if (!el) return
+    const h = el.clientHeight
+    el.scrollBy({ top: dir === 'down' ? h : -h, behavior: 'smooth' })
+  }
+
   return (
-    <div className={styles.gallery}>
-      {video && (
-        <div className={styles.gallerySlide}>
-          <NoFullscreenVideo src={video} />
-        </div>
+    <div className={styles.galleryWrap}>
+      <div className={styles.gallery} ref={galleryRef}>
+        {video && (
+          <div className={styles.gallerySlide}>
+            <NoFullscreenVideo src={video} />
+          </div>
+        )}
+        {images?.map((src, i) => (
+          <GalleryImage key={i} src={src} />
+        ))}
+      </div>
+      {total > 1 && (
+        <>
+          <button className={`${styles.galleryArrow} ${styles.galleryArrowUp}`} onClick={() => scrollTo('up')} aria-label="Anterior" disabled={!canUp}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" width="20" height="20"><polyline points="18 15 12 9 6 15"/></svg>
+          </button>
+          <button className={`${styles.galleryArrow} ${styles.galleryArrowDown}`} onClick={() => scrollTo('down')} aria-label="Siguiente" disabled={!canDown}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </>
       )}
-      {images?.map((src, i) => (
-        <GalleryImage key={i} src={src} />
-      ))}
     </div>
   )
 }
@@ -94,7 +178,11 @@ function Viewer({ model, onClose }: { model: Art3DItem; onClose: () => void }) {
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = '' }
+    document.documentElement.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
+    }
   }, [])
 
   const fallback = hasMedia
@@ -118,11 +206,11 @@ function Viewer({ model, onClose }: { model: Art3DItem; onClose: () => void }) {
         onClick={e => e.stopPropagation()}
       >
         <div className={styles.modalHeader}>
-          <div>
+          <div className={styles.modalTitleRow}>
             <h3 className={styles.modalTitle}>{model.title}</h3>
-            <p className={styles.modalDesc}>{model.description}</p>
+            <button className={styles.closeBtn} onClick={onClose} aria-label="Cerrar">✕</button>
           </div>
-          <button className={styles.closeBtn} onClick={onClose} aria-label="Cerrar">✕</button>
+          <p className={styles.modalDesc}>{model.description}</p>
         </div>
 
         <div className={styles.canvasWrap}>

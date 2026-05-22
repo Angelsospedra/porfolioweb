@@ -123,7 +123,7 @@
 
   .timeline::before {
     top: 8px;
-    left: 6px;
+    left: calc(2.5rem - 1.9375rem + 6px);
     right: auto;
     bottom: 0;
     width: 2px;
