@@ -143,6 +143,11 @@
     height: 180px;
   }
 
+  .nameLine {
+    white-space: normal;
+    word-break: break-word;
+  }
+
   .bio {
     margin-left: auto;
     margin-right: auto;

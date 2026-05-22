@@ -15,7 +15,6 @@ export function LangSwitcher() {
 
   const current = LANGS.find(l => l.code === i18n.language) ?? LANGS[0]
 
-
   const change = (code: string) => {
     i18n.changeLanguage(code)
     localStorage.setItem('lang', code)

@@ -46,6 +46,17 @@
   flex-shrink: 0;
 }
 
+@media (max-width: 768px) {
+  .dot {
+    width: 16px;
+    height: 16px;
+  }
+
+  .picker {
+    gap: 0.5rem;
+  }
+}
+
 .dot:hover {
   transform: scale(1.2);
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 import { Menu, X } from 'lucide-react'
 import { ThemeToggle } from '../ui/ThemeToggle'
@@ -20,51 +21,66 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const handleNavClick = () => setMenuOpen(false)
+  const close = () => setMenuOpen(false)
 
   const navLinks = NAV_HREFS.map((href, i) => ({ href, label: t(NAV_KEYS[i]) }))
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
-      <div className={`container ${styles.inner}`}>
-        <a href="#" className={styles.logo} aria-label="Go to top">
-          <span className={styles.logoBracket}>&lt;</span>
-          Ángel
-          <span className={styles.logoBracket}>/&gt;</span>
-        </a>
+    <>
+      <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
+        <div className={styles.inner}>
+          <a href="#" className={styles.logo} aria-label="Go to top">
+            <span className={styles.logoBracket}>&lt;</span>
+            Ángel
+            <span className={styles.logoBracket}>/&gt;</span>
+          </a>
 
-        <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`} aria-label="Main navigation">
-          {navLinks.map(link => (
-            <a key={link.href} href={link.href} className={styles.navLink} onClick={handleNavClick}>
-              {link.label}
-            </a>
-          ))}
-        </nav>
+          {/* Desktop nav */}
+          <nav className={styles.nav} aria-label="Main navigation">
+            {navLinks.map(link => (
+              <a key={link.href} href={link.href} className={styles.navLink}>
+                {link.label}
+              </a>
+            ))}
+          </nav>
 
-        <div className={styles.actions}>
-          <LangSwitcher />
-          <ThemeToggle />
-          <AccentPicker />
+          {/* Desktop actions */}
+          <div className={styles.actions}>
+            <LangSwitcher />
+            <ThemeToggle />
+            <AccentPicker />
+          </div>
+
+          {/* Mobile hamburger */}
           <button
             className={styles.menuBtn}
             onClick={() => setMenuOpen(o => !o)}
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
           >
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
-      </div>
+      </header>
 
-      {menuOpen && (
-        <nav className={styles.mobileMenu} aria-label="Mobile navigation">
-          {navLinks.map(link => (
-            <a key={link.href} href={link.href} className={styles.mobileLink} onClick={handleNavClick}>
-              {link.label}
-            </a>
-          ))}
-        </nav>
+      {/* Mobile fullscreen menu — portal para salir del stacking context del header */}
+      {menuOpen && createPortal(
+        <div className={styles.mobileMenu}>
+          <nav className={styles.mobileNav} aria-label="Mobile navigation">
+            {navLinks.map(link => (
+              <a key={link.href} href={link.href} className={styles.mobileLink} onClick={close}>
+                {link.label}
+              </a>
+            ))}
+          </nav>
+          <div className={styles.mobileTools}>
+            <LangSwitcher />
+            <ThemeToggle />
+            <AccentPicker />
+          </div>
+        </div>,
+        document.body
       )}
-    </header>
+    </>
   )
 }
