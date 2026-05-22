@@ -21,6 +21,15 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    document.documentElement.style.overflow = menuOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
+    }
+  }, [menuOpen])
+
   const close = () => setMenuOpen(false)
 
   const navLinks = NAV_HREFS.map((href, i) => ({ href, label: t(NAV_KEYS[i]) }))

@@ -168,6 +168,13 @@
   margin-top: auto;
 }
 
+@media (max-width: 768px) {
+  .dragHint { display: none; }
+  .dragDots { display: none; }
+  .cardDot  { display: none; }
+  .card     { cursor: default; }
+}
+
 @media (max-width: 480px) {
   .grid {
     grid-template-columns: 1fr;

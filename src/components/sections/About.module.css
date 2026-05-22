@@ -170,4 +170,17 @@
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
+
+  .skillHint {
+    display: none;
+  }
+
+  .skillList {
+    grid-auto-flow: row;
+    grid-template-rows: unset;
+    grid-template-columns: repeat(3, 64px);
+    grid-auto-columns: unset;
+    gap: 2rem clamp(4rem, 14vw, 7rem);
+    justify-content: center;
+  }
 }
