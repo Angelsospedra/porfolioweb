@@ -17,7 +17,7 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <p className={styles.copy}>
-          {t('footer.built_by')} <span className="accent">Ángel Sospedra Martínez</span>
+          {t('footer.built_by')} <a href="#" className={`accent ${styles.nameLink}`}>Ángel Sospedra Martínez</a>
         </p>
         <div className={styles.social}>
           {SOCIAL.map(({ icon: Icon, href, label }) => (

@@ -35,3 +35,9 @@
   color: var(--accent);
   background: var(--accent-dim);
 }
+
+.nameLink {
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.nameLink:hover { opacity: 0.75; }
