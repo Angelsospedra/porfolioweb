@@ -19,7 +19,6 @@ import { ExternalLink } from 'lucide-react'
 import { IconGithub } from '../ui/icons/BrandIcons'
 import { projects as initialProjects } from '../../data/projects'
 import type { Project } from '../../types'
-import { Tag } from '../ui/Tag'
 import { useInView } from '../../hooks/useInView'
 import styles from './Projects.module.css'
 
