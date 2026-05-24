@@ -52,7 +52,7 @@
   grid-auto-flow: column;
   grid-auto-columns: 64px;
   gap: 2.25rem;
-  justify-content: center;
+  justify-content: start;
 }
 
 .skillItem {
