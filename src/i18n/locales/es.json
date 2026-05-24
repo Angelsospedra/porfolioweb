@@ -23,13 +23,14 @@
     "skills": {
       "frontend": "Frontend",
       "tools": "Herramientas"
-    }
+    },
+    "skill_hint": "Coge un icono y pásalo por el texto"
   },
   "projects": {
     "subtitle": "Lo que he construido",
     "title": "Proyectos",
     "title_accent": "destacados",
-    "drag_hint": "Agarra los bloques y ordénalos a tu gusto"
+    "drag_hint": "Coge los bloques y ordénalos a tu gusto"
   },
   "contact": {
     "subtitle": "Hablemos",

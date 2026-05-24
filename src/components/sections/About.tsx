@@ -319,7 +319,7 @@ export function About() {
           </motion.div>
 
           <div className={styles.skills}>
-            <p className={styles.skillHint}>Agarra un icono y pásalo por el texto</p>
+            <p className={styles.skillHint}>{t('about.skill_hint')}</p>
             {skillCategories.map((cat, ci) => (
               <motion.div
                 key={cat}

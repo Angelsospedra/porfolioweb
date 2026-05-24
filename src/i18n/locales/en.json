@@ -23,7 +23,8 @@
     "skills": {
       "frontend": "Frontend",
       "tools": "Tools & Dev"
-    }
+    },
+    "skill_hint": "Grab an icon and drag it over the text"
   },
   "projects": {
     "subtitle": "What I've built",

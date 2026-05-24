@@ -23,7 +23,8 @@
     "skills": {
       "frontend": "Frontend",
       "tools": "Eines"
-    }
+    },
+    "skill_hint": "Agafa una icona i passa-la pel text"
   },
   "projects": {
     "subtitle": "El que he construït",
