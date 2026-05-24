@@ -51,7 +51,7 @@
   },
   "project_items": {
     "1": {
-      "title": "VextParts",
+      "title": "VP",
       "description": "Multi-tenant marketplace platform for car salvage yards.",
       "features": ["Per-tenant user management", "Product catalogue for parts", "Full order system with checkout", "Payment gateway integration"]
     },

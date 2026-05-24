@@ -110,7 +110,7 @@
   },
   "project_items": {
     "1": {
-      "title": "VextParts",
+      "title": "VP",
       "description": "Plataforma marketplace multi-tenant para sucatas automóveis.",
       "features": [
         "Gestão de utilizadores por tenant",

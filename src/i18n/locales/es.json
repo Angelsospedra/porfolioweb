@@ -51,7 +51,7 @@
   },
   "project_items": {
     "1": {
-      "title": "VextParts",
+      "title": "VP",
       "description": "Plataforma marketplace multi-tenant para desguaces.",
       "features": ["Gestión de usuarios por tenant", "Catálogo de productos y piezas", "Sistema de pedidos con checkout completo", "Integración con pasarela de pago"]
     },

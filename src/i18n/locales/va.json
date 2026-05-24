@@ -51,7 +51,7 @@
   },
   "project_items": {
     "1": {
-      "title": "VextParts",
+      "title": "VP",
       "description": "Plataforma marketplace multi-tenant per a desballestaments.",
       "features": [
         "Gestió d'usuaris per tenant",

@@ -6,6 +6,7 @@ export interface Project {
   githubUrl?: string
   liveUrl?: string
   featured?: boolean
+  thumb?: string
 }
 
 export interface Skill {

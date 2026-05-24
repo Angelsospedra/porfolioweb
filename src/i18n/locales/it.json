@@ -110,7 +110,7 @@
   },
   "project_items": {
     "1": {
-      "title": "VextParts",
+      "title": "VP",
       "description": "Piattaforma marketplace multi-tenant per demolitori di auto.",
       "features": [
         "Gestione utenti per tenant",

@@ -28,36 +28,53 @@ function ProjectCard({ project }: { project: Project }) {
 
   return (
     <article className={`${styles.card} ${project.featured ? styles.featured : ''}`}>
-      <div className={styles.cardTop}>
-        <div className={styles.cardTitleRow}>
-          <div className={styles.cardDot} aria-hidden />
-          <h3 className={styles.title}>{t(`project_items.${project.id}.title`)}</h3>
+      {/* Área imagen: título arriba + tags abajo */}
+      <div className={styles.cardImageArea}>
+        {project.thumb && (
+          <>
+            <img
+              src={`${import.meta.env.BASE_URL}${project.thumb.replace(/^\//, '')}`}
+              alt={`${t(`project_items.${project.id}.title`)} preview`}
+              className={styles.cardThumb}
+              draggable={false}
+            />
+            <div className={styles.cardOverlay} aria-hidden />
+          </>
+        )}
+
+        {/* Título encima de la imagen */}
+        <div className={styles.cardImageTop}>
+          <div className={styles.cardTitleRow}>
+            <div className={styles.cardDot} aria-hidden />
+            <h3 className={styles.title}>{t(`project_items.${project.id}.title`)}</h3>
+          </div>
+          <div className={styles.cardLinks}>
+            <div className={styles.dragDots} aria-hidden />
+            {project.githubUrl && (
+              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub repository" className={styles.link}>
+                <IconGithub size={17} />
+              </a>
+            )}
+            {project.liveUrl && (
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label="Live demo" className={styles.link}>
+                <ExternalLink size={17} />
+              </a>
+            )}
+          </div>
         </div>
-        <div className={styles.cardLinks}>
-          <div className={styles.dragDots} aria-hidden />
-          {project.githubUrl && (
-            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub repository" className={styles.link}>
-              <IconGithub size={17} />
-            </a>
-          )}
-          {project.liveUrl && (
-            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label="Live demo" className={styles.link}>
-              <ExternalLink size={17} />
-            </a>
-          )}
+
+      </div>
+
+      {/* Descripción fuera de la imagen */}
+      <div className={styles.cardBody}>
+        <div className={styles.description}>
+          <p>{t(`project_items.${project.id}.description`)}</p>
+          <ul className={styles.featureList}>
+            {(t(`project_items.${project.id}.features`, { returnObjects: true }) as string[]).map((f, i) => (
+              <li key={i}>{f}</li>
+            ))}
+          </ul>
         </div>
-      </div>
-      <hr className={styles.divider} />
-      <div className={styles.description}>
-        <p>{t(`project_items.${project.id}.description`)}</p>
-        <ul className={styles.featureList}>
-          {(t(`project_items.${project.id}.features`, { returnObjects: true }) as string[]).map((f, i) => (
-            <li key={i}>{f}</li>
-          ))}
-        </ul>
-      </div>
-      <div className={styles.tags}>
-        {project.tags.map(tag => <Tag key={tag}>{tag}</Tag>)}
       </div>
     </article>
   )

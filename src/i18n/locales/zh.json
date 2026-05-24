@@ -110,7 +110,7 @@
   },
   "project_items": {
     "1": {
-      "title": "VextParts",
+      "title": "VP",
       "description": "面向汽车拆解企业的多租户电商平台。",
       "features": [
         "按租户管理用户",

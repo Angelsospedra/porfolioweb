@@ -7,13 +7,15 @@ export const projects: Project[] = [
     description: '',
     tags: ['React', 'PWA', 'Mobile Web App', 'Next.js'],
     featured: true,
+    thumb: '/thumbs/proyectos/pv.png',
   },
   {
     id: 1,
-    title: 'VextParts',
+    title: 'VP',
     description: '',
     tags: ['React', 'Next.js', 'Multi-tenant', 'Stripe'],
     featured: true,
+    thumb: '/thumbs/proyectos/vp.png',
   },
   {
     id: 2,
@@ -21,6 +23,7 @@ export const projects: Project[] = [
     description: '',
     tags: ['PWA', 'JavaScript', 'PHP', 'MySQL', 'Stripe'],
     featured: true,
+    thumb: '/thumbs/proyectos/fitmap.png',
   },
   {
     id: 3,
@@ -28,5 +31,6 @@ export const projects: Project[] = [
     description: '',
     tags: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
     featured: true,
+    thumb: '/thumbs/proyectos/vinilocos.png',
   },
 ]
