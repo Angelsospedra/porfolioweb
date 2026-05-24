@@ -53,12 +53,7 @@
 .cardOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.45) 0%,
-    rgba(0, 0, 0, 0.15) 50%,
-    rgba(0, 0, 0, 0.05) 100%
-  );
+  background: transparent;
   z-index: 1;
 }
 
@@ -138,13 +133,16 @@
 }
 
 /* Dentro de la imagen, texto siempre blanco */
+
 .cardImageTop .title {
   color: #fff;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  text-shadow: 0 1px 6px rgba(0,0,0,1), 0 2px 14px rgba(0,0,0,0.9);
+  overflow: visible;
 }
 
 .cardImageTop .link {
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.85);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
 }
 
 .cardImageTop .link:hover {
@@ -153,7 +151,8 @@
 }
 
 .cardImageTop .dragDots {
-  background-image: radial-gradient(circle, rgba(255,255,255,0.65) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(circle, rgba(255,255,255,0.75) 1.5px, transparent 1.5px);
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.8));
 }
 
 .cardImageTop .cardDot {
@@ -237,6 +236,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.description p {
+  font-weight: 600;
 }
 
 .featureList {
