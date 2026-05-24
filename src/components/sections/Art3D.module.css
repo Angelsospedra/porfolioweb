@@ -18,7 +18,7 @@
 
 .card {
   width: 100%;
-  background: var(--surface);
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 14px;
   overflow: hidden;
@@ -233,21 +233,31 @@
   border-radius: 50%;
   background: transparent;
   border: none;
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--accent);
+  opacity: 0.75;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: opacity 0.2s;
 }
 .galleryArrow:hover:not(:disabled) {
-  color: rgba(255, 255, 255, 0.75);
+  opacity: 1;
 }
 
 .galleryArrow:disabled {
-  color: rgba(255, 255, 255, 0.15);
+  opacity: 0.2;
   cursor: default;
 }
 
 .galleryArrowUp   { top: 0.75rem; }
 .galleryArrowDown { top: 2.25rem; }
+
+.arrowHint {
+  animation: arrowGlow 0.7s ease-in-out 0.6s infinite;
+}
+
+@keyframes arrowGlow {
+  0%, 100% { opacity: 0.75; filter: drop-shadow(0 0 0px var(--accent)); transform: translateY(0); }
+  50%       { opacity: 1;    filter: drop-shadow(0 0 6px var(--accent)); transform: translateY(3px); }
+}
 
 .videoWrap {
   position: relative;

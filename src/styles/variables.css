@@ -34,10 +34,10 @@
   --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(110, 231, 183, 0.12) 0%, transparent 60%);
 }
 :root[data-accent='green'][data-theme='light'] {
-  --accent: #059669;
-  --accent-dim: rgba(5, 150, 105, 0.08);
-  --accent-glow: rgba(5, 150, 105, 0.2);
-  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(5, 150, 105, 0.08) 0%, transparent 60%);
+  --accent: #34d399;
+  --accent-dim: rgba(52, 211, 153, 0.08);
+  --accent-glow: rgba(52, 211, 153, 0.2);
+  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(52, 211, 153, 0.08) 0%, transparent 60%);
 }
 
 /* Red */
@@ -48,10 +48,10 @@
   --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(248, 113, 113, 0.12) 0%, transparent 60%);
 }
 :root[data-accent='red'][data-theme='light'] {
-  --accent: #dc2626;
-  --accent-dim: rgba(220, 38, 38, 0.08);
-  --accent-glow: rgba(220, 38, 38, 0.2);
-  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(220, 38, 38, 0.08) 0%, transparent 60%);
+  --accent: #f05252;
+  --accent-dim: rgba(240, 82, 82, 0.08);
+  --accent-glow: rgba(240, 82, 82, 0.2);
+  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(240, 82, 82, 0.08) 0%, transparent 60%);
 }
 
 /* Blue */
@@ -62,10 +62,10 @@
   --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(96, 165, 250, 0.12) 0%, transparent 60%);
 }
 :root[data-accent='blue'][data-theme='light'] {
-  --accent: #2563eb;
-  --accent-dim: rgba(37, 99, 235, 0.08);
-  --accent-glow: rgba(37, 99, 235, 0.2);
-  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
+  --accent: #3b82f6;
+  --accent-dim: rgba(59, 130, 246, 0.08);
+  --accent-glow: rgba(59, 130, 246, 0.2);
+  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(59, 130, 246, 0.08) 0%, transparent 60%);
 }
 
 /* Purple */

@@ -123,6 +123,7 @@ function MediaGallery({ video, images }: { video?: string; images?: string[] }) 
   const galleryRef = useRef<HTMLDivElement>(null)
   const [canUp, setCanUp]     = useState(false)
   const [canDown, setCanDown] = useState(false)
+  const [hinted, setHinted]   = useState(true)
 
   const total = (video ? 1 : 0) + (images?.length ?? 0)
 
@@ -162,7 +163,12 @@ function MediaGallery({ video, images }: { video?: string; images?: string[] }) 
           <button className={`${styles.galleryArrow} ${styles.galleryArrowUp}`} onClick={() => scrollTo('up')} aria-label="Anterior" disabled={!canUp}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" width="20" height="20"><polyline points="18 15 12 9 6 15"/></svg>
           </button>
-          <button className={`${styles.galleryArrow} ${styles.galleryArrowDown}`} onClick={() => scrollTo('down')} aria-label="Siguiente" disabled={!canDown}>
+          <button
+            className={`${styles.galleryArrow} ${styles.galleryArrowDown}${hinted && canDown ? ` ${styles.arrowHint}` : ''}`}
+            onClick={() => { scrollTo('down'); setHinted(false) }}
+            aria-label="Siguiente"
+            disabled={!canDown}
+          >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
         </>
