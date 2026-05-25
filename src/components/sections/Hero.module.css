@@ -107,6 +107,8 @@
 }
 .cvBtn:hover {
   background: var(--accent-dim) !important;
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
   transform: translateY(-1px);
 }
 
