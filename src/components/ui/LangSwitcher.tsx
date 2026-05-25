@@ -15,10 +15,27 @@ export function LangSwitcher() {
 
   const current = LANGS.find(l => l.code === i18n.language) ?? LANGS[0]
 
-  const change = (code: string) => {
-    i18n.changeLanguage(code)
-    localStorage.setItem('lang', code)
+  const change = async (code: string) => {
+    if (code === i18n.language) { setOpen(false); return }
     setOpen(false)
+
+    const main = document.querySelector('main') as HTMLElement | null
+    if (main) {
+      main.style.transition = 'opacity 0.18s ease'
+      main.style.opacity    = '0'
+      await new Promise<void>(r => setTimeout(r, 180))
+    }
+
+    await i18n.changeLanguage(code)
+    localStorage.setItem('lang', code)
+
+    if (main) {
+      // Wait one paint so React has flushed the new text into the DOM
+      requestAnimationFrame(() => {
+        main.style.opacity = '1'
+        setTimeout(() => { main.style.transition = '' }, 200)
+      })
+    }
   }
 
   useEffect(() => {

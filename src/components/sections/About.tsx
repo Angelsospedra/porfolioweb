@@ -55,8 +55,9 @@ export function About() {
   const statesRef     = useRef<CharState[]>([])
   const launchedRef   = useRef<Set<number>>(new Set())
   const groundRef     = useRef(0)
-  const isDraggingRef = useRef(false)
-  const didExplodeRef = useRef(false)
+  const isDraggingRef  = useRef(false)
+  const isResettingRef = useRef(false)
+  const didExplodeRef  = useRef(false)
   const cursorSpeedRef = useRef(0)
   const lastCursorRef  = useRef({ x: 0, y: 0 })
 
@@ -69,10 +70,12 @@ export function About() {
   }
 
   const doCleanup = useCallback(() => {
-    launchedRef.current   = new Set()
-    charsRef.current      = []
-    spansRef.current      = []
-    statesRef.current     = []
+    isDraggingRef.current  = false
+    isResettingRef.current = false
+    launchedRef.current    = new Set()
+    charsRef.current       = []
+    spansRef.current       = []
+    statesRef.current      = []
     overlayRef.current?.remove()
     overlayRef.current = null
     if (bioRef.current) { bioRef.current.style.transition = ''; bioRef.current.style.opacity = '' }
@@ -83,8 +86,9 @@ export function About() {
 
   const handleReset = useCallback((fadBtn = false) => {
     stopAnim()
-    isDraggingRef.current = false
-    didExplodeRef.current = false
+    isDraggingRef.current  = false
+    isResettingRef.current = true
+    didExplodeRef.current  = false
 
     const spans = spansRef.current
     if (spans.length === 0) { doCleanup(); return }
@@ -146,7 +150,10 @@ export function About() {
         s.bounces++
         if (Math.abs(s.vy) < 1.5 || s.bounces > 3) {
           s.landed = true; s.vy = 0; s.vx = 0; s.rotV = 0
-          span.style.textShadow = '0 6px 10px rgba(0,0,0,0.55), 0 2px 4px rgba(0,0,0,0.35)'
+          const isLight = document.documentElement.getAttribute('data-theme') === 'light'
+          span.style.textShadow = isLight
+            ? '0 3px 6px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.10)'
+            : '0 6px 10px rgba(0,0,0,0.55), 0 2px 4px rgba(0,0,0,0.35)'
         }
       }
       span.style.transform = `translate(${s.x}px,${s.y}px) rotate(${s.rot}deg)`
@@ -230,7 +237,7 @@ export function About() {
   }, [])
 
   const handleIconMouseDown = (e: React.MouseEvent, iconEl: ReactElement) => {
-    if (isDraggingRef.current) return
+    if (isDraggingRef.current || isResettingRef.current) return
     e.preventDefault()
     initialPosRef.current = { x: e.clientX, y: e.clientY }
     // Build overlay on first pick-up; reuse on subsequent picks
