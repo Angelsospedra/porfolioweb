@@ -101,6 +101,15 @@
   margin-top: 1rem;
 }
 
+.cvBtn {
+  border: 1.5px solid var(--accent) !important;
+  color: var(--accent) !important;
+}
+.cvBtn:hover {
+  background: var(--accent-dim) !important;
+  transform: translateY(-1px);
+}
+
 .socialLinks {
   display: flex;
   gap: 0.25rem;
@@ -180,15 +189,13 @@
 
   .actions {
     justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .actions > a {
-    flex: 1;
     justify-content: center;
-    min-width: 0;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    text-align: center;
   }
 
   .socialLinks {

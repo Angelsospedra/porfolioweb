@@ -89,6 +89,16 @@ export function Hero() {
             <Button as="a" href="#contact" variant="outline" size="lg">
               {t('hero.cta_contact')}
             </Button>
+            <Button
+              as="a"
+              href={`${import.meta.env.BASE_URL}CV.pdf`}
+              download
+              variant="ghost"
+              size="lg"
+              className={styles.cvBtn}
+            >
+              ↓ {t('hero.cta_cv')}
+            </Button>
             <div className={styles.socialLinks}>
               <a href="https://github.com/Angelsospedra" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className={styles.socialIcon}>
                 <IconGithub size={20} />

@@ -8,6 +8,7 @@ import { IconGithub, IconLinkedin } from '../ui/icons/BrandIcons'
 import { Button } from '../ui/Button'
 import { useInView } from '../../hooks/useInView'
 import styles from './Contact.module.css'
+import heroStyles from './Hero.module.css'
 
 const EMAILJS_SERVICE = import.meta.env.VITE_EMAILJS_SERVICE
 const EMAILJS_TEMPLATE = import.meta.env.VITE_EMAILJS_TEMPLATE
@@ -78,6 +79,17 @@ export function Contact() {
                 <span>artstation.com/angelsospedra</span>
               </a>
             </div>
+            <Button
+              as="a"
+              href={`${import.meta.env.BASE_URL}CV.pdf`}
+              download
+              variant="ghost"
+              size="lg"
+              className={heroStyles.cvBtn}
+              style={{ alignSelf: 'flex-start' }}
+            >
+              ↓ {t('hero.cta_cv')}
+            </Button>
           </motion.div>
 
           <motion.form
