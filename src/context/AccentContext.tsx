@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 
-export type Accent = 'green' | 'red' | 'blue' | 'purple'
+export type Accent = 'green' | 'red' | 'blue' | 'purple' | 'yellow'
 
 interface AccentContextType {
   accent: Accent

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { SiArtstation } from 'react-icons/si'
 import { IconGithub, IconLinkedin } from '../ui/icons/BrandIcons'
 import { Button } from '../ui/Button'
+import { useAchievements } from '../../context/AchievementsContext'
 import styles from './Hero.module.css'
 
 const fadeUp = {
@@ -16,6 +17,7 @@ const fadeUp = {
 
 export function Hero() {
   const { t } = useTranslation()
+  const { unlock } = useAchievements()
 
   return (
     <section className={styles.hero}>
@@ -96,6 +98,7 @@ export function Hero() {
               variant="ghost"
               size="lg"
               className={styles.cvBtn}
+              onClick={() => unlock('cv')}
             >
               ↓ {t('hero.cta_cv')}
             </Button>

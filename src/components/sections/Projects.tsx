@@ -20,6 +20,7 @@ import { IconGithub } from '../ui/icons/BrandIcons'
 import { projects as initialProjects } from '../../data/projects'
 import type { Project } from '../../types'
 import { useInView } from '../../hooks/useInView'
+import { useAchievements } from '../../context/AchievementsContext'
 import styles from './Projects.module.css'
 
 function ProjectCard({ project }: { project: Project }) {
@@ -109,6 +110,7 @@ function SortableCard({ project }: { project: Project }) {
 export function Projects() {
   const { ref, inView } = useInView()
   const { t } = useTranslation()
+  const { unlock } = useAchievements()
   const [items, setItems] = useState(initialProjects)
 
   const sensors = useSensors(
@@ -123,6 +125,7 @@ export function Projects() {
         const newIndex = prev.findIndex(p => p.id === over.id)
         return arrayMove(prev, oldIndex, newIndex)
       })
+      unlock('reorder')
     }
   }
 

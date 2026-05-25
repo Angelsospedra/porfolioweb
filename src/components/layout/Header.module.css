@@ -147,6 +147,43 @@
   .menuBtn svg { width: 26px; height: 26px; }
 }
 
+/* ── Legendary unlock glow ──────────────────────────────────── */
+@keyframes headerSweep {
+  0%   { transform: translateX(-100%); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateX(200%);  opacity: 0; }
+}
+
+@keyframes headerBorderPulse {
+  0%, 100% { border-color: transparent; box-shadow: none; }
+  30%       { border-color: rgba(240, 180, 41, 0.8); box-shadow: 0 0 18px rgba(240, 180, 41, 0.35), inset 0 -1px 0 rgba(240, 180, 41, 0.4); }
+  70%       { border-color: rgba(240, 180, 41, 0.5); box-shadow: 0 0 10px rgba(240, 180, 41, 0.2); }
+}
+
+.legendaryGlow {
+  overflow: hidden;
+  animation: headerBorderPulse 2.2s ease forwards;
+}
+
+.legendaryGlow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 55%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 215, 0, 0.08) 20%,
+    rgba(240, 180, 41, 0.22) 50%,
+    rgba(255, 215, 0, 0.08) 80%,
+    transparent
+  );
+  animation: headerSweep 2.2s ease forwards;
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* Solo en desktop se muestra el nav y acciones, se oculta la hamburguesa */
 @media (min-width: 769px) {
   .inner {

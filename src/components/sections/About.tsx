@@ -10,6 +10,7 @@ import { VscSourceControl } from 'react-icons/vsc'
 import { TbBrandTeams, TbBrandAzure, TbBrandAdobePhotoshop } from 'react-icons/tb'
 import { skills, skillCategories } from '../../data/skills'
 import { useInView } from '../../hooks/useInView'
+import { useAchievements } from '../../context/AchievementsContext'
 import styles from './About.module.css'
 
 const skillIcons: Record<string, ReactElement> = {
@@ -44,6 +45,7 @@ interface CharState {
 export function About() {
   const { ref, inView } = useInView()
   const { t, i18n } = useTranslation()
+  const { unlock } = useAchievements()
 
   const bioRef        = useRef<HTMLDivElement>(null)
   const overlayRef    = useRef<HTMLDivElement | null>(null)
@@ -251,6 +253,7 @@ export function About() {
     if (!dragging) return
     document.body.style.cursor = 'grabbing'
     const RADIUS = 55
+    let allLettersFired = false
 
     const onMove = (e: MouseEvent) => {
       if (floatingRef.current) {
@@ -277,6 +280,11 @@ export function About() {
         didExplodeRef.current = true
         setExploded(true)
       }
+      // unlock when every character has been launched
+      if (!allLettersFired && charsRef.current.length > 0 && launchedRef.current.size >= charsRef.current.length) {
+        allLettersFired = true
+        unlock('letters')
+      }
     }
 
     const onUp = () => {
@@ -292,7 +300,7 @@ export function About() {
       window.removeEventListener('mouseup', onUp)
       document.body.style.cursor = ''
     }
-  }, [dragging, launchChar])
+  }, [dragging, launchChar, unlock])
 
   return (
     <section id="about" className={`section ${styles.about}`} ref={ref as React.RefObject<HTMLElement>}>

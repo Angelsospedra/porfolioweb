@@ -7,6 +7,7 @@ import { SiArtstation } from 'react-icons/si'
 import { IconGithub, IconLinkedin } from '../ui/icons/BrandIcons'
 import { Button } from '../ui/Button'
 import { useInView } from '../../hooks/useInView'
+import { useAchievements } from '../../context/AchievementsContext'
 import styles from './Contact.module.css'
 import heroStyles from './Hero.module.css'
 
@@ -19,6 +20,7 @@ type Status = 'idle' | 'sending' | 'sent' | 'error'
 export function Contact() {
   const { ref, inView } = useInView()
   const { t } = useTranslation()
+  const { unlock } = useAchievements()
   const [status, setStatus] = useState<Status>('idle')
   const [form, setForm] = useState({ name: '', email: '', message: '' })
 
@@ -36,6 +38,7 @@ export function Contact() {
         EMAILJS_PUBLIC_KEY
       )
       setStatus('sent')
+      unlock('mail')
       setForm({ name: '', email: '', message: '' })
     } catch {
       setStatus('error')
@@ -87,6 +90,7 @@ export function Contact() {
               size="lg"
               className={heroStyles.cvBtn}
               style={{ alignSelf: 'flex-start' }}
+              onClick={() => unlock('cv')}
             >
               ↓ {t('hero.cta_cv')}
             </Button>

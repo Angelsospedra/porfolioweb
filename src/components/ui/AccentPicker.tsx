@@ -1,4 +1,5 @@
 import { useAccent, type Accent } from '../../context/AccentContext'
+import { useAchievements, ACHIEVEMENTS } from '../../context/AchievementsContext'
 import styles from './AccentPicker.module.css'
 
 const accents: { value: Accent; color: string }[] = [
@@ -10,6 +11,9 @@ const accents: { value: Accent; color: string }[] = [
 
 export function AccentPicker() {
   const { accent, setAccent } = useAccent()
+  const { unlocked } = useAchievements()
+
+  const allUnlocked = ACHIEVEMENTS.every(a => unlocked.has(a.id))
 
   return (
     <div className={styles.wrapper}>
@@ -24,6 +28,24 @@ export function AccentPicker() {
             aria-pressed={accent === a.value}
           />
         ))}
+
+        {/* ── Legendary yellow ── */}
+        {allUnlocked ? (
+          <button
+            className={`${styles.dot} ${styles.legendary} ${accent === 'yellow' ? styles.active : ''}`}
+            onClick={() => setAccent('yellow')}
+            aria-label="Legendario"
+            aria-pressed={accent === 'yellow'}
+            title="Legendario"
+          />
+        ) : (
+          <button
+            className={`${styles.dot} ${styles.locked}`}
+            disabled
+            aria-label="Color bloqueado — completa todos los logros"
+            title="Completa todos los logros"
+          />
+        )}
       </div>
     </div>
   )

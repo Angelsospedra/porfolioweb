@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 import { Menu, X } from 'lucide-react'
 import { ThemeToggle } from '../ui/ThemeToggle'
 import { LangSwitcher } from '../ui/LangSwitcher'
 import { AccentPicker } from '../ui/AccentPicker'
+import { useAchievements, ACHIEVEMENTS } from '../../context/AchievementsContext'
 import styles from './Header.module.css'
 
 const NAV_HREFS = ['#about', '#projects', '#journey', '#art3d', '#contact'] as const
@@ -12,8 +13,23 @@ const NAV_KEYS = ['header.about', 'header.projects', 'header.journey', 'header.a
 
 export function Header() {
   const { t } = useTranslation()
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
+  const { unlocked } = useAchievements()
+  const [scrolled,   setScrolled]   = useState(false)
+  const [menuOpen,   setMenuOpen]   = useState(false)
+  const [glowing,    setGlowing]    = useState(false)
+
+  const allUnlocked    = ACHIEVEMENTS.every(a => unlocked.has(a.id))
+  const prevUnlockedRef = useRef(allUnlocked)  // true on load if already completed
+
+  useEffect(() => {
+    // Fire only when the state flips false → true (last achievement unlocked this session)
+    if (allUnlocked && !prevUnlockedRef.current) {
+      setGlowing(true)
+      const t = setTimeout(() => setGlowing(false), 2200)
+      return () => clearTimeout(t)
+    }
+    prevUnlockedRef.current = allUnlocked
+  }, [allUnlocked])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -36,7 +52,7 @@ export function Header() {
 
   return (
     <>
-      <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
+      <header className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${glowing ? styles.legendaryGlow : ''}`}>
         <div className={styles.inner}>
           <a href="#" className={styles.logo} aria-label="Go to top">
             <span className={styles.logoBracket}>&lt;</span>

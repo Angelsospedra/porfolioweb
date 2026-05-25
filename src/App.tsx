@@ -6,9 +6,12 @@ import { Projects } from './components/sections/Projects'
 import { Journey } from './components/sections/Journey'
 import { Art3D } from './components/sections/Art3D'
 import { Contact } from './components/sections/Contact'
+import { AchievementsProvider } from './context/AchievementsContext'
+import { AchievementToast } from './components/ui/AchievementToast'
+
 function App() {
   return (
-    <>
+    <AchievementsProvider>
       <Header />
       <main>
         <Hero />
@@ -19,7 +22,8 @@ function App() {
         <Contact />
       </main>
       <Footer />
-    </>
+      <AchievementToast />
+    </AchievementsProvider>
   )
 }
 

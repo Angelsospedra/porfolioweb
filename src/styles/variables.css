@@ -68,6 +68,20 @@
   --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(59, 130, 246, 0.08) 0%, transparent 60%);
 }
 
+/* Yellow — Legendary (unlocked when all achievements are completed) */
+:root[data-accent='yellow'][data-theme='dark'] {
+  --accent: #f0b429;
+  --accent-dim: rgba(240, 180, 41, 0.12);
+  --accent-glow: rgba(240, 180, 41, 0.35);
+  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(240, 180, 41, 0.18) 0%, transparent 60%);
+}
+:root[data-accent='yellow'][data-theme='light'] {
+  --accent: #d97706;
+  --accent-dim: rgba(217, 119, 6, 0.08);
+  --accent-glow: rgba(217, 119, 6, 0.25);
+  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(217, 119, 6, 0.1) 0%, transparent 60%);
+}
+
 /* Purple */
 :root[data-accent='purple'][data-theme='dark'] {
   --accent: #9690fc;
