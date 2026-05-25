@@ -71,7 +71,24 @@
   border-radius: 12px;
   padding: 0.875rem;
   height: 100%;
+  position: relative;
   transition: border-color 0.2s, transform 0.2s;
+}
+
+.schoolLogo {
+  position: absolute;
+  top: 0.625rem;
+  right: 0.625rem;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: 6px;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.item:hover .schoolLogo {
+  opacity: 1;
 }
 
 .item:hover .card {

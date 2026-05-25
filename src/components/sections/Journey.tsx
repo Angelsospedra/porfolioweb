@@ -10,6 +10,29 @@ interface JourneyItem {
   description: string
 }
 
+const LOGOS: Record<string, { match: string; src: string; alt: string }[]> = {
+  education: [
+    { match: 'Florida',  src: `${import.meta.env.BASE_URL}logos/florida.png`,  alt: 'La Florida' },
+    { match: 'Progresa', src: `${import.meta.env.BASE_URL}logos/progresa.png`, alt: 'Progresa'   },
+    { match: 'mara',     src: `${import.meta.env.BASE_URL}logos/camara.png`,   alt: 'Cámara FP'  },
+  ],
+  work: [
+    { match: 'ceremon',  src: `${import.meta.env.BASE_URL}logos/grupoceremon.png`, alt: 'Grupo Ceremón'      },
+    { match: 'polygonal', src: `${import.meta.env.BASE_URL}logos/pm.png`,         alt: 'Polygonal Mind'     },
+    { match: 'startgo',  src: `${import.meta.env.BASE_URL}logos/startgo.png`,    alt: 'StartGo Connection' },
+    { match: 'conmuta',  src: `${import.meta.env.BASE_URL}logos/conmuta.png`,    alt: 'Conmuta Soluciones' },
+  ],
+}
+
+function normalize(s: string) {
+  return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+}
+
+function getLogo(groupKey: string, field: string) {
+  const n = normalize(field)
+  return LOGOS[groupKey]?.find(l => n.includes(normalize(l.match))) ?? null
+}
+
 export function Journey() {
   const { ref, inView } = useInView()
   const { t } = useTranslation()
@@ -58,6 +81,16 @@ export function Journey() {
                 >
                   <div className={styles.dot} />
                   <div className={styles.card}>
+                    {(() => {
+                      const logo = getLogo(group.key, item.place + ' ' + item.title)
+                      return logo ? (
+                        <img
+                          src={logo.src}
+                          alt={logo.alt}
+                          className={styles.schoolLogo}
+                        />
+                      ) : null
+                    })()}
                     <span className={styles.year}>{item.year}</span>
                     <h4 className={styles.cardTitle}>{item.title}</h4>
                     <p className={styles.place}>{item.place}</p>
