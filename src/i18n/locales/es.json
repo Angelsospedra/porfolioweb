@@ -134,5 +134,31 @@
   },
   "footer": {
     "built_by": "Diseñado y desarrollado por"
+  },
+  "achievements": {
+    "panel_title": "Logros",
+    "progress": "{{count}} de {{total}} completados",
+    "legendary_footer": "Color legendario desbloqueado en el selector de color.",
+    "toast_label": "Logro desbloqueado",
+    "letters": {
+      "title": "Caos tipográfico",
+      "description": "Rompiste todas las letras del Sobre mí.",
+      "hint": "Arrastra un icono de skill sobre el texto de la sección Sobre mí hasta que no quede ninguna letra en pie."
+    },
+    "reorder": {
+      "title": "Gestor/a de proyectos",
+      "description": "Reordenaste las tarjetas de proyectos.",
+      "hint": "Reordena las tarjetas de la sección Proyectos arrastrándolas."
+    },
+    "mail": {
+      "title": "Correo enviado",
+      "description": "Me mandaste un mensaje.",
+      "hint": "Rellena y envía el formulario de la sección Contacto."
+    },
+    "cv": {
+      "title": "Buen ojo",
+      "description": "Te descargaste mi CV.",
+      "hint": "Haz click en el botón de descarga del CV, está en la sección Hero o en Contacto."
+    }
   }
 }

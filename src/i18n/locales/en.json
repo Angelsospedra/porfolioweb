@@ -134,5 +134,31 @@
   },
   "footer": {
     "built_by": "Designed & built by"
+  },
+  "achievements": {
+    "panel_title": "Achievements",
+    "progress": "{{count}} of {{total}} completed",
+    "legendary_footer": "Legendary colour unlocked in the colour picker.",
+    "toast_label": "Achievement unlocked",
+    "letters": {
+      "title": "Typographic chaos",
+      "description": "You broke every letter in the About me section.",
+      "hint": "Drag a skill icon over the About me text until every single letter has flown away."
+    },
+    "reorder": {
+      "title": "Project Manager",
+      "description": "You rearranged the project cards.",
+      "hint": "Reorder the project cards in the Projects section by dragging them."
+    },
+    "mail": {
+      "title": "Message sent",
+      "description": "You sent me a message.",
+      "hint": "Fill in and submit the form in the Contact section."
+    },
+    "cv": {
+      "title": "Good eye",
+      "description": "You downloaded my CV.",
+      "hint": "Click the CV download button, available in the Hero or Contact section."
+    }
   }
 }

@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react'
 import { ThemeToggle } from '../ui/ThemeToggle'
 import { LangSwitcher } from '../ui/LangSwitcher'
 import { AccentPicker } from '../ui/AccentPicker'
+import { AchievementsDropdown } from '../ui/AchievementsDropdown'
 import { useAchievements, ACHIEVEMENTS } from '../../context/AchievementsContext'
 import styles from './Header.module.css'
 
@@ -71,6 +72,7 @@ export function Header() {
 
           {/* Desktop actions */}
           <div className={styles.actions}>
+            <AchievementsDropdown />
             <LangSwitcher />
             <ThemeToggle />
             <AccentPicker />

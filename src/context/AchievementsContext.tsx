@@ -3,17 +3,15 @@ import { createContext, useContext, useState, useCallback, useRef } from 'react'
 export type AchievementId = 'letters' | 'reorder' | 'mail' | 'cv'
 
 export interface Achievement {
-  id:          AchievementId
-  title:       string
-  description: string
-  icon:        string
+  id:   AchievementId
+  icon: string
 }
 
 export const ACHIEVEMENTS: Achievement[] = [
-  { id: 'letters', title: 'Caos tipográfico',     description: 'Rompiste todas las letras del Sobre mí', icon: '💥' },
-  { id: 'reorder', title: 'Curador de proyectos', description: 'Reordenaste los proyectos a tu gusto',   icon: '🗂️' },
-  { id: 'mail',    title: 'Correo enviado',        description: 'Me mandaste un mensaje',                 icon: '✉️' },
-  { id: 'cv',      title: 'Buen ojo',              description: 'Te descargaste mi CV',                   icon: '📄' },
+  { id: 'letters', icon: '💥' },
+  { id: 'reorder', icon: '🗂️' },
+  { id: 'mail',    icon: '✉️' },
+  { id: 'cv',      icon: '📄' },
 ]
 
 const STORAGE_KEY = 'portfolio_achievements'

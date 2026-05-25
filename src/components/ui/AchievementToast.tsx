@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { useAchievements, type Achievement } from '../../context/AchievementsContext'
 import styles from './AchievementToast.module.css'
 
@@ -7,6 +8,8 @@ const DURATION = 4500
 
 // ── Single toast card ────────────────────────────────────────────────────────
 function Toast({ achievement, onDismiss }: { achievement: Achievement; onDismiss: () => void }) {
+  const { t } = useTranslation()
+
   // Keep a stable ref so the timer never gets cancelled by a reference change
   const dismissRef = useRef(onDismiss)
   dismissRef.current = onDismiss
@@ -29,8 +32,8 @@ function Toast({ achievement, onDismiss }: { achievement: Achievement; onDismiss
       </div>
 
       <div className={styles.content}>
-        <span className={styles.label}>Logro desbloqueado</span>
-        <span className={styles.title}>{achievement.title}</span>
+        <span className={styles.label}>{t('achievements.toast_label')}</span>
+        <span className={styles.title}>{t(`achievements.${achievement.id}.title`)}</span>
       </div>
 
       {/* countdown bar */}

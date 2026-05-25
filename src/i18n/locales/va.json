@@ -151,5 +151,31 @@
   },
   "footer": {
     "built_by": "Dissenyat i desenvolupat per"
+  },
+  "achievements": {
+    "panel_title": "Assoliments",
+    "progress": "{{count}} de {{total}} completats",
+    "legendary_footer": "Color llegendari desbloquejat al selector de color.",
+    "toast_label": "Assoliment desbloquejat",
+    "letters": {
+      "title": "Caos tipogràfic",
+      "description": "Has trencat totes les lletres de la secció Sobre mi.",
+      "hint": "Arrossega una icona de skill sobre el text de la secció Sobre mi fins que no quede cap lletra dreta."
+    },
+    "reorder": {
+      "title": "Gestor/a de projectes",
+      "description": "Has reordenat les targetes de projectes.",
+      "hint": "Reordena les targetes de la secció Projectes arrossegant-les."
+    },
+    "mail": {
+      "title": "Correu enviat",
+      "description": "M'has enviat un missatge.",
+      "hint": "Omple i envia el formulari de la secció Contacte."
+    },
+    "cv": {
+      "title": "Bon ull",
+      "description": "T'has descarregat el meu CV.",
+      "hint": "Fes click al botó de descàrrega del CV, el trobaràs a la secció Hero o a Contacte."
+    }
   }
 }
