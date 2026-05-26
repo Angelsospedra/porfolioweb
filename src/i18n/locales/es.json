@@ -31,7 +31,11 @@
     "subtitle": "Lo que he construido",
     "title": "Proyectos",
     "title_accent": "destacados",
-    "drag_hint": "Coge los bloques y ordénalos a tu gusto"
+    "drag_hint": "Coge los bloques y ordénalos a tu gusto",
+    "unlock": "Desbloquear",
+    "lock": "Bloquear",
+    "viewer_close": "Cerrar",
+    "viewer_of": "de"
   },
   "contact": {
     "subtitle": "Hablemos",

@@ -31,7 +31,11 @@
     "subtitle": "What I've built",
     "title": "Featured",
     "title_accent": "projects",
-    "drag_hint": "Grab the cards and arrange them however you like"
+    "drag_hint": "Grab the cards and arrange them however you like",
+    "unlock": "Unlock",
+    "lock": "Lock",
+    "viewer_close": "Close",
+    "viewer_of": "of"
   },
   "contact": {
     "subtitle": "Let's talk",

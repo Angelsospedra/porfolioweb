@@ -31,7 +31,11 @@
     "subtitle": "El que he construït",
     "title": "Projectes",
     "title_accent": "destacats",
-    "drag_hint": "Agafa els blocs i ordena'ls com vulgues"
+    "drag_hint": "Agafa els blocs i ordena'ls com vulgues",
+    "unlock": "Desbloqueja",
+    "lock": "Bloqueja",
+    "viewer_close": "Tancar",
+    "viewer_of": "de"
   },
   "contact": {
     "subtitle": "Parlem",
