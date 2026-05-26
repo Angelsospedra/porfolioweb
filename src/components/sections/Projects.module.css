@@ -196,14 +196,14 @@
 }
 
 .unlockBtnUnlocked {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-muted);
+  background: var(--accent-dim);
+  border: 1px solid var(--accent);
+  color: var(--accent);
 }
 
 .unlockBtnUnlocked:hover:not(:disabled) {
-  border-color: var(--border-hover);
-  color: var(--text-secondary);
+  background: var(--accent);
+  color: var(--bg-primary);
 }
 
 /* ── Featured ── */
@@ -355,6 +355,7 @@
   .dragHint  { display: none; }
   .dragDots  { display: none; }
   .cardDot   { display: none; }
+  .unlockBtn { display: none; }
 }
 
 @media (max-width: 480px) {

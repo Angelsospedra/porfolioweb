@@ -70,7 +70,7 @@ function ProjectCard({
         project.featured ? styles.featured : '',
         locked ? styles.locked : styles.trembling,
       ].join(' ')}
-      style={!locked ? { animationDelay: `${trembleDelay}ms` } : undefined}
+      style={!locked ? { animationDelay: `-${trembleDelay}ms` } : undefined}
       onClick={locked ? onCardClick : undefined}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -291,7 +291,7 @@ export function Projects() {
                     key={project.id}
                     project={project}
                     locked={locked}
-                    trembleDelay={index * 120}
+                    trembleDelay={(index * 73) % 200}
                     onCardClick={() => setViewerProject(project)}
                   />
                 ))}

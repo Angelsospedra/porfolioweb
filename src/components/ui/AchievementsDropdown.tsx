@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import { useAchievements, ACHIEVEMENTS } from '../../context/AchievementsContext'
+import { useAchievements, ACHIEVEMENTS, TbTrophy, FaStar, FaLock, FaCheck } from '../../context/AchievementsContext'
 import styles from './AchievementsDropdown.module.css'
 
 export function AchievementsDropdown() {
@@ -38,7 +38,7 @@ export function AchievementsDropdown() {
         aria-label="Logros"
         title="Logros"
       >
-        <span className={styles.triggerIcon}>🏆</span>
+        <span className={styles.triggerIcon}><TbTrophy /></span>
         <span className={styles.triggerCount}>
           {count}<span className={styles.triggerTotal}>/{total}</span>
         </span>
@@ -71,7 +71,7 @@ export function AchievementsDropdown() {
                 {/* Header */}
                 <div className={styles.panelHeader}>
                   <div className={styles.panelTitle}>
-                    <span>🏆</span>
+                    <span><TbTrophy /></span>
                     <span>{t('achievements.panel_title')}</span>
                   </div>
                   <button className={styles.closeBtn} onClick={() => setOpen(false)} aria-label="Cerrar">
@@ -113,7 +113,7 @@ export function AchievementsDropdown() {
                         <div className={styles.itemBody}>
                           <div className={styles.itemTitleRow}>
                             <span className={styles.itemTitle}>{t(`achievements.${a.id}.title`)}</span>
-                            <span className={styles.itemBadge}>{done ? '✓' : '🔒'}</span>
+                            <span className={styles.itemBadge}>{done ? <FaCheck /> : <FaLock />}</span>
                           </div>
                           <p className={styles.itemHint}>
                             {done
@@ -134,7 +134,7 @@ export function AchievementsDropdown() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
                   >
-                    <span className={styles.footerGlow}>✨</span>
+                    <span className={styles.footerGlow}><FaStar /></span>
                     <span>{t('achievements.legendary_footer')}</span>
                   </motion.div>
                 )}

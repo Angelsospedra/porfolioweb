@@ -1,18 +1,23 @@
-import { createContext, useContext, useState, useCallback, useRef } from 'react'
+import { createContext, useContext, useState, useCallback, useRef, type ReactElement } from 'react'
+import { TbMail, TbFileText, TbTrophy, TbStars } from 'react-icons/tb'
+import { FaLock, FaCheck, FaExplosion, FaStar } from 'react-icons/fa6'
+import { LuLayoutGrid } from 'react-icons/lu'
 
 export type AchievementId = 'letters' | 'reorder' | 'mail' | 'cv'
 
 export interface Achievement {
   id:   AchievementId
-  icon: string
+  icon: ReactElement
 }
 
 export const ACHIEVEMENTS: Achievement[] = [
-  { id: 'letters', icon: '💥' },
-  { id: 'reorder', icon: '🗂️' },
-  { id: 'mail',    icon: '✉️' },
-  { id: 'cv',      icon: '📄' },
+  { id: 'letters', icon: <FaExplosion /> },
+  { id: 'reorder', icon: <LuLayoutGrid /> },
+  { id: 'mail',    icon: <TbMail /> },
+  { id: 'cv',      icon: <TbFileText /> },
 ]
+
+export { TbTrophy, FaStar, FaLock, FaCheck }
 
 const STORAGE_KEY = 'portfolio_achievements'
 
