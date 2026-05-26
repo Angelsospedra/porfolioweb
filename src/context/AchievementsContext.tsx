@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useCallback, useRef, type ReactElement } from 'react'
-import { TbMail, TbFileText, TbTrophy, TbStars } from 'react-icons/tb'
+import { TbMail, TbFileText, TbTrophy } from 'react-icons/tb'
 import { FaLock, FaCheck, FaExplosion, FaStar } from 'react-icons/fa6'
 import { LuLayoutGrid } from 'react-icons/lu'
 
@@ -18,6 +18,7 @@ export const ACHIEVEMENTS: Achievement[] = [
 ]
 
 export { TbTrophy, FaStar, FaLock, FaCheck }
+
 
 const STORAGE_KEY = 'portfolio_achievements'
 
