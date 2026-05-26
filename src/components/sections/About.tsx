@@ -321,7 +321,7 @@ export function About() {
               <div className={styles.titleRow}>
                 <h2 className="section-title">{t('about.title')} <span className="accent">{t('about.title_accent')}</span></h2>
                 {exploded && (
-                  <button className={`${styles.explodeBtn} ${btnFading ? styles.explodeBtnFading : ''}`} onClick={handleResetClick}>↺ Restablecer</button>
+                  <button className={`${styles.explodeBtn} ${btnFading ? styles.explodeBtnFading : ''}`} onClick={handleResetClick}>↺ {t('common.reset')}</button>
                 )}
               </div>
             </motion.div>

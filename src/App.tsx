@@ -8,6 +8,7 @@ import { Art3D } from './components/sections/Art3D'
 import { Contact } from './components/sections/Contact'
 import { AchievementsProvider } from './context/AchievementsContext'
 import { AchievementToast } from './components/ui/AchievementToast'
+import { WelcomeModal } from './components/ui/WelcomeModal'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       </main>
       <Footer />
       <AchievementToast />
+      <WelcomeModal />
     </AchievementsProvider>
   )
 }

@@ -1,5 +1,6 @@
 import { useState, useRef, Suspense, Component, type ReactNode } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, useGLTF, Environment, Html, Center } from '@react-three/drei'
 import { useInView } from '../../hooks/useInView'
@@ -33,6 +34,7 @@ class ModelErrorBoundary extends Component<{ children: ReactNode; fallback: Reac
 
 // Visor especializado de Art3D que añade soporte de modelo 3D sobre el visor genérico
 function Art3DViewer({ model, onClose }: { model: Art3DItem; onClose: () => void }) {
+  const { t } = useTranslation()
   const hasModel = !!model.model
   const hasMedia = !!model.video || !!model.images?.length
 
@@ -83,7 +85,7 @@ function Art3DViewer({ model, onClose }: { model: Art3DItem; onClose: () => void
         <div className={viewerStyles.modalHeader}>
           <div className={viewerStyles.modalTitleRow}>
             <h3 className={viewerStyles.modalTitle}>{model.title}</h3>
-            <button className={viewerStyles.closeBtn} onClick={onClose} aria-label="Cerrar">✕</button>
+            <button className={viewerStyles.closeBtn} onClick={onClose} aria-label={t('common.close')}>✕</button>
           </div>
           <p className={viewerStyles.modalDesc}>{model.description}</p>
         </div>

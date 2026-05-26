@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import styles from './MediaViewer.module.css'
 
 // ── Video sin fullscreen ────────────────────────────────────────────────────
@@ -99,6 +100,7 @@ export function GalleryImage({ src }: { src: string }) {
 // ── Galería vertical (vídeo + imágenes) ─────────────────────────────────────
 
 export function MediaGallery({ video, images }: { video?: string; images?: string[] }) {
+  const { t } = useTranslation()
   const galleryRef = useRef<HTMLDivElement>(null)
   const [canUp, setCanUp]     = useState(false)
   const [canDown, setCanDown] = useState(false)
@@ -141,7 +143,7 @@ export function MediaGallery({ video, images }: { video?: string; images?: strin
           <button
             className={`${styles.galleryArrow} ${styles.galleryArrowUp}`}
             onClick={() => scrollTo('up')}
-            aria-label="Anterior"
+            aria-label={t('common.prev')}
             disabled={!canUp}
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" width="20" height="20">
@@ -151,7 +153,7 @@ export function MediaGallery({ video, images }: { video?: string; images?: strin
           <button
             className={`${styles.galleryArrow} ${styles.galleryArrowDown}${hinted && canDown ? ` ${styles.arrowHint}` : ''}`}
             onClick={() => { scrollTo('down'); setHinted(false) }}
-            aria-label="Siguiente"
+            aria-label={t('common.next')}
             disabled={!canDown}
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" width="20" height="20">
@@ -176,6 +178,7 @@ export interface MediaViewerProps {
 }
 
 export function MediaViewer({ title, description, video, images, onClose, footer }: MediaViewerProps) {
+  const { t } = useTranslation()
   const hasMedia = !!video || !!images?.length
 
   useEffect(() => {
@@ -211,7 +214,7 @@ export function MediaViewer({ title, description, video, images, onClose, footer
         <div className={styles.modalHeader}>
           <div className={styles.modalTitleRow}>
             <h3 className={styles.modalTitle}>{title}</h3>
-            <button className={styles.closeBtn} onClick={onClose} aria-label="Cerrar">✕</button>
+            <button className={styles.closeBtn} onClick={onClose} aria-label={t('common.close')}>✕</button>
           </div>
           {description && <p className={styles.modalDesc}>{description}</p>}
         </div>

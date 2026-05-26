@@ -136,12 +136,36 @@
       }
     ]
   },
+  "welcome": {
+    "lang_label": "Elige tu idioma",
+    "title": "Bienvenido/a a mi portfolio",
+    "body": "Esta página está llena de pequeños detalles y elementos interactivos pensados para explorar.",
+    "achievements_hint": "Echa un vistazo a la sección de logros en la barra de navegación. Tras completar todos los logros obtendrás una gran recompensa.",
+    "cta": "¡Adelante!"
+  },
+  "common": {
+    "close": "Cerrar",
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "reset": "Restablecer"
+  },
+  "accent": {
+    "group_label": "Color de acento",
+    "legendary": "Legendario",
+    "locked": "Color bloqueado — completa todos los logros",
+    "locked_short": "Completa todos los logros"
+  },
   "footer": {
     "built_by": "Diseñado y desarrollado por"
   },
   "achievements": {
     "panel_title": "Logros",
+    "trigger_label": "Logros",
+    "panel_aria": "Panel de logros",
+    "close_label": "Cerrar",
     "progress": "{{count}} de {{total}} completados",
+    "group_done": "Completados",
+    "group_pending": "Incompletos",
     "legendary_footer": "Color legendario desbloqueado en el selector de color.",
     "toast_label": "Logro desbloqueado",
     "letters": {

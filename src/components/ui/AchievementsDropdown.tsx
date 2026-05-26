@@ -35,8 +35,8 @@ export function AchievementsDropdown() {
       <button
         className={`${styles.trigger} ${allDone ? styles.triggerComplete : ''}`}
         onClick={() => setOpen(true)}
-        aria-label="Logros"
-        title="Logros"
+        aria-label={t('achievements.trigger_label')}
+        title={t('achievements.trigger_label')}
       >
         <span className={styles.triggerIcon}><TbTrophy /></span>
         <span className={styles.triggerCount}>
@@ -66,7 +66,7 @@ export function AchievementsDropdown() {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                aria-label="Panel de logros"
+                aria-label={t('achievements.panel_aria')}
               >
                 {/* Header */}
                 <div className={styles.panelHeader}>
@@ -74,7 +74,7 @@ export function AchievementsDropdown() {
                     <span><TbTrophy /></span>
                     <span>{t('achievements.panel_title')}</span>
                   </div>
-                  <button className={styles.closeBtn} onClick={() => setOpen(false)} aria-label="Cerrar">
+                  <button className={styles.closeBtn} onClick={() => setOpen(false)} aria-label={t('common.close')}>
                     <X size={18} />
                   </button>
                 </div>
@@ -96,35 +96,48 @@ export function AchievementsDropdown() {
                 </div>
 
                 {/* Achievement list */}
-                <ul className={styles.list}>
-                  {ACHIEVEMENTS.map((a, i) => {
-                    const done = unlocked.has(a.id)
-                    return (
-                      <motion.li
-                        key={a.id}
-                        className={`${styles.item} ${done ? styles.itemDone : styles.itemLocked}`}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.07, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                      >
-                        <div className={`${styles.itemIcon} ${done ? styles.itemIconDone : ''}`}>
-                          {a.icon}
-                        </div>
-                        <div className={styles.itemBody}>
-                          <div className={styles.itemTitleRow}>
-                            <span className={styles.itemTitle}>{t(`achievements.${a.id}.title`)}</span>
-                            <span className={styles.itemBadge}>{done ? <FaCheck /> : <FaLock />}</span>
-                          </div>
-                          <p className={styles.itemHint}>
-                            {done
-                              ? t(`achievements.${a.id}.description`)
-                              : t(`achievements.${a.id}.hint`)}
-                          </p>
-                        </div>
-                      </motion.li>
-                    )
-                  })}
-                </ul>
+                <div className={styles.panelBody}>
+                {(['pending', 'done'] as const).map(group => {
+                  const items = ACHIEVEMENTS.filter(a => group === 'done' ? unlocked.has(a.id) : !unlocked.has(a.id))
+                  if (items.length === 0) return null
+                  return (
+                    <div key={group}>
+                      <p className={styles.groupLabel}>
+                        {t(group === 'done' ? 'achievements.group_done' : 'achievements.group_pending')}
+                      </p>
+                      <ul className={styles.list}>
+                        {items.map((a, i) => {
+                          const done = group === 'done'
+                          return (
+                            <motion.li
+                              key={a.id}
+                              className={`${styles.item} ${done ? styles.itemDone : styles.itemLocked}`}
+                              initial={{ opacity: 0, x: 20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: i * 0.07, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                            >
+                              <div className={`${styles.itemIcon} ${done ? styles.itemIconDone : ''}`}>
+                                {a.icon}
+                              </div>
+                              <div className={styles.itemBody}>
+                                <div className={styles.itemTitleRow}>
+                                  <span className={styles.itemTitle}>{t(`achievements.${a.id}.title`)}</span>
+                                  <span className={styles.itemBadge}>{done ? <FaCheck /> : <FaLock />}</span>
+                                </div>
+                                <p className={styles.itemHint}>
+                                  {done
+                                    ? t(`achievements.${a.id}.description`)
+                                    : t(`achievements.${a.id}.hint`)}
+                                </p>
+                              </div>
+                            </motion.li>
+                          )
+                        })}
+                      </ul>
+                    </div>
+                  )
+                })}
+                </div>
 
                 {/* Legendary footer */}
                 {allDone && (

@@ -98,27 +98,22 @@
   box-shadow: 0 0 10px 3px rgba(240, 180, 41, 0.75);
 }
 
-/* ── Hide legendary dot on mobile ──────────────────────────── */
+/* ── Hide legendary on mobile ───────────────────────────────── */
 @media (max-width: 768px) {
   .legendary,
-  .locked { display: none; }
+  .lockedIcon { display: none !important; }
 }
 
-/* ── Locked placeholder ─────────────────────────────────────── */
-.locked {
-  background: var(--border);
+/* ── Locked icon ────────────────────────────────────────────── */
+.lockedIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  font-size: 0.8rem;
+  color: #f0b429;
+  opacity: 0.35;
   cursor: not-allowed;
-  opacity: 0.45;
-  position: relative;
-}
-
-.locked::after {
-  content: '🔒';
-  position: absolute;
-  font-size: 7px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  line-height: 1;
-  pointer-events: none;
+  flex-shrink: 0;
 }

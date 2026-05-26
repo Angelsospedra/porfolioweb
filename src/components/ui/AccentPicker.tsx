@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+import { FaLock } from 'react-icons/fa6'
 import { useAccent, type Accent } from '../../context/AccentContext'
 import { useAchievements, ACHIEVEMENTS } from '../../context/AchievementsContext'
 import styles from './AccentPicker.module.css'
@@ -10,6 +12,7 @@ const accents: { value: Accent; color: string }[] = [
 ]
 
 export function AccentPicker() {
+  const { t } = useTranslation()
   const { accent, setAccent } = useAccent()
   const { unlocked } = useAchievements()
 
@@ -17,7 +20,7 @@ export function AccentPicker() {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.picker} role="group" aria-label="Accent color">
+      <div className={styles.picker} role="group" aria-label={t('accent.group_label')}>
         {accents.map(a => (
           <button
             key={a.value}
@@ -34,17 +37,18 @@ export function AccentPicker() {
           <button
             className={`${styles.dot} ${styles.legendary} ${accent === 'yellow' ? styles.active : ''}`}
             onClick={() => setAccent('yellow')}
-            aria-label="Legendario"
+            aria-label={t('accent.legendary')}
             aria-pressed={accent === 'yellow'}
-            title="Legendario"
+            title={t('accent.legendary')}
           />
         ) : (
-          <button
-            className={`${styles.dot} ${styles.locked}`}
-            disabled
-            aria-label="Color bloqueado — completa todos los logros"
-            title="Completa todos los logros"
-          />
+          <span
+            className={styles.lockedIcon}
+            aria-label={t('accent.locked')}
+            title={t('accent.locked_short')}
+          >
+            <FaLock />
+          </span>
         )}
       </div>
     </div>

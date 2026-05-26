@@ -153,11 +153,35 @@
       }
     ]
   },
+  "welcome": {
+    "lang_label": "Tria el teu idioma",
+    "title": "Benvingut/da al meu portfolio",
+    "body": "Esta pàgina està plena de xicotets detalls i elements interactius pensats per explorar.",
+    "achievements_hint": "Fes un cop d'ull a la secció de llograments a la barra de navegació. Quan completes tots els llograments, t'espera una gran recompensa.",
+    "cta": "Endavant!"
+  },
+  "common": {
+    "close": "Tancar",
+    "prev": "Anterior",
+    "next": "Següent",
+    "reset": "Restablir"
+  },
+  "accent": {
+    "group_label": "Color d'accent",
+    "legendary": "Llegendari",
+    "locked": "Color bloquejat — completa tots els assoliments",
+    "locked_short": "Completa tots els assoliments"
+  },
   "footer": {
     "built_by": "Dissenyat i desenvolupat per"
   },
   "achievements": {
     "panel_title": "Assoliments",
+    "trigger_label": "Assoliments",
+    "panel_aria": "Panell d'assoliments",
+    "close_label": "Tancar",
+    "group_done": "Completats",
+    "group_pending": "Incomplets",
     "progress": "{{count}} de {{total}} completats",
     "legendary_footer": "Color llegendari desbloquejat al selector de color.",
     "toast_label": "Assoliment desbloquejat",

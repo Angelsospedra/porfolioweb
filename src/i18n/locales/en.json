@@ -136,11 +136,35 @@
       }
     ]
   },
+  "welcome": {
+    "lang_label": "Choose your language",
+    "title": "Welcome to my portfolio",
+    "body": "This page is full of small details and interactive elements designed to be explored.",
+    "achievements_hint": "Take a look at the achievements section in the navigation bar. Once you complete all achievements, a great reward awaits you.",
+    "cta": "Let's go!"
+  },
+  "common": {
+    "close": "Close",
+    "prev": "Previous",
+    "next": "Next",
+    "reset": "Reset"
+  },
+  "accent": {
+    "group_label": "Accent color",
+    "legendary": "Legendary",
+    "locked": "Color locked — complete all achievements",
+    "locked_short": "Complete all achievements"
+  },
   "footer": {
     "built_by": "Designed & built by"
   },
   "achievements": {
     "panel_title": "Achievements",
+    "trigger_label": "Achievements",
+    "panel_aria": "Achievements panel",
+    "close_label": "Close",
+    "group_done": "Completed",
+    "group_pending": "Incomplete",
     "progress": "{{count}} of {{total}} completed",
     "legendary_footer": "Legendary colour unlocked in the colour picker.",
     "toast_label": "Achievement unlocked",
