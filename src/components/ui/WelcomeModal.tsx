@@ -13,11 +13,16 @@ export function WelcomeModal() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    if (!localStorage.getItem(STORAGE_KEY) && window.innerWidth > 768) setVisible(true)
+    try {
+      const seen = localStorage.getItem(STORAGE_KEY)
+      if (!seen && window.innerWidth > 768) setVisible(true)
+    } catch {
+      // localStorage blocked (private mode, etc.) — skip modal
+    }
   }, [])
 
   const handleClose = () => {
-    localStorage.setItem(STORAGE_KEY, '1')
+    try { localStorage.setItem(STORAGE_KEY, '1') } catch { /* noop */ }
     setVisible(false)
   }
 
