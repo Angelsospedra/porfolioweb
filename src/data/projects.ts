@@ -42,7 +42,7 @@ export const projects: Project[] = [
     featured: true,
     thumb: '/thumbs/proyectos/vinilocos.png',
     media: [
-      { type: 'image', src: '/thumbs/proyectos/vinilocos.png' },
+      { type: 'video', src: '/videos/vinilocos.mp4', poster: '/thumbs/proyectos/vinilocos.png' },
     ],
   },
 ]
