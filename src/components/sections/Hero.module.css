@@ -141,7 +141,9 @@
     align-items: center;
     justify-items: center;
     gap: clamp(0.75rem, 2vh, 1rem) 1rem;
-    padding-top: clamp(1.5rem, 5vh, 3rem);
+    /* El navbar fixed mide ~80px en móvil; sumamos margen extra para que el
+       contenido nunca quede tapado independientemente del tamaño de pantalla */
+    padding-top: clamp(5rem, 12vh, 7rem);
     padding-bottom: clamp(1.5rem, 5vh, 3rem);
   }
 
