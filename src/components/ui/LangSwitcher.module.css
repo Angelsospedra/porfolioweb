@@ -47,6 +47,12 @@
   list-style: none;
 }
 
+/* Abre hacia arriba cuando no hay espacio debajo (ej. menú móvil) */
+.dropdownUp {
+  top: auto;
+  bottom: calc(100% + 0.375rem);
+}
+
 .option {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-size: 0.75rem;

@@ -11,6 +11,7 @@ const LANGS = [
 export function LangSwitcher() {
   const { i18n } = useTranslation()
   const [open, setOpen] = useState(false)
+  const [dropUp, setDropUp] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
   const current = LANGS.find(l => l.code === i18n.language) ?? LANGS[0]
@@ -38,6 +39,15 @@ export function LangSwitcher() {
     }
   }
 
+  // Auto-detect si el dropdown cabe hacia abajo o hay que abrirlo hacia arriba
+  useEffect(() => {
+    if (!open || !ref.current) return
+    const rect = ref.current.getBoundingClientRect()
+    const spaceBelow = window.innerHeight - rect.bottom
+    // El dropdown ocupa aprox 120px (3 opciones). Si no cabe, abre hacia arriba
+    setDropUp(spaceBelow < 130)
+  }, [open])
+
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) {
@@ -63,7 +73,7 @@ export function LangSwitcher() {
       </button>
 
       {open && (
-        <ul className={styles.dropdown} role="listbox">
+        <ul className={`${styles.dropdown} ${dropUp ? styles.dropdownUp : ''}`} role="listbox">
           {LANGS.map(lang => (
             <li key={lang.code} role="option" aria-selected={lang.code === i18n.language}>
               <button
