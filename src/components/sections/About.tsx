@@ -67,7 +67,8 @@ export function About() {
   const [btnFading, setBtnFading] = useState(false)
   const [dragging, setDragging] = useState<{ icon: ReactElement } | null>(null)
   const [showGhost, setShowGhost] = useState(false)
-  const ghostShownRef = useRef(false)
+  const ghostShownRef   = useRef(false)
+  const sectionVisibleRef = useRef(false)
 
   const stopAnim = () => {
     if (rafRef.current !== null) { cancelAnimationFrame(rafRef.current); rafRef.current = null }
@@ -120,15 +121,31 @@ export function About() {
   useEffect(() => { handleReset() }, [i18n.language])
   useEffect(() => () => { stopAnim(); overlayRef.current?.remove() }, [])
 
+  // Mostrar ghost solo si la sección sigue visible cuando el timer dispara
   useEffect(() => {
-    if (!inView || ghostShownRef.current) return
-    const timer = setTimeout(() => {
-      ghostShownRef.current = true
-      setShowGhost(true)
-      setTimeout(() => setShowGhost(false), 5200)
-    }, 4000)
-    return () => clearTimeout(timer)
-  }, [inView])
+    const el = ref.current as HTMLElement | null
+    if (!el) return
+    let timer: ReturnType<typeof setTimeout> | null = null
+
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        sectionVisibleRef.current = entry.isIntersecting
+        if (entry.isIntersecting && !ghostShownRef.current) {
+          timer = setTimeout(() => {
+            if (!sectionVisibleRef.current || ghostShownRef.current) return
+            ghostShownRef.current = true
+            setShowGhost(true)
+            setTimeout(() => setShowGhost(false), 5200)
+          }, 4000)
+        } else {
+          if (timer !== null) { clearTimeout(timer); timer = null }
+        }
+      },
+      { threshold: 0.2 }
+    )
+    obs.observe(el)
+    return () => { obs.disconnect(); if (timer !== null) clearTimeout(timer) }
+  }, [ref])
 
   // Sync floating icon initial position after render
   useEffect(() => {
