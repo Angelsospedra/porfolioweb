@@ -38,16 +38,19 @@ function ProjectCard({
   onCardClick: () => void
 }) {
   const { t } = useTranslation()
-  const videoRef   = useRef<HTMLVideoElement>(null)
-  const timerRef   = useRef<number | null>(null)
-  const [previewing, setPreviewing] = useState(false)
+  const cardRef      = useRef<HTMLElement>(null)
+  const videoRef     = useRef<HTMLVideoElement>(null)
+  const timerRef     = useRef<number | null>(null)
+  const idleTimerRef = useRef<number | null>(null)
+  const [previewing, setPreviewing]     = useState(false)
+  const [showControls, setShowControls] = useState(false)
+  const [progress, setProgress]         = useState(0)
 
   const videoMedia = project.media?.find(m => m.type === 'video')
   const videoSrc   = videoMedia?.src
 
   const handleMouseEnter = useCallback(() => {
     if (!videoSrc) return
-    // Empieza a cargar el vídeo inmediatamente, así el segundo de espera sirve de buffer
     if (videoRef.current) videoRef.current.load()
     timerRef.current = window.setTimeout(() => {
       setPreviewing(true)
@@ -56,15 +59,61 @@ function ProjectCard({
   }, [videoSrc])
 
   const handleMouseLeave = useCallback(() => {
-    if (timerRef.current) { clearTimeout(timerRef.current); timerRef.current = null }
+    if (timerRef.current)     { clearTimeout(timerRef.current);   timerRef.current = null }
+    if (idleTimerRef.current) { clearTimeout(idleTimerRef.current); idleTimerRef.current = null }
     setPreviewing(false)
+    setShowControls(false)
+    setProgress(0)
     if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0 }
   }, [])
 
-  useEffect(() => () => { if (timerRef.current) clearTimeout(timerRef.current) }, [])
+  const handleTimeUpdate = useCallback(() => {
+    const v = videoRef.current
+    if (v && v.duration) setProgress(v.currentTime / v.duration)
+  }, [])
+
+  // Listeners nativos para evitar quirks de eventos sintéticos de React
+  useEffect(() => {
+    const card = cardRef.current
+    if (!card) return
+
+    const onMove = (e: MouseEvent) => {
+      if (!videoRef.current || videoRef.current.paused) return
+      if (e.movementX === 0 && e.movementY === 0) return
+      setShowControls(true)
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current)
+      idleTimerRef.current = window.setTimeout(() => setShowControls(false), 2000)
+    }
+
+    const onLeave = () => {
+      if (idleTimerRef.current) { clearTimeout(idleTimerRef.current); idleTimerRef.current = null }
+      setShowControls(false)
+    }
+
+    card.addEventListener('mousemove', onMove)
+    card.addEventListener('mouseleave', onLeave)
+    return () => {
+      card.removeEventListener('mousemove', onMove)
+      card.removeEventListener('mouseleave', onLeave)
+    }
+  }, [])
+
+  // Mostrar la barra al arrancar el vídeo
+  useEffect(() => {
+    if (!previewing) return
+    setShowControls(true)
+    idleTimerRef.current = window.setTimeout(() => setShowControls(false), 2000)
+    return () => { if (idleTimerRef.current) clearTimeout(idleTimerRef.current) }
+  }, [previewing])
+
+  useEffect(() => () => {
+    if (timerRef.current)     clearTimeout(timerRef.current)
+    if (idleTimerRef.current) clearTimeout(idleTimerRef.current)
+  }, [])
 
   return (
     <article
+      ref={cardRef as React.RefObject<HTMLElement>}
       className={[
         styles.card,
         project.featured ? styles.featured : '',
@@ -99,7 +148,13 @@ function ProjectCard({
             playsInline
             disablePictureInPicture
             preload="none"
+            onTimeUpdate={handleTimeUpdate}
           />
+        )}
+        {videoSrc && (
+          <div className={`${styles.videoProgress} ${showControls ? styles.videoProgressVisible : ''}`}>
+            <div className={styles.videoProgressFill} style={{ width: `${progress * 100}%` }} />
+          </div>
         )}
 
         {/* Título arriba */}

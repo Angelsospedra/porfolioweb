@@ -7,11 +7,14 @@ import styles from './MediaViewer.module.css'
 
 export function NoFullscreenVideo({ src }: { src: string }) {
   const ref         = useRef<HTMLVideoElement>(null)
+  const wrapRef     = useRef<HTMLDivElement>(null)
   const rafRef      = useRef<number | null>(null)
+  const idleRef     = useRef<number | null>(null)
   const progressRef = useRef<HTMLInputElement>(null)
-  const [playing, setPlaying] = useState(true)
-  const [muted, setMuted]     = useState(true)
-  const [duration, setDuration] = useState(0)
+  const [playing, setPlaying]     = useState(true)
+  const [muted, setMuted]         = useState(true)
+  const [duration, setDuration]   = useState(0)
+  const [showCtrl, setShowCtrl]   = useState(true)
 
   const tick = useCallback(() => {
     const v = ref.current; const bar = progressRef.current
@@ -23,6 +26,33 @@ export function NoFullscreenVideo({ src }: { src: string }) {
     rafRef.current = requestAnimationFrame(tick)
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }
   }, [tick])
+
+  // Auto-ocultar controles con listeners nativos
+  useEffect(() => {
+    const wrap = wrapRef.current
+    if (!wrap) return
+
+    const resetIdle = () => {
+      setShowCtrl(true)
+      if (idleRef.current) clearTimeout(idleRef.current)
+      idleRef.current = window.setTimeout(() => setShowCtrl(false), 2000)
+    }
+    const hide = () => {
+      if (idleRef.current) { clearTimeout(idleRef.current); idleRef.current = null }
+      setShowCtrl(false)
+    }
+
+    // Mostrar al montar durante 2s
+    resetIdle()
+
+    wrap.addEventListener('mousemove', resetIdle)
+    wrap.addEventListener('mouseleave', hide)
+    return () => {
+      wrap.removeEventListener('mousemove', resetIdle)
+      wrap.removeEventListener('mouseleave', hide)
+      if (idleRef.current) clearTimeout(idleRef.current)
+    }
+  }, [])
 
   const toggle = useCallback(() => {
     const v = ref.current; if (!v) return
@@ -42,7 +72,7 @@ export function NoFullscreenVideo({ src }: { src: string }) {
   }, [])
 
   return (
-    <div className={styles.videoWrap}>
+    <div className={styles.videoWrap} ref={wrapRef}>
       <video
         ref={ref}
         className={styles.galleryImg}
@@ -55,7 +85,7 @@ export function NoFullscreenVideo({ src }: { src: string }) {
         onLoadedMetadata={() => setDuration(ref.current?.duration ?? 0)}
         onClick={toggle}
       />
-      <div className={styles.videoControls}>
+      <div className={`${styles.videoControls} ${showCtrl ? styles.videoControlsVisible : ''}`}>
         <button className={styles.videoBtn} onClick={toggle} aria-label={playing ? 'Pausar' : 'Reproducir'}>
           {playing
             ? <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>

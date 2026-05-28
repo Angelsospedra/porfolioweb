@@ -17,7 +17,7 @@
   border: 1px solid var(--border);
   border-radius: 18px;
   width: 100%;
-  max-width: 860px;
+  max-width: 1060px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -74,7 +74,7 @@
 .contentWrap {
   position: relative;
   width: 100%;
-  height: 500px;
+  aspect-ratio: 16 / 9;
   background: var(--surface);
 }
 
@@ -95,7 +95,7 @@
 
 .gallery {
   width: 100%;
-  height: 500px;
+  height: 100%;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   scrollbar-width: none;
@@ -105,7 +105,7 @@
 .gallerySlide {
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 100%;
   scroll-snap-align: start;
   display: flex;
   align-items: center;
@@ -175,6 +175,14 @@
   gap: 0.5rem;
   padding: 0.5rem 0.75rem;
   background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.videoControlsVisible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .videoBtn {
@@ -240,9 +248,6 @@
 }
 
 @media (max-width: 768px) {
-  .contentWrap { height: 320px; }
-  .gallery      { height: 320px; }
-  .gallerySlide { height: 320px; }
-  .noContent    { height: 320px; }
+  .contentWrap  { aspect-ratio: 16 / 9; }
   .modal        { border-radius: 12px; }
 }

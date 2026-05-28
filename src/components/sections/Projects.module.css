@@ -105,6 +105,31 @@
   opacity: 1;
 }
 
+/* Barra de progreso personalizada */
+.videoProgress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.videoProgressVisible {
+  opacity: 1;
+}
+
+.videoProgressFill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
 /* Título encima de la imagen — arriba */
 .cardImageTop {
   position: absolute;
