@@ -66,6 +66,17 @@
   background: var(--bg-card);
 }
 
+.navLinkActive {
+  color: var(--accent) !important;
+  text-shadow:
+    0 0 8px color-mix(in srgb, var(--accent) 70%, transparent),
+    0 0 20px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+:global([data-theme='light']) .navLinkActive {
+  text-shadow: none;
+}
+
 /* Desktop actions */
 .actions {
   display: none;
@@ -126,6 +137,17 @@
 }
 .mobileLink:first-child { border-top: 1px solid var(--border); }
 .mobileLink:hover { color: var(--accent); padding-left: 0.5rem; }
+
+.mobileLinkActive {
+  color: var(--accent) !important;
+  text-shadow:
+    0 0 10px color-mix(in srgb, var(--accent) 60%, transparent),
+    0 0 24px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+:global([data-theme='light']) .mobileLinkActive {
+  text-shadow: none;
+}
 
 .mobileTools {
   display: flex;
