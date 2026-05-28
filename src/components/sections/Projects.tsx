@@ -52,7 +52,7 @@ function ProjectCard({
     timerRef.current = window.setTimeout(() => {
       setPreviewing(true)
       videoRef.current?.play().catch(() => {})
-    }, 1000)
+    }, 500)
   }, [videoSrc])
 
   const handleMouseLeave = useCallback(() => {
