@@ -66,6 +66,8 @@ export function About() {
   const [exploded, setExploded] = useState(false)
   const [btnFading, setBtnFading] = useState(false)
   const [dragging, setDragging] = useState<{ icon: ReactElement } | null>(null)
+  const [showGhost, setShowGhost] = useState(false)
+  const ghostShownRef = useRef(false)
 
   const stopAnim = () => {
     if (rafRef.current !== null) { cancelAnimationFrame(rafRef.current); rafRef.current = null }
@@ -117,6 +119,16 @@ export function About() {
 
   useEffect(() => { handleReset() }, [i18n.language])
   useEffect(() => () => { stopAnim(); overlayRef.current?.remove() }, [])
+
+  useEffect(() => {
+    if (!inView || ghostShownRef.current) return
+    const timer = setTimeout(() => {
+      ghostShownRef.current = true
+      setShowGhost(true)
+      setTimeout(() => setShowGhost(false), 5200)
+    }, 4000)
+    return () => clearTimeout(timer)
+  }, [inView])
 
   // Sync floating icon initial position after render
   useEffect(() => {
@@ -370,6 +382,17 @@ export function About() {
       {dragging && (
         <div ref={floatingRef} className={styles.floatingIcon}>
           {dragging.icon}
+        </div>
+      )}
+
+      {showGhost && (
+        <div className={styles.ghostHint} aria-hidden="true">
+          <div className={styles.ghostCursorWrap}>
+            <span className={styles.ghostDragIcon}><SiHtml5 /></span>
+            <svg className={styles.ghostCursorSvg} viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5.5 3.21V20.8l4.32-4.32 2.9 6.31 2.92-1.35-2.9-6.31h6.15z" />
+            </svg>
+          </div>
         </div>
       )}
     </section>

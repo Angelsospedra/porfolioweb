@@ -1,5 +1,6 @@
 .about {
   border-top: 1px solid var(--border);
+  position: relative;
 }
 
 .grid {
@@ -174,7 +175,79 @@
   cursor: default;
 }
 
+/* Ghost hint animation */
+.ghostHint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  overflow: hidden;
+}
+
+.ghostCursorWrap {
+  position: absolute;
+  top: 42%;
+  left: 62%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  animation: ghostMove 4.5s ease-in-out forwards;
+}
+
+.ghostDragIcon {
+  font-size: 2.6rem;
+  color: var(--accent);
+  opacity: 0;
+  margin-left: 0.4rem;
+  animation: ghostIconAnim 4.5s ease-in-out forwards;
+}
+
+.ghostCursorSvg {
+  width: 26px;
+  height: 26px;
+  color: #fff;
+  opacity: 0;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.85));
+  margin-top: -0.6rem;
+  animation: ghostCursorAnim 4.5s ease-in-out forwards;
+}
+
+
+@keyframes ghostMove {
+  /* completamente fuera de pantalla por la derecha, invisible */
+  0%   { transform: translateX(45vw); opacity: 0; }
+  /* desliza hacia el icono con fade in simultáneo */
+  18%  { transform: translateX(0) scale(1); opacity: 1; }
+  /* pausa cerca del icono, luego agarra */
+  30%  { transform: translateX(0) scale(0.88); opacity: 1; }
+  40%  { transform: translateX(0) scale(1.1); opacity: 1; }
+  /* se mueve despacio hacia el texto */
+  78%  { transform: translateX(-38vw) scale(1.1); opacity: 1; }
+  100% { transform: translateX(-38vw) scale(1.1); opacity: 0; }
+}
+
+@keyframes ghostIconAnim {
+  0%   { opacity: 0; transform: scale(1) rotate(0deg); }
+  28%  { opacity: 0; transform: scale(1) rotate(0deg); }
+  38%  { opacity: 0.6; transform: scale(0.88) rotate(-4deg); }
+  44%  { opacity: 0.55; transform: scale(1.12) rotate(-10deg); }
+  78%  { opacity: 0.5; transform: scale(1.12) rotate(-10deg); }
+  100% { opacity: 0; transform: scale(1.12) rotate(-10deg); }
+}
+
+@keyframes ghostCursorAnim {
+  0%   { opacity: 0; }
+  18%  { opacity: 0.75; }
+  78%  { opacity: 0.65; }
+  100% { opacity: 0; }
+}
+
+
 @media (max-width: 768px) {
+  .ghostHint {
+    display: none;
+  }
+
   .grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
