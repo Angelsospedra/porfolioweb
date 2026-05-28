@@ -1,3 +1,25 @@
+@property --accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #6ee7b7;
+}
+
+@property --accent-dim {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgba(110, 231, 183, 0.1);
+}
+
+@property --accent-glow {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgba(110, 231, 183, 0.25);
+}
+
+:root {
+  transition: --accent 0.4s ease, --accent-dim 0.4s ease, --accent-glow 0.4s ease;
+}
+
 :root[data-theme='dark'] {
   --bg-primary: #0d0d0d;
   --bg-secondary: #141414;
