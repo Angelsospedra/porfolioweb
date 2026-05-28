@@ -16,6 +16,7 @@ import {
 } from '@dnd-kit/sortable'
 import { useTranslation } from 'react-i18next'
 import { ExternalLink, Lock, Unlock } from 'lucide-react'
+import { TbTrophy } from 'react-icons/tb'
 import { IconGithub } from '../ui/icons/BrandIcons'
 import { projects as initialProjects } from '../../data/projects'
 import type { Project } from '../../types'
@@ -305,9 +306,10 @@ export function Projects() {
               {t('projects.title')} <span className="accent">{t('projects.title_accent')}</span>
             </h2>
             <div className={styles.titleActions}>
-              <p className={`${styles.dragHint} ${locked ? styles.dragHintHidden : ''}`}>
-                {t('projects.drag_hint')}
-              </p>
+              <div className={`${styles.dragHintRow} ${locked ? styles.dragHintHidden : ''}`}>
+                <TbTrophy className={styles.dragHintTrophy} aria-hidden />
+                <p className={styles.dragHint}>{t('projects.drag_hint')}</p>
+              </div>
               <button
                 className={`${styles.unlockBtn} ${locked ? styles.unlockBtnLocked : styles.unlockBtnUnlocked}`}
                 onClick={locked ? handleUnlock : handleLock}

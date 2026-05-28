@@ -179,6 +179,19 @@
   flex-wrap: wrap;
 }
 
+.dragHintRow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dragHintTrophy {
+  font-size: 1rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  animation: blink 4s ease-in-out infinite;
+}
+
 .dragHint {
   font-size: 0.8rem;
   color: var(--text-muted);
@@ -382,7 +395,7 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .dragHint  { display: none; }
+  .dragHintRow { display: none; }
   .dragDots  { display: none; }
   .cardDot   { display: none; }
   .unlockBtn { display: none; }

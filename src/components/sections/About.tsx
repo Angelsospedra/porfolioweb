@@ -7,7 +7,7 @@ import {
   SiGit, SiGithub, SiGitlab, SiFigma, SiSlack, SiNotion, SiJira, SiDavinciresolve,
 } from 'react-icons/si'
 import { VscSourceControl } from 'react-icons/vsc'
-import { TbBrandTeams, TbBrandAzure, TbBrandAdobePhotoshop } from 'react-icons/tb'
+import { TbBrandTeams, TbBrandAzure, TbBrandAdobePhotoshop, TbTrophy } from 'react-icons/tb'
 import { skills, skillCategories } from '../../data/skills'
 import { useInView } from '../../hooks/useInView'
 import { useAchievements } from '../../context/AchievementsContext'
@@ -347,7 +347,12 @@ export function About() {
           </motion.div>
 
           <div className={styles.skills}>
-            <p className={styles.skillHint}>{t('about.skill_hint')}</p>
+            <div className={styles.skillHintRow}>
+              <span className={styles.trophyIcon}>
+                <TbTrophy />
+              </span>
+              <p className={styles.skillHint}>{t('about.skill_hint')}</p>
+            </div>
             {skillCategories.map((cat, ci) => (
               <motion.div
                 key={cat}

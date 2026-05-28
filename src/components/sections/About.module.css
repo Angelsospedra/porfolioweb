@@ -93,10 +93,26 @@
   color: var(--text-primary);
 }
 
+.skillHintRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.trophyIcon {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  animation: blink 4s ease-in-out infinite;
+}
+
 .skillHint {
   font-size: 0.75rem;
   color: var(--text-muted);
-  margin-bottom: 0.5rem;
   user-select: none;
   text-align: right;
   animation: blink 4s ease-in-out infinite;
@@ -253,7 +269,7 @@
     gap: 2.5rem;
   }
 
-  .skillHint {
+  .skillHintRow {
     display: none;
   }
 
