@@ -160,6 +160,10 @@
   animation: blink 4s ease-in-out infinite;
 }
 
+.dragHintHidden {
+  visibility: hidden;
+}
+
 @keyframes blink {
   0%, 100% { color: var(--text-muted); }
   50% { color: var(--accent); }
@@ -182,6 +186,7 @@
 .unlockBtn:active {
   transform: scale(0.95);
 }
+
 
 
 .unlockBtnLocked {

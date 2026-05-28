@@ -330,6 +330,7 @@ export function About() {
               <p>{t('about.p1')}</p>
               <p><Trans i18nKey="about.p2" components={{ strong: <strong /> }} /></p>
               <p><Trans i18nKey="about.p3" components={{ strong: <strong /> }} /></p>
+              <p><Trans i18nKey="about.p4" components={{ strong: <strong /> }} /></p>
             </div>
           </motion.div>
 

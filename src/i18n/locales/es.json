@@ -21,6 +21,7 @@
     "p1": "Soy Frontend Developer de Valencia con experiencia profesional creando páginas web para marketplaces. Me apasiona construir interfaces rápidas, limpias y centradas en el usuario.",
     "p2": "Trabajo principalmente con <strong>React</strong> y <strong>Next.js</strong>, aunque también tengo experiencia con <strong>Angular</strong>. En el lado del estilo uso <strong>Tailwind CSS</strong> y <strong>Bootstrap</strong>, y <strong>Vite</strong> como herramienta de build en proyectos modernos.",
     "p3": "Soy titulado en <strong>Grado Superior de Desarrollo de Aplicaciones Web</strong> y cuento con un <strong>Máster en Arte 3D</strong> fruto de mi etapa en la <strong>industria del videojuego</strong>. Esa experiencia me ha dado una visión creativa y un ojo para el diseño y la experiencia de usuario que aplico directamente en cada interfaz que construyo.",
+    "p4": "También trabajo de la mano de la <strong>inteligencia artificial</strong>: preparo el contexto y la documentación técnica, y colaboro con modelos de IA para implementar soluciones con mayor velocidad y precisión.",
     "skills": {
       "frontend": "Frontend",
       "tools": "Herramientas"

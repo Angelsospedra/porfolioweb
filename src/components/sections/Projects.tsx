@@ -250,18 +250,16 @@ export function Projects() {
               {t('projects.title')} <span className="accent">{t('projects.title_accent')}</span>
             </h2>
             <div className={styles.titleActions}>
-              {!locked && (
-                <p className={styles.dragHint}>{t('projects.drag_hint')}</p>
-              )}
+              <p className={`${styles.dragHint} ${locked ? styles.dragHintHidden : ''}`}>
+                {t('projects.drag_hint')}
+              </p>
               <button
                 className={`${styles.unlockBtn} ${locked ? styles.unlockBtnLocked : styles.unlockBtnUnlocked}`}
                 onClick={locked ? handleUnlock : handleLock}
                 aria-label={locked ? t('projects.unlock') : t('projects.lock')}
               >
-                {locked
-                  ? <><Lock size={14} /><span>{t('projects.unlock')}</span></>
-                  : <><Unlock size={14} /><span>{t('projects.lock')}</span></>
-                }
+                {locked ? <Lock size={14} /> : <Unlock size={14} />}
+                <span>{locked ? t('projects.unlock') : t('projects.lock')}</span>
               </button>
             </div>
           </div>
