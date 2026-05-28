@@ -26,8 +26,8 @@ export function Header() {
     // Fire only when the state flips false → true (last achievement unlocked this session)
     if (allUnlocked && !prevUnlockedRef.current) {
       setGlowing(true)
-      const t = setTimeout(() => setGlowing(false), 2200)
-      return () => clearTimeout(t)
+      const timerId = setTimeout(() => setGlowing(false), 2200)
+      return () => clearTimeout(timerId)
     }
     prevUnlockedRef.current = allUnlocked
   }, [allUnlocked])

@@ -231,15 +231,9 @@ export function Projects() {
     }
   }
 
-  const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event
-    if (over && active.id !== over.id) {
-      setItems(prev => {
-        const oldIndex = prev.findIndex(p => p.id === active.id)
-        const newIndex = prev.findIndex(p => p.id === over.id)
-        return arrayMove(prev, oldIndex, newIndex)
-      })
-    }
+  const handleDragEnd = (_event: DragEndEvent) => {
+    // onDragOver already keeps items in sync during the drag;
+    // nothing to do here except let dnd-kit clean up its internal state.
   }
 
   return (

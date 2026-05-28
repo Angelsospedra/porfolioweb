@@ -21,7 +21,8 @@
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto;
   align-items: end;
-  gap: 4rem;
+  column-gap: 4rem;
+  row-gap: 1.5rem;
 }
 
 .imageWrapper {
