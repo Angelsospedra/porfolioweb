@@ -6,8 +6,9 @@ import {
   PointerSensor,
   useSensor,
   useSensors,
+  DragOverlay,
 } from '@dnd-kit/core'
-import type { DragEndEvent, DragOverEvent } from '@dnd-kit/core'
+import type { DragEndEvent, DragOverEvent, DragStartEvent } from '@dnd-kit/core'
 import {
   SortableContext,
   rectSortingStrategy,
@@ -51,7 +52,7 @@ function ProjectCard({
   const videoSrc   = videoMedia?.src
 
   const handleMouseEnter = useCallback(() => {
-    if (!videoSrc) return
+    if (!videoSrc || !locked) return
     if (videoRef.current) videoRef.current.load()
     timerRef.current = window.setTimeout(() => {
       setPreviewing(true)
@@ -67,6 +68,17 @@ function ProjectCard({
     setProgress(0)
     if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0 }
   }, [])
+
+  // Detener el vídeo si la tarjeta se desbloquea mientras está reproduciéndose
+  useEffect(() => {
+    if (!locked && previewing) {
+      if (timerRef.current) { clearTimeout(timerRef.current); timerRef.current = null }
+      setPreviewing(false)
+      setShowControls(false)
+      setProgress(0)
+      if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0 }
+    }
+  }, [locked, previewing])
 
   const handleTimeUpdate = useCallback(() => {
     const v = videoRef.current
@@ -224,20 +236,20 @@ function SortableCard({
     id: project.id,
     disabled: locked,
     transition: {
-      duration: 500,
-      easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      duration: 350,
+      easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
     },
   })
 
   const style: React.CSSProperties = {
-    transform: transform ? `translate(${transform.x}px, ${transform.y}px) scale(${isDragging ? 1.05 : 1})` : undefined,
-    transition: isDragging ? 'transform 0s' : transition,
-    cursor: locked ? 'pointer' : isDragging ? 'grabbing' : 'grab',
-    zIndex: isDragging ? 50 : 'auto',
-    boxShadow: isDragging ? '0 20px 48px rgba(0,0,0,0.5)' : undefined,
-    borderRadius: isDragging ? 12 : undefined,
+    transform: transform ? `translate(${transform.x}px, ${transform.y}px)` : undefined,
+    transition,
+    cursor: locked ? 'pointer' : 'grab',
     position: 'relative',
     height: '100%',
+    willChange: transform ? 'transform' : 'auto',
+    backfaceVisibility: 'hidden',
+    opacity: isDragging ? 0 : 1,
   }
 
   return (
@@ -267,10 +279,17 @@ export function Projects() {
   const [items, setItems] = useState(initialProjects)
   const [locked, setLocked] = useState(true)
   const [viewerProject, setViewerProject] = useState<Project | null>(null)
+  const [activeId, setActiveId] = useState<string | null>(null)
+  const activeProject = activeId ? items.find(p => p.id === activeId) ?? null : null
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 8 } })
   )
+
+  useEffect(() => {
+    document.body.style.cursor = activeId ? 'grabbing' : ''
+    return () => { document.body.style.cursor = '' }
+  }, [activeId])
 
   const handleUnlock = useCallback(() => setLocked(false), [])
   const handleLock   = useCallback(() => setLocked(true),  [])
@@ -287,9 +306,12 @@ export function Projects() {
     }
   }
 
+  const handleDragStart = (event: DragStartEvent) => {
+    setActiveId(event.active.id as string)
+  }
+
   const handleDragEnd = (_event: DragEndEvent) => {
-    // onDragOver already keeps items in sync during the drag;
-    // nothing to do here except let dnd-kit clean up its internal state.
+    setActiveId(null)
   }
 
   return (
@@ -330,6 +352,7 @@ export function Projects() {
           <DndContext
             sensors={sensors}
             collisionDetection={closestCenter}
+            onDragStart={handleDragStart}
             onDragOver={handleDragOver}
             onDragEnd={handleDragEnd}
           >
@@ -346,6 +369,18 @@ export function Projects() {
                 ))}
               </div>
             </SortableContext>
+            <DragOverlay dropAnimation={null}>
+              {activeProject ? (
+                <div style={{ height: '100%', transform: 'scale(1.05)', boxShadow: '0 20px 48px rgba(0,0,0,0.5)', borderRadius: 12 }}>
+                  <ProjectCard
+                    project={activeProject}
+                    locked={false}
+                    trembleDelay={0}
+                    onCardClick={() => {}}
+                  />
+                </div>
+              ) : null}
+            </DragOverlay>
           </DndContext>
         </motion.div>
       </div>
