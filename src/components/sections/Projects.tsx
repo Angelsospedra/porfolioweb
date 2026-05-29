@@ -8,7 +8,7 @@ import {
   useSensors,
   DragOverlay,
 } from '@dnd-kit/core'
-import type { DragEndEvent, DragOverEvent, DragStartEvent, UniqueIdentifier } from '@dnd-kit/core'
+import type { DragEndEvent, DragOverEvent, DragStartEvent } from '@dnd-kit/core'
 import {
   SortableContext,
   rectSortingStrategy,
@@ -279,8 +279,8 @@ export function Projects() {
   const [items, setItems] = useState(initialProjects)
   const [locked, setLocked] = useState(true)
   const [viewerProject, setViewerProject] = useState<Project | null>(null)
-  const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null)
-  const activeProject = activeId ? items.find(p => p.id === String(activeId)) ?? null : null
+  const [activeId, setActiveId] = useState<number | null>(null)
+  const activeProject = activeId != null ? items.find(p => p.id === activeId) ?? null : null
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 8 } })
@@ -307,7 +307,7 @@ export function Projects() {
   }
 
   const handleDragStart = (event: DragStartEvent) => {
-    setActiveId(event.active.id)
+    setActiveId(event.active.id as number)
   }
 
   const handleDragEnd = (_event: DragEndEvent) => {
