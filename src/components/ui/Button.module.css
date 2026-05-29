@@ -17,6 +17,10 @@
   background-color: var(--accent);
   color: #0d0d0d;
 }
+
+:root[data-theme='light'] .primary {
+  color: #ffffff;
+}
 .primary:hover {
   filter: brightness(1.1);
   transform: translateY(-1px);

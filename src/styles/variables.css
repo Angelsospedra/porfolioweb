@@ -98,10 +98,10 @@
   --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(240, 180, 41, 0.18) 0%, transparent 60%);
 }
 :root[data-accent='yellow'][data-theme='light'] {
-  --accent: #d97706;
-  --accent-dim: rgba(217, 119, 6, 0.08);
-  --accent-glow: rgba(217, 119, 6, 0.25);
-  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(217, 119, 6, 0.1) 0%, transparent 60%);
+  --accent: #e8990a;
+  --accent-dim: rgba(232, 153, 10, 0.08);
+  --accent-glow: rgba(232, 153, 10, 0.25);
+  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(232, 153, 10, 0.1) 0%, transparent 60%);
 }
 
 /* Purple */
