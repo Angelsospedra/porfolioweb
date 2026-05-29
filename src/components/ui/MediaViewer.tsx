@@ -11,7 +11,7 @@ export function NoFullscreenVideo({ src }: { src: string }) {
   const rafRef      = useRef<number | null>(null)
   const idleRef     = useRef<number | null>(null)
   const progressRef = useRef<HTMLInputElement>(null)
-  const [playing, setPlaying]     = useState(true)
+  const [playing, setPlaying]     = useState(false)
   const [muted, setMuted]         = useState(true)
   const [duration, setDuration]   = useState(0)
   const [showCtrl, setShowCtrl]   = useState(true)
@@ -26,6 +26,26 @@ export function NoFullscreenVideo({ src }: { src: string }) {
     rafRef.current = requestAnimationFrame(tick)
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }
   }, [tick])
+
+  // Forzar muted via propiedad DOM (el atributo JSX no funciona en Chrome/Edge)
+  // y sincronizar el estado playing con los eventos reales del video
+  useEffect(() => {
+    const v = ref.current
+    if (!v) return
+    v.muted = true
+
+    const onPlay  = () => setPlaying(true)
+    const onPause = () => setPlaying(false)
+    v.addEventListener('play', onPlay)
+    v.addEventListener('pause', onPause)
+
+    v.play().catch(() => setPlaying(false))
+
+    return () => {
+      v.removeEventListener('play', onPlay)
+      v.removeEventListener('pause', onPause)
+    }
+  }, [])
 
   // Auto-ocultar controles con listeners nativos
   useEffect(() => {
@@ -56,14 +76,13 @@ export function NoFullscreenVideo({ src }: { src: string }) {
 
   const toggle = useCallback(() => {
     const v = ref.current; if (!v) return
-    playing ? v.pause() : v.play()
-    setPlaying(p => !p)
+    playing ? v.pause() : v.play().catch(() => {})
   }, [playing])
 
   const toggleMute = useCallback(() => {
     const v = ref.current; if (!v) return
     v.muted = !v.muted
-    setMuted(m => !m)
+    setMuted(v.muted)
   }, [])
 
   const seek = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
