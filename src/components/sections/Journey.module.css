@@ -6,6 +6,42 @@
   margin-bottom: 0;
 }
 
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pianoHintRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.pianoIcon {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  animation: blink 4s ease-in-out infinite;
+}
+
+.pianoHint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  user-select: none;
+  text-align: right;
+  animation: blink 4s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { color: var(--text-muted); }
+  50% { color: var(--accent); }
+}
+
 .group {
   margin-top: 1.5rem;
 }
@@ -73,6 +109,7 @@
   height: 100%;
   position: relative;
   transition: border-color 0.2s, transform 0.2s;
+  user-select: none;
 }
 
 .schoolLogo {
@@ -128,6 +165,36 @@
   line-height: 1.5;
 }
 
+.dotHidden {
+  opacity: 0;
+}
+
+.noteLabelAnchor {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.noteLabel {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--accent);
+  user-select: none;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-shadow: 0 0 8px color-mix(in srgb, var(--accent) 70%, transparent);
+  background: var(--bg-primary);
+  padding: 0 0.3rem;
+  border-radius: 4px;
+}
+
 /* mobile: revert to vertical */
 @media (max-width: 900px) {
   .timeline {
@@ -159,6 +226,22 @@
     top: 0.3rem;
     left: -1.9375rem;
     transform: none;
+  }
+
+  .titleRow {
+    display: block;
+  }
+
+  .pianoHintRow {
+    display: none;
+  }
+
+  .noteLabelAnchor {
+    display: none;
+  }
+
+  .card {
+    cursor: default !important;
   }
 
   .item:hover .card {

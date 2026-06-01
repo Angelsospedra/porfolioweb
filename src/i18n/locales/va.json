@@ -101,6 +101,7 @@
     "title_accent": "professional",
     "education_label": "Formació",
     "work_label": "Experiència",
+    "piano_hint": "Polsa les targetes i crea la teua pròpia melodia",
     "education": [
       {
         "year": "2016 – 2018",
@@ -205,6 +206,11 @@
       "title": "Bon ull",
       "description": "T'has descarregat el meu CV.",
       "hint": "Fes click al botó de descàrrega del CV, el trobaràs a la secció Hero o a Contacte."
+    },
+    "melody": {
+      "title": "Música Mestre!",
+      "description": "Has polsat totes les tecles de la trajectòria i has compost una melodia.",
+      "hint": "Polsa totes les targetes de la secció Trajectòria professional."
     }
   }
 }

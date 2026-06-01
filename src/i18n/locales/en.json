@@ -84,6 +84,7 @@
     "title_accent": "journey",
     "education_label": "Education",
     "work_label": "Experience",
+    "piano_hint": "Click the cards and create your own melody",
     "education": [
       {
         "year": "2016 – 2018",
@@ -188,6 +189,11 @@
       "title": "Good eye",
       "description": "You downloaded my CV.",
       "hint": "Click the CV download button, available in the Hero or Contact section."
+    },
+    "melody": {
+      "title": "Music Maestro!",
+      "description": "You played every key in the journey section and composed a melody.",
+      "hint": "Click every card in the Professional Journey section."
     }
   }
 }

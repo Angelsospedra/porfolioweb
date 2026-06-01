@@ -84,6 +84,7 @@
     "title_accent": "profesional",
     "education_label": "Formación",
     "work_label": "Experiencia",
+    "piano_hint": "Pulsa las tarjetas y crea tu propia melodía",
     "education": [
       {
         "year": "2016 – 2018",
@@ -188,6 +189,11 @@
       "title": "Buen ojo",
       "description": "Te descargaste mi CV.",
       "hint": "Haz click en el botón de descarga del CV, está en la sección Hero o en Contacto."
+    },
+    "melody": {
+      "title": "¡Música Maestro!",
+      "description": "Pulsaste todas las teclas de la trayectoria y compusiste una melodía.",
+      "hint": "Pulsa todas las tarjetas de la sección Trayectoria profesional."
     }
   }
 }

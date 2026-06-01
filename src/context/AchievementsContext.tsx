@@ -1,9 +1,9 @@
 import { createContext, useContext, useState, useCallback, useRef, type ReactElement } from 'react'
-import { TbMail, TbFileText, TbTrophy } from 'react-icons/tb'
+import { TbMail, TbFileText, TbTrophy, TbPiano } from 'react-icons/tb'
 import { FaLock, FaCheck, FaExplosion, FaStar } from 'react-icons/fa6'
 import { LuLayoutGrid } from 'react-icons/lu'
 
-export type AchievementId = 'letters' | 'reorder' | 'mail' | 'cv'
+export type AchievementId = 'letters' | 'reorder' | 'mail' | 'cv' | 'melody'
 
 export interface Achievement {
   id:   AchievementId
@@ -15,6 +15,7 @@ export const ACHIEVEMENTS: Achievement[] = [
   { id: 'reorder', icon: <LuLayoutGrid /> },
   { id: 'mail',    icon: <TbMail /> },
   { id: 'cv',      icon: <TbFileText /> },
+  { id: 'melody',  icon: <TbPiano /> },
 ]
 
 export { TbTrophy, FaStar, FaLock, FaCheck }
