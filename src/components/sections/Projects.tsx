@@ -33,11 +33,13 @@ function ProjectCard({
   locked,
   trembleDelay,
   onCardClick,
+  onCardHover,
 }: {
   project: Project
   locked: boolean
   trembleDelay: number
   onCardClick: () => void
+  onCardHover?: () => void
 }) {
   const { t } = useTranslation()
   const cardRef      = useRef<HTMLElement>(null)
@@ -52,13 +54,20 @@ function ProjectCard({
   const videoSrc   = videoMedia?.src
 
   const handleMouseEnter = useCallback(() => {
-    if (!videoSrc || !locked) return
+    if (!locked) return
+    if (project.featured && onCardHover) {
+      timerRef.current = window.setTimeout(() => {
+        onCardHover()
+      }, 600)
+      return
+    }
+    if (!videoSrc) return
     if (videoRef.current) videoRef.current.load()
     timerRef.current = window.setTimeout(() => {
       setPreviewing(true)
       videoRef.current?.play().catch(() => {})
     }, 500)
-  }, [videoSrc])
+  }, [videoSrc, project.featured, onCardHover])
 
   const handleMouseLeave = useCallback(() => {
     if (timerRef.current)     { clearTimeout(timerRef.current);   timerRef.current = null }
@@ -226,11 +235,13 @@ function SortableCard({
   locked,
   trembleDelay,
   onCardClick,
+  onCardHover,
 }: {
   project: Project
   locked: boolean
   trembleDelay: number
   onCardClick: () => void
+  onCardHover?: () => void
 }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: project.id,
@@ -264,6 +275,7 @@ function SortableCard({
         locked={locked}
         trembleDelay={trembleDelay}
         onCardClick={onCardClick}
+        onCardHover={onCardHover}
       />
     </div>
   )
@@ -365,6 +377,7 @@ export function Projects() {
                     locked={locked}
                     trembleDelay={(index * 73) % 200}
                     onCardClick={() => setViewerProject(project)}
+                    onCardHover={project.featured ? () => setViewerProject(project) : undefined}
                   />
                 ))}
               </div>
