@@ -56,6 +56,9 @@ html[data-theme="light"] { --bg-primary: #fafafa; ... }
 /* Cambio de acento */
 html[data-accent="green"]  { --accent: #6ee7b7; ... }
 html[data-accent="red"]    { --accent: #f87171; ... }
+html[data-accent="blue"]   { --accent: #60a5fa; ... }
+html[data-accent="purple"] { --accent: #a78bfa; ... }
+html[data-accent="yellow"] { --accent: #fbbd08; ... } /* Legendary — requiere 5 logros */
 ```
 
 La transición entre colores es suave gracias a `transition: 0.4s ease` en las propiedades de acento.
