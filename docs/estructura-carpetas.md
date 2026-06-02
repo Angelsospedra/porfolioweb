@@ -13,6 +13,9 @@ porfolioweb/
 │   │   ├── Terror Environment/#   Escena terror (3 imágenes)
 │   │   └── Vinilocos/
 │   ├── logos/                 # Logos empresas (7 PNGs)
+│   ├── piano/                 # Samples MP3 notas musicales (C4–C5)
+│   │   ├── C4.mp3  D4.mp3  E4.mp3  F4.mp3
+│   │   └── G4.mp3  A4.mp3  B4.mp3  C5.mp3
 │   ├── models/                # Modelos 3D
 │   │   ├── canon.glb
 │   │   └── lamp.glb

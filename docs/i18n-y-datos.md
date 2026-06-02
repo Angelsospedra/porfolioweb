@@ -35,11 +35,29 @@ El switcher aplica un fade-out sobre el `<main>` antes de cambiar el idioma y un
 {
   "nav": { "about": "Sobre mí", "projects": "Proyectos", ... },
   "hero": { "greeting": "Hola, soy", "role": "...", "bio": "...", ... },
-  "about": { ... },
-  "projects": { ... },
-  "journey": { ... },
+  "about": {
+    "skill_hint": "Coge un icono y pásalo por el texto",
+    ...
+  },
+  "projects": {
+    "drag_hint": "Coge los bloques y ordénalos a tu gusto",
+    ...
+  },
+  "journey": {
+    "piano_hint": "Pulsa las tarjetas y crea tu propia melodía",
+    "education_label": "...", "work_label": "...",
+    "education": [...], "work": [...]
+  },
   "art3d": { ... },
-  "contact": { ... }
+  "contact": { ... },
+  "achievements": {
+    "panel_title": "...", "progress": "{{count}} de {{total}} completados",
+    "letters":  { "title": "...", "description": "...", "hint": "..." },
+    "reorder":  { "title": "...", "description": "...", "hint": "..." },
+    "mail":     { "title": "...", "description": "...", "hint": "..." },
+    "cv":       { "title": "...", "description": "...", "hint": "..." },
+    "melody":   { "title": "...", "description": "...", "hint": "..." }
+  }
 }
 ```
 

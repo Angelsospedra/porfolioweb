@@ -42,7 +42,7 @@ Tres contextos React, todos persistidos en `localStorage`:
 | `AccentContext` | `'green' \| 'red' \| 'blue' \| 'purple' \| 'yellow'` | `accent` |
 | `AchievementsContext` | `Set<AchievementId>` | `portfolio_achievements` |
 
-El color `yellow` es "Legendary" — solo se desbloquea al completar los 4 logros.
+El color `yellow` es "Legendary" — solo se desbloquea al completar los 5 logros.
 
 ## Estilos y temas
 
