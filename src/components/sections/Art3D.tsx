@@ -9,6 +9,26 @@ import { MediaGallery, MediaViewer } from '../ui/MediaViewer'
 import art3dStyles from './Art3D.module.css'
 import viewerStyles from '../ui/MediaViewer.module.css'
 
+function ThumbImage({ src, alt }: { src: string; alt: string }) {
+  const [loaded, setLoaded] = useState(false)
+  return (
+    <>
+      {!loaded && (
+        <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div className={viewerStyles.imgSpinner} />
+        </div>
+      )}
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.3s ease', width: '100%', height: '100%', objectFit: 'cover' }}
+        onLoad={() => setLoaded(true)}
+      />
+    </>
+  )
+}
+
 function ModelLoader({ url }: { url: string }) {
   const { scene } = useGLTF(url)
   return (
@@ -154,7 +174,7 @@ export function Art3D() {
                 onClick={() => setActive(item)}
               >
                 <div className={art3dStyles.thumb}>
-                  <img src={item.thumb} alt={item.title} loading="lazy" />
+                  <ThumbImage src={item.thumb} alt={item.title} />
                   <div className={art3dStyles.thumbOverlay}>
                     <span className={art3dStyles.viewIcon}>⬡</span>
                     <span className={art3dStyles.viewLabel}>{item.model ? 'Ver modelo 3D' : 'Ver galería'}</span>

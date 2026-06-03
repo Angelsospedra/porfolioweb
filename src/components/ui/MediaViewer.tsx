@@ -15,6 +15,7 @@ export function NoFullscreenVideo({ src }: { src: string }) {
   const [muted, setMuted]         = useState(true)
   const [duration, setDuration]   = useState(0)
   const [showCtrl, setShowCtrl]   = useState(true)
+  const [loaded, setLoaded]       = useState(false)
 
   const tick = useCallback(() => {
     const v = ref.current; const bar = progressRef.current
@@ -92,6 +93,11 @@ export function NoFullscreenVideo({ src }: { src: string }) {
 
   return (
     <div className={styles.videoWrap} ref={wrapRef}>
+      {!loaded && (
+        <div className={styles.videoSpinner}>
+          <div className={styles.imgSpinner} />
+        </div>
+      )}
       <video
         ref={ref}
         className={styles.galleryImg}
@@ -101,7 +107,9 @@ export function NoFullscreenVideo({ src }: { src: string }) {
         playsInline
         muted
         disablePictureInPicture
+        style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.3s ease' }}
         onLoadedMetadata={() => setDuration(ref.current?.duration ?? 0)}
+        onCanPlay={() => setLoaded(true)}
         onClick={toggle}
       />
       <div className={`${styles.videoControls} ${showCtrl ? styles.videoControlsVisible : ''}`}>
