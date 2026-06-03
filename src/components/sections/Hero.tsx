@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
+import { useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { SiArtstation } from 'react-icons/si'
 import { IconGithub, IconLinkedin } from '../ui/icons/BrandIcons'
@@ -15,22 +16,55 @@ const fadeUp = {
   }),
 }
 
+const TILT_MAX = 3
+const spring = { stiffness: 200, damping: 20, mass: 0.5 }
+
 export function Hero() {
   const { t } = useTranslation()
   const { unlock } = useAchievements()
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  const rawX = useMotionValue(0)
+  const rawY = useMotionValue(0)
+  const rotateX = useSpring(rawX, spring)
+  const rotateY = useSpring(rawY, spring)
+
+  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    const rect = cardRef.current?.getBoundingClientRect()
+    if (!rect) return
+    const cx = rect.left + rect.width / 2
+    const cy = rect.top + rect.height / 2
+    const dx = (e.clientX - cx) / (rect.width / 2)
+    const dy = (e.clientY - cy) / (rect.height / 2)
+    rawX.set(dy * TILT_MAX)
+    rawY.set(-dx * TILT_MAX)
+  }
+
+  function handleMouseLeave() {
+    rawX.set(0)
+    rawY.set(0)
+  }
 
   return (
     <section className={styles.hero}>
       <div className={styles.gradient} aria-hidden />
       <div className={`container ${styles.layout}`}>
-        <motion.div
+        <div
+          ref={cardRef}
           className={styles.imageWrapper}
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
         >
-          <img src={`${import.meta.env.BASE_URL}angel.png`} alt="Ángel Sospedra" className={styles.photo} />
-        </motion.div>
+          <motion.img
+            src={`${import.meta.env.BASE_URL}angel.png`}
+            alt="Ángel Sospedra"
+            className={styles.photo}
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            style={{ rotateX, rotateY }}
+          />
+        </div>
 
         {/* Saludo + nombre — junto a la foto en móvil */}
         <div className={styles.nameContent}>
@@ -104,7 +138,7 @@ export function Hero() {
             </Button>
             <div className={styles.socialLinks}>
               <a href="https://github.com/Angelsospedra" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className={styles.socialIcon}>
-                <IconGithub size={20} />
+                <IconGithub size={23} />
               </a>
               <a href="https://www.linkedin.com/in/angel-sospedra/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIcon}>
                 <IconLinkedin size={20} />

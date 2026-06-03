@@ -32,6 +32,7 @@
   align-items: flex-end;
   justify-content: center;
   flex-shrink: 0;
+  perspective: 800px;
 }
 
 .photo {
