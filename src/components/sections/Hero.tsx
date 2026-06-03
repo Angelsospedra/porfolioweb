@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { SiArtstation } from 'react-icons/si'
 import { IconGithub, IconLinkedin } from '../ui/icons/BrandIcons'
@@ -18,6 +18,50 @@ const fadeUp = {
 
 const TILT_MAX = 3
 const spring = { stiffness: 200, damping: 20, mass: 0.5 }
+
+function SplitText({ text, className, waveOffset = 0 }: { text: string; className?: string; waveOffset?: number }) {
+  const [hovered, setHovered] = useState<number | null>(null)
+  const [waving, setWaving] = useState(false)
+
+  useEffect(() => {
+    const handler = () => {
+      const duration = (waveOffset + text.length - 1) * 70 + 800
+      setTimeout(() => {
+        setWaving(true)
+        setTimeout(() => setWaving(false), duration)
+      }, 1000)
+    }
+    window.addEventListener('welcome-dismissed', handler)
+    return () => window.removeEventListener('welcome-dismissed', handler)
+  }, [text.length, waveOffset])
+
+  return (
+    <span className={className}>
+      {text.split('').map((char, i) => {
+        const isHovered = hovered === i
+        const x = hovered === null ? 0 : i < hovered ? -3 : i > hovered ? 3 : 0
+        return (
+          <motion.span
+            key={i}
+            style={{ display: 'inline-block' }}
+            animate={{ scale: isHovered ? 1.07 : 1, x, y: waving ? [0, -8, 0] : 0 }}
+            transition={{
+              scale: { type: 'tween', duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+              x: { type: 'tween', duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+              y: waving
+                ? { duration: 0.7, delay: (waveOffset + i) * 0.07, ease: [0.22, 1, 0.36, 1] }
+                : { duration: 0 },
+            }}
+            onHoverStart={() => setHovered(i)}
+            onHoverEnd={() => setHovered(null)}
+          >
+            {char}
+          </motion.span>
+        )
+      })}
+    </span>
+  )
+}
 
 export function Hero() {
   const { t } = useTranslation()
@@ -85,8 +129,12 @@ export function Hero() {
             custom={0.1}
             variants={fadeUp}
           >
-            <span className={styles.nameLine}>Ángel</span>
-            <span className={styles.nameLine}>Sospedra Martínez</span>
+            <SplitText text="Ángel" className={styles.nameLine} waveOffset={0} />
+            <span className={styles.nameLine}>
+              <SplitText text="Sospedra" waveOffset={5} />
+              {' '}
+              <SplitText text="Martínez" waveOffset={13} />
+            </span>
           </motion.h1>
         </div>
 

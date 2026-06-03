@@ -41,6 +41,16 @@
   border-radius: 16px;
   object-fit: cover;
   object-position: top 10%;
+  box-shadow: 0 8px 32px -4px var(--photo-shadow);
+  transition: box-shadow 0.3s ease;
+}
+
+:global(:root[data-theme='dark']) .photo {
+  --photo-shadow: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+:global(:root[data-theme='light']) .photo {
+  --photo-shadow: rgba(0, 0, 0, 0.35);
 }
 
 .nameContent {

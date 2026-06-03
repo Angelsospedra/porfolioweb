@@ -24,6 +24,7 @@ export function WelcomeModal() {
   const handleClose = () => {
     try { localStorage.setItem(STORAGE_KEY, '1') } catch { /* noop */ }
     setVisible(false)
+    window.dispatchEvent(new CustomEvent('welcome-dismissed'))
   }
 
   return createPortal(
