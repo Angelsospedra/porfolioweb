@@ -50,8 +50,9 @@ function ProjectCard({
   const [showControls, setShowControls] = useState(false)
   const [progress, setProgress]         = useState(0)
 
-  const videoMedia = project.media?.find(m => m.type === 'video')
-  const videoSrc   = videoMedia?.src
+  const videoMedia    = project.media?.find(m => m.type === 'video')
+  const videoSrc      = videoMedia?.src
+  const previewingRef = useRef(false)
 
   const handleMouseEnter = useCallback(() => {
     if (!locked) return
@@ -64,6 +65,7 @@ function ProjectCard({
     if (!videoSrc) return
     if (videoRef.current) videoRef.current.load()
     timerRef.current = window.setTimeout(() => {
+      previewingRef.current = true
       setPreviewing(true)
       videoRef.current?.play().catch(() => {})
     }, 500)
@@ -72,6 +74,7 @@ function ProjectCard({
   const handleMouseLeave = useCallback(() => {
     if (timerRef.current)     { clearTimeout(timerRef.current);   timerRef.current = null }
     if (idleTimerRef.current) { clearTimeout(idleTimerRef.current); idleTimerRef.current = null }
+    previewingRef.current = false
     setPreviewing(false)
     setShowControls(false)
     setProgress(0)
@@ -107,6 +110,17 @@ function ProjectCard({
       idleTimerRef.current = window.setTimeout(() => setShowControls(false), 2000)
     }
 
+    const onScroll = () => {
+      if (timerRef.current)     { clearTimeout(timerRef.current);     timerRef.current = null }
+      if (idleTimerRef.current) { clearTimeout(idleTimerRef.current); idleTimerRef.current = null }
+      if (!previewingRef.current) return
+      previewingRef.current = false
+      setPreviewing(false)
+      setShowControls(false)
+      setProgress(0)
+      if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0 }
+    }
+
     const onLeave = () => {
       if (idleTimerRef.current) { clearTimeout(idleTimerRef.current); idleTimerRef.current = null }
       setShowControls(false)
@@ -114,9 +128,11 @@ function ProjectCard({
 
     card.addEventListener('mousemove', onMove)
     card.addEventListener('mouseleave', onLeave)
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
       card.removeEventListener('mousemove', onMove)
       card.removeEventListener('mouseleave', onLeave)
+      window.removeEventListener('scroll', onScroll)
     }
   }, [])
 
