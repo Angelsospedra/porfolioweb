@@ -31,6 +31,7 @@ jobs:
           VITE_EMAILJS_SERVICE: ${{ secrets.VITE_EMAILJS_SERVICE }}
           VITE_EMAILJS_TEMPLATE: ${{ secrets.VITE_EMAILJS_TEMPLATE }}
           VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
+          VITE_GEMINI_API_KEY: ${{ secrets.VITE_GEMINI_API_KEY }}
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4

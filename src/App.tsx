@@ -9,6 +9,7 @@ import { Contact } from './components/sections/Contact'
 import { AchievementsProvider } from './context/AchievementsContext'
 import { AchievementToast } from './components/ui/AchievementToast'
 import { WelcomeModal } from './components/ui/WelcomeModal'
+import { ChatBot } from './components/ui/ChatBot'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <Footer />
       <AchievementToast />
       <WelcomeModal />
+      <ChatBot />
     </AchievementsProvider>
   )
 }
