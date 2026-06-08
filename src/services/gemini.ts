@@ -1,5 +1,4 @@
-const GEMINI_URL =
-  'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent'
+const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions'
 
 const SYSTEM_PROMPT = `
 You are an AI assistant embedded in Ángel Sospedra Martínez's portfolio website.
@@ -65,26 +64,32 @@ export interface Message {
 }
 
 export async function sendToGemini(messages: Message[]): Promise<string> {
-  const apiKey = import.meta.env.VITE_GEMINI_API_KEY as string | undefined
-  if (!apiKey) throw new Error('VITE_GEMINI_API_KEY is not set')
+  const apiKey = import.meta.env.VITE_GROQ_API_KEY as string | undefined
+  if (!apiKey) throw new Error('VITE_GROQ_API_KEY is not set')
 
-  const res = await fetch(`${GEMINI_URL}?key=${apiKey}`, {
+  const res = await fetch(GROQ_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`,
+    },
     body: JSON.stringify({
-      system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-      contents: messages.map(m => ({
-        role: m.role,
-        parts: [{ text: m.text }],
-      })),
+      model: 'llama-3.3-70b-versatile',
+      messages: [
+        { role: 'system', content: SYSTEM_PROMPT },
+        ...messages.map(m => ({
+          role: m.role === 'model' ? 'assistant' : 'user',
+          content: m.text,
+        })),
+      ],
     }),
   })
 
   if (!res.ok) {
     const err = await res.text()
-    throw new Error(`Gemini error ${res.status}: ${err}`)
+    throw new Error(`Groq error ${res.status}: ${err}`)
   }
 
   const data = await res.json()
-  return data.candidates[0].content.parts[0].text as string
+  return data.choices[0].message.content as string
 }
