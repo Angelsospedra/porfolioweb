@@ -102,6 +102,7 @@
   flex-direction: column;
   gap: 0.625rem;
   scroll-behavior: smooth;
+  overscroll-behavior: contain;
 }
 
 .messages::-webkit-scrollbar {
