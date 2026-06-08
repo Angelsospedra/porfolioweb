@@ -9,7 +9,7 @@
   "hero": {
     "greeting": "Hola, soy",
     "role": "Frontend Developer",
-    "bio": "Desarrollo experiencias web ágiles, limpias y centradas en el usuario. Apasionado por las interfaces de calidad y los detalles que marcan la diferencia.",
+    "bio": "Construyo webs rápidas, limpias y con atención al detalle. He trabajado en proyectos reales como marketplaces multi-tenant y aplicaciones PWA, y domino Three.js para experiencias 3D en web.",
     "cta_projects": "Ver mi trabajo",
     "cta_contact": "Contáctame",
     "cta_cv": "Descargar CV"

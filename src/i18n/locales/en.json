@@ -9,7 +9,7 @@
   "hero": {
     "greeting": "Hi, I'm",
     "role": "Frontend Developer",
-    "bio": "I develop agile, clean and user-focused web experiences. Passionate about quality interfaces and the details that make the difference.",
+    "bio": "I build fast, clean websites with attention to detail. I've worked on real projects like multi-tenant marketplaces and PWA applications, and I'm proficient in Three.js for 3D web experiences.",
     "cta_projects": "View my work",
     "cta_contact": "Get in touch",
     "cta_cv": "Download CV"
