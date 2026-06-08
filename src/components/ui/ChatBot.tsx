@@ -108,9 +108,12 @@ export function ChatBot() {
               ) : null}
 
               {messages.map((msg, i) => (
-                <div
+                <motion.div
                   key={i}
                   className={`${styles.messageRow} ${msg.role === 'user' ? styles.rowUser : styles.rowBot}`}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                 >
                   {msg.role === 'model' && (
                     <div className={styles.bubbleAvatar}>
@@ -120,7 +123,7 @@ export function ChatBot() {
                   <div className={`${styles.bubble} ${msg.role === 'user' ? styles.bubbleUser : styles.bubbleBot}`}>
                     {msg.text}
                   </div>
-                </div>
+                </motion.div>
               ))}
 
               {isLoading && (
