@@ -65,7 +65,7 @@
     "2": {
       "title": "Fitmap",
       "description": "App móvil PWA de directorio deportivo para encontrar pistas e instalaciones.",
-      "features": ["Registro y gestión de usuarios", "Búsqueda y filtrado de espacios deportivos", "Reserva de pistas con pasarela de pago"]
+      "features": ["Registro y gestión de usuarios", "Búsqueda y filtrado de espacios deportivos", "Reserva de pistas"]
     },
     "3": {
       "title": "Vinilocos",

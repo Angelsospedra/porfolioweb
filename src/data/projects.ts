@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     id: 4,
     title: 'Proyecto Vivir PWA',
-    tags: ['React', 'PWA', 'Mobile Web App', 'Next.js'],
+    tags: ['React', 'PWA', 'Mobile Web App', 'Vite', 'Firebase'],
     featured: true,
     thumb: '/thumbs/proyectos/pv.png',
     media: [
@@ -24,7 +24,7 @@ export const projects: Project[] = [
   {
     id: 2,
     title: 'Fitmap',
-    tags: ['PWA', 'JavaScript', 'PHP', 'MySQL', 'Stripe'],
+    tags: ['PWA', 'JavaScript', 'PHP', 'MySQL'],
     featured: true,
     thumb: '/thumbs/proyectos/fitmap.png',
     media: [

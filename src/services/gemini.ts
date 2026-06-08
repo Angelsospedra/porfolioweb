@@ -28,12 +28,12 @@ Tools: Git, GitHub, GitLab, Fork, Figma, Azure, Photoshop, DaVinci Resolve, Slac
    Features: per-tenant user management, product/parts catalog, full checkout with order system, payment gateway integration
 
 2. Proyecto Vivir PWA — PWA for an NGO supporting women at risk of social exclusion
-   Stack: React, PWA, Next.js
+   Stack: React, Vite, PWA, Firebase
    Features: collaborative document management, volunteer & beneficiary coordination, centralised mobile communication
 
 3. Fitmap — Sports-directory PWA to find courts and sport facilities
-   Stack: PWA, JavaScript, PHP, MySQL, Stripe
-   Features: user registration & management, search/filter sports spaces, court booking with payment
+   Stack: PWA, JavaScript, PHP, MySQL
+   Features: user registration & management, search/filter sports spaces, court booking
 
 4. Vinilocos — Marketplace for buying/selling second-hand vinyl records
    Stack: HTML, CSS, JavaScript, PHP, MySQL

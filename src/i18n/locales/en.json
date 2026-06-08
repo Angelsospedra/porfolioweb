@@ -65,7 +65,7 @@
     "2": {
       "title": "Fitmap",
       "description": "PWA mobile app sports directory to find courts and facilities.",
-      "features": ["User registration and management", "Search and filtering of sports venues", "Court booking with payment gateway"]
+      "features": ["User registration and management", "Search and filtering of sports venues", "Court booking"]
     },
     "3": {
       "title": "Vinilocos",
