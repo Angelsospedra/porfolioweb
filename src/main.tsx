@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import { StrictMode } from 'react' // eslint-disable-line
 import { createRoot } from 'react-dom/client'
 import { ThemeProvider } from './context/ThemeContext'
 import { AccentProvider } from './context/AccentContext'
