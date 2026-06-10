@@ -17,8 +17,8 @@
 
 /* ── Panel ────────────────────────────────────────────────── */
 .panel {
-  width: min(360px, calc(100vw - 3.5rem));
-  height: min(480px, calc(100vh - 10rem));
+  width: min(420px, calc(100vw - 3.5rem));
+  height: min(560px, calc(100vh - 10rem));
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 18px;
@@ -64,6 +64,7 @@
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.2;
+  margin-bottom: 0.25rem;
 }
 
 .headerSub {
@@ -290,4 +291,28 @@
 .toggle:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
+}
+
+/* ── Mobile fullscreen ────────────────────────────────────── */
+@media (max-width: 480px) {
+  .root {
+    bottom: 0;
+    right: 0;
+    left: 0;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .panel {
+    width: 100vw;
+    height: 100dvh;
+    border-radius: 0;
+    border: none;
+  }
+
+  .toggle {
+    position: fixed;
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
 }

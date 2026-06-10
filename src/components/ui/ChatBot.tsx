@@ -42,15 +42,20 @@ export function ChatBot() {
     setInput('')
     setIsLoading(true)
 
+    const startTime = Date.now()
+    let reply: string
     try {
-      const reply = await sendToGemini(next)
-      setMessages(prev => [...prev, { role: 'model', text: reply }])
+      reply = await sendToGemini(next)
     } catch (err) {
       console.error('[ChatBot]', err)
-      setMessages(prev => [...prev, { role: 'model', text: t('chatbot.error') }])
-    } finally {
-      setIsLoading(false)
+      reply = t('chatbot.error')
     }
+
+    const remaining = Math.max(0, 2000 - (Date.now() - startTime))
+    setTimeout(() => {
+      setMessages(prev => [...prev, { role: 'model', text: reply! }])
+      setIsLoading(false)
+    }, remaining)
   }
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
