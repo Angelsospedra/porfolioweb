@@ -3,7 +3,7 @@ export interface Art3DItem {
   title: string
   description: string
   thumb: string
-  model: string
+  model?: string
   images?: string[]
   video?: string
   link: string
@@ -35,7 +35,6 @@ export const art3dItems: Art3DItem[] = [
     title: 'Realistic AK',
     description: 'Modelado en 3DMax. Texturizado en Substance Painter. Renderizado en Marmoset Toolbag',
     thumb: `${import.meta.env.BASE_URL}thumbs/3d/ak.png`,
-    model: ``,
     images: [
     `${import.meta.env.BASE_URL}images/AK/1.png`,
     `${import.meta.env.BASE_URL}images/AK/2.png`,
@@ -52,7 +51,6 @@ export const art3dItems: Art3DItem[] = [
     title: 'Terror Environment',
     description: 'Modelado en 3DMax. Texturizado en Substance Painter. Renderizado en Unreal Engine 5',
     thumb: `${import.meta.env.BASE_URL}thumbs/3d/terror.png`,
-    model: ``,
     video: `${import.meta.env.BASE_URL}videos/1.mp4`,
     images: [
     `${import.meta.env.BASE_URL}images/Terror Environment/1.png`,
@@ -67,7 +65,6 @@ export const art3dItems: Art3DItem[] = [
     title: 'World Of Warcraft Sword',
     description: 'Modelado en 3DMax. Texturizado en Substance Painter. Renderizado en Marmoset Toolbag',
     thumb: `${import.meta.env.BASE_URL}thumbs/3d/sword.png`,
-    model: ``,
     images: [
     `${import.meta.env.BASE_URL}images/Sword/1.png`,
     `${import.meta.env.BASE_URL}images/Sword/2.png`,

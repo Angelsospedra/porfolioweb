@@ -117,7 +117,7 @@ function Art3DViewer({ model, onClose }: { model: Art3DItem; onClose: () => void
               <directionalLight position={[15, 20, 15]} intensity={1} />
               <directionalLight position={[-12, 5, -8]} intensity={0.5} />
               <Suspense fallback={<Spinner />}>
-                <ModelLoader url={model.model} />
+                <ModelLoader url={model.model!} />
                 <Environment preset="studio" environmentIntensity={0.7} />
               </Suspense>
               <OrbitControls enablePan mouseButtons={{ LEFT: 0, MIDDLE: 2, RIGHT: 2 }} minDistance={1} maxDistance={10} />
