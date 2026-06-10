@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { SiArtstation } from 'react-icons/si'
 import { IconGithub, IconLinkedin } from '../ui/icons/BrandIcons'
+import { SOCIAL_LINKS } from '../../data/social'
 import { Button } from '../ui/Button'
 import { useAchievements } from '../../context/AchievementsContext'
 import styles from './Hero.module.css'
@@ -185,13 +186,13 @@ export function Hero() {
               ↓ {t('hero.cta_cv')}
             </Button>
             <div className={styles.socialLinks}>
-              <a href="https://github.com/Angelsospedra" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className={styles.socialIcon}>
+              <a href={SOCIAL_LINKS[0].href} target="_blank" rel="noopener noreferrer" aria-label={SOCIAL_LINKS[0].label} className={styles.socialIcon}>
                 <IconGithub size={23} />
               </a>
-              <a href="https://www.linkedin.com/in/angel-sospedra/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIcon}>
+              <a href={SOCIAL_LINKS[1].href} target="_blank" rel="noopener noreferrer" aria-label={SOCIAL_LINKS[1].label} className={styles.socialIcon}>
                 <IconLinkedin size={20} />
               </a>
-              <a href="https://www.artstation.com/angelsospedra" target="_blank" rel="noopener noreferrer" aria-label="ArtStation" className={styles.socialIcon}>
+              <a href={SOCIAL_LINKS[2].href} target="_blank" rel="noopener noreferrer" aria-label={SOCIAL_LINKS[2].label} className={styles.socialIcon}>
                 <SiArtstation size={20} />
               </a>
             </div>
