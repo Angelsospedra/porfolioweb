@@ -1,8 +1,10 @@
 export interface ProjectMedia {
   type: 'image' | 'video'
   src: string
-  poster?: string        // sólo para vídeos
-  objectPosition?: string // encuadre del preview en la tarjeta, ej: 'center 40%'
+  poster?: string
+  objectPosition?: string
+  width?: number
+  height?: number
 }
 
 export interface Project {
@@ -13,6 +15,7 @@ export interface Project {
   liveUrl?: string
   featured?: boolean
   thumb?: string
+  logo?: string
   media?: ProjectMedia[] // si vacío, se usa thumb como imagen
 }
 

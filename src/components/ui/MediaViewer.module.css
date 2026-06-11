@@ -74,7 +74,7 @@
 .contentWrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 10;
   background: var(--surface);
   overflow: hidden;
 }
@@ -257,6 +257,6 @@
 }
 
 @media (max-width: 768px) {
-  .contentWrap  { aspect-ratio: 16 / 9; }
+  .contentWrap  { aspect-ratio: 16 / 10; }
   .modal        { border-radius: 12px; }
 }

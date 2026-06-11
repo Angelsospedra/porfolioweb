@@ -1,345 +1,272 @@
-import { useState, useCallback, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
+import { ChevronUp, ChevronDown, Lock, Unlock } from 'lucide-react'
 import {
   DndContext,
   closestCenter,
   PointerSensor,
+  KeyboardSensor,
   useSensor,
   useSensors,
-  DragOverlay,
+  type DragEndEvent,
 } from '@dnd-kit/core'
-import type { DragEndEvent, DragOverEvent, DragStartEvent } from '@dnd-kit/core'
 import {
   SortableContext,
-  rectSortingStrategy,
+  sortableKeyboardCoordinates,
   useSortable,
+  verticalListSortingStrategy,
   arrayMove,
 } from '@dnd-kit/sortable'
-import { useTranslation } from 'react-i18next'
-import { ExternalLink, Lock, Unlock } from 'lucide-react'
+import { CSS } from '@dnd-kit/utilities'
 import { TbTrophy } from 'react-icons/tb'
-import { IconGithub } from '../ui/icons/BrandIcons'
 import { projects as initialProjects } from '../../data/projects'
-import type { Project } from '../../types'
+import type { Project, ProjectMedia } from '../../types'
 import { useInView } from '../../hooks/useInView'
 import { useAchievements } from '../../context/AchievementsContext'
 import { MediaViewer } from '../ui/MediaViewer'
 import styles from './Projects.module.css'
 
-// ── Tarjeta ─────────────────────────────────────────────────────────────────
+// ── Carousel slide ───────────────────────────────────────────────────────────
 
-function ProjectCard({
-  project,
-  locked,
-  trembleDelay,
-  onCardClick,
-  onCardHover,
-}: {
-  project: Project
-  locked: boolean
-  trembleDelay: number
-  onCardClick: () => void
-  onCardHover?: () => void
-}) {
-  const { t } = useTranslation()
-  const cardRef      = useRef<HTMLElement>(null)
-  const videoRef     = useRef<HTMLVideoElement>(null)
-  const timerRef     = useRef<number | null>(null)
-  const idleTimerRef = useRef<number | null>(null)
-  const [previewing, setPreviewing]     = useState(false)
-  const [showControls, setShowControls] = useState(false)
-  const [progress, setProgress]         = useState(0)
+function CarouselSlide({ media, onLoad }: { media: ProjectMedia; onLoad: () => void }) {
+  const base = import.meta.env.BASE_URL
+  const [loaded, setLoaded] = useState(false)
 
-  const videoMedia    = project.media?.find(m => m.type === 'video')
-  const videoSrc      = videoMedia?.src
-  const previewingRef = useRef(false)
+  const handleLoad = () => { setLoaded(true); onLoad() }
 
-  const handleMouseEnter = useCallback(() => {
-    if (!locked) return
-    if (project.featured && onCardHover) {
-      timerRef.current = window.setTimeout(() => {
-        onCardHover()
-      }, 600)
-      return
-    }
-    if (!videoSrc) return
-    if (videoRef.current) videoRef.current.load()
-    timerRef.current = window.setTimeout(() => {
-      previewingRef.current = true
-      setPreviewing(true)
-      videoRef.current?.play().catch(() => {})
-    }, 500)
-  }, [videoSrc, project.featured, onCardHover])
-
-  const handleMouseLeave = useCallback(() => {
-    if (timerRef.current)     { clearTimeout(timerRef.current);   timerRef.current = null }
-    if (idleTimerRef.current) { clearTimeout(idleTimerRef.current); idleTimerRef.current = null }
-    previewingRef.current = false
-    setPreviewing(false)
-    setShowControls(false)
-    setProgress(0)
-    if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0 }
-  }, [])
-
-  // Detener el vídeo si la tarjeta se desbloquea mientras está reproduciéndose
-  useEffect(() => {
-    if (!locked && previewing) {
-      if (timerRef.current) { clearTimeout(timerRef.current); timerRef.current = null }
-      setPreviewing(false)
-      setShowControls(false)
-      setProgress(0)
-      if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0 }
-    }
-  }, [locked, previewing])
-
-  const handleTimeUpdate = useCallback(() => {
-    const v = videoRef.current
-    if (v && v.duration) setProgress(v.currentTime / v.duration)
-  }, [])
-
-  // Listeners nativos para evitar quirks de eventos sintéticos de React
-  useEffect(() => {
-    const card = cardRef.current
-    if (!card) return
-
-    const onMove = (e: MouseEvent) => {
-      if (!videoRef.current || videoRef.current.paused) return
-      if (e.movementX === 0 && e.movementY === 0) return
-      setShowControls(true)
-      if (idleTimerRef.current) clearTimeout(idleTimerRef.current)
-      idleTimerRef.current = window.setTimeout(() => setShowControls(false), 2000)
-    }
-
-    const onScroll = () => {
-      if (timerRef.current)     { clearTimeout(timerRef.current);     timerRef.current = null }
-      if (idleTimerRef.current) { clearTimeout(idleTimerRef.current); idleTimerRef.current = null }
-      if (!previewingRef.current) return
-      previewingRef.current = false
-      setPreviewing(false)
-      setShowControls(false)
-      setProgress(0)
-      if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0 }
-    }
-
-    const onLeave = () => {
-      if (idleTimerRef.current) { clearTimeout(idleTimerRef.current); idleTimerRef.current = null }
-      setShowControls(false)
-    }
-
-    card.addEventListener('mousemove', onMove)
-    card.addEventListener('mouseleave', onLeave)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      card.removeEventListener('mousemove', onMove)
-      card.removeEventListener('mouseleave', onLeave)
-      window.removeEventListener('scroll', onScroll)
-    }
-  }, [])
-
-  // Mostrar la barra al arrancar el vídeo
-  useEffect(() => {
-    if (!previewing) return
-    setShowControls(true)
-    idleTimerRef.current = window.setTimeout(() => setShowControls(false), 2000)
-    return () => { if (idleTimerRef.current) clearTimeout(idleTimerRef.current) }
-  }, [previewing])
-
-  useEffect(() => () => {
-    if (timerRef.current)     clearTimeout(timerRef.current)
-    if (idleTimerRef.current) clearTimeout(idleTimerRef.current)
-  }, [])
-
-  return (
-    <article
-      ref={cardRef as React.RefObject<HTMLElement>}
-      className={[
-        styles.card,
-        project.featured ? styles.featured : '',
-        locked ? styles.locked : styles.trembling,
-      ].join(' ')}
-      style={!locked ? { animationDelay: `-${trembleDelay}ms` } : undefined}
-      onClick={locked ? onCardClick : undefined}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {/* Área imagen */}
-      <div className={styles.cardImageArea}>
-        {project.thumb && (
-          <>
-            <img
-              src={`${import.meta.env.BASE_URL}${project.thumb.replace(/^\//, '')}`}
-              alt={`${t(`project_items.${project.id}.title`)} preview`}
-              className={styles.cardThumb}
-              draggable={false}
-            />
-            <div className={styles.cardOverlay} aria-hidden />
-          </>
-        )}
-        {videoSrc && (
-          <video
-            ref={videoRef}
-            src={`${import.meta.env.BASE_URL}${videoSrc.replace(/^\//, '')}`}
-            className={`${styles.cardPreviewVideo} ${previewing ? styles.cardPreviewVideoVisible : ''}`}
-            style={videoMedia?.objectPosition ? { objectPosition: videoMedia.objectPosition } : undefined}
-            muted
-            loop
-            playsInline
-            disablePictureInPicture
-            preload="none"
-            onTimeUpdate={handleTimeUpdate}
-          />
-        )}
-        {videoSrc && (
-          <div className={`${styles.videoProgress} ${showControls ? styles.videoProgressVisible : ''}`}>
-            <div className={styles.videoProgressFill} style={{ width: `${progress * 100}%` }} />
-          </div>
-        )}
-
-        {/* Título arriba */}
-        <div className={styles.cardImageTop}>
-          <div className={styles.cardTitleRow}>
-            <div className={styles.cardDot} aria-hidden />
-            <h3 className={styles.title}>{t(`project_items.${project.id}.title`)}</h3>
-          </div>
-          <div className={styles.cardLinks}>
-            {locked ? (
-              /* Icono de vista cuando está bloqueada */
-              <span className={styles.viewHint} aria-hidden>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                  <circle cx="12" cy="12" r="3"/>
-                </svg>
-              </span>
-            ) : (
-              <>
-                <div className={styles.dragDots} aria-hidden />
-                {project.githubUrl && (
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub repository" className={styles.link}>
-                    <IconGithub size={17} />
-                  </a>
-                )}
-                {project.liveUrl && (
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label="Live demo" className={styles.link}>
-                    <ExternalLink size={17} />
-                  </a>
-                )}
-              </>
-            )}
-          </div>
-        </div>
+  if (media.type === 'video') {
+    return (
+      <div className={styles.slideWrapper}>
+        <video
+          src={`${base}${media.src.replace(/^\//, '')}`}
+          className={`${styles.carouselVideo} ${loaded ? styles.mediaLoaded : styles.mediaHidden}`}
+          controls
+          muted
+          playsInline
+          preload="metadata"
+          width={media.width}
+          height={media.height}
+          style={media.objectPosition ? { objectPosition: media.objectPosition } : undefined}
+          onLoadedMetadata={handleLoad}
+        />
       </div>
-
-      {/* Descripción */}
-      <div className={styles.cardBody}>
-        <div className={styles.description}>
-          <p>{t(`project_items.${project.id}.description`)}</p>
-          <ul className={styles.featureList}>
-            {(t(`project_items.${project.id}.features`, { returnObjects: true }) as string[]).map((f, i) => (
-              <li key={i}>{f}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </article>
-  )
-}
-
-// ── Tarjeta sortable ─────────────────────────────────────────────────────────
-
-function SortableCard({
-  project,
-  locked,
-  trembleDelay,
-  onCardClick,
-  onCardHover,
-}: {
-  project: Project
-  locked: boolean
-  trembleDelay: number
-  onCardClick: () => void
-  onCardHover?: () => void
-}) {
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
-    id: project.id,
-    disabled: locked,
-    transition: {
-      duration: 350,
-      easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
-    },
-  })
-
-  const style: React.CSSProperties = {
-    transform: transform ? `translate(${transform.x}px, ${transform.y}px)` : undefined,
-    transition,
-    cursor: locked ? 'pointer' : 'grab',
-    position: 'relative',
-    height: '100%',
-    willChange: transform ? 'transform' : 'auto',
-    backfaceVisibility: 'hidden',
-    opacity: isDragging ? 0 : 1,
+    )
   }
 
   return (
-    <div
-      ref={setNodeRef}
-      style={style}
-      {...attributes}
-      {...(locked ? {} : listeners)}
-    >
-      <ProjectCard
-        project={project}
-        locked={locked}
-        trembleDelay={trembleDelay}
-        onCardClick={onCardClick}
-        onCardHover={onCardHover}
+    <div className={styles.slideWrapper}>
+      <img
+        src={`${base}${media.src.replace(/^\//, '')}`}
+        alt=""
+        className={`${styles.carouselImage} ${loaded ? styles.mediaLoaded : styles.mediaHidden}`}
+        onLoad={handleLoad}
       />
     </div>
   )
 }
 
-// ── Sección Proyectos ────────────────────────────────────────────────────────
+// ── Media Carousel ───────────────────────────────────────────────────────────
+
+function MediaCarousel({ project }: { project: Project }) {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const mediaItems = project.media ?? []
+
+  useEffect(() => { setCurrentIndex(0); setIsLoaded(false) }, [project.id])
+
+  if (!mediaItems.length) return null
+
+  const count = mediaItems.length
+  const hasPrev = currentIndex > 0
+  const hasNext = currentIndex < count - 1
+  const showControls = count > 1
+
+  const firstVideo = mediaItems.find(m => m.type === 'video' && m.width && m.height)
+  const isPortrait = firstVideo ? firstVideo.height! > firstVideo.width! : false
+
+  return (
+    <div className={`${styles.carousel} ${isPortrait ? styles.carouselCentered : ''}`}>
+      {!isLoaded && <div className={styles.carouselSpinner} />}
+      <div className={styles.carouselTrack}>
+        <div className={styles.carouselSlide}>
+          <CarouselSlide
+            key={`${project.id}-${currentIndex}`}
+            media={mediaItems[currentIndex]}
+            onLoad={() => setIsLoaded(true)}
+          />
+        </div>
+      </div>
+
+      {showControls && (
+        <div className={styles.carouselControls}>
+          <button
+            className={`${styles.carouselArrow} ${!hasPrev ? styles.carouselArrowDisabled : ''}`}
+            onClick={() => { if (hasPrev) { setIsLoaded(false); setCurrentIndex(i => i - 1) } }}
+            aria-label="Anterior"
+            disabled={!hasPrev}
+          >
+            <ChevronUp size={18} />
+          </button>
+
+          <div className={styles.carouselDots}>
+            {mediaItems.map((_, i) => (
+              <button
+                key={i}
+                className={`${styles.carouselDot} ${i === currentIndex ? styles.carouselDotActive : ''}`}
+                onClick={() => { setIsLoaded(false); setCurrentIndex(i) }}
+                aria-label={`Ir al elemento ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          <button
+            className={`${styles.carouselArrow} ${!hasNext ? styles.carouselArrowDisabled : ''}`}
+            onClick={() => { if (hasNext) { setIsLoaded(false); setCurrentIndex(i => i + 1) } }}
+            aria-label="Siguiente"
+            disabled={!hasNext}
+          >
+            <ChevronDown size={18} />
+          </button>
+        </div>
+      )}
+    </div>
+  )
+}
+
+// ── Project list item ────────────────────────────────────────────────────────
+
+function ProjectListItem({
+  project,
+  isSelected,
+  onClick,
+}: {
+  project: Project
+  isSelected: boolean
+  onClick: () => void
+}) {
+  const { t } = useTranslation()
+  const base = import.meta.env.BASE_URL
+
+  return (
+    <button
+      className={`${styles.listItem} ${isSelected ? styles.listItemSelected : ''}`}
+      onClick={onClick}
+    >
+      {project.thumb && (
+        <img
+          src={`${base}${project.thumb.replace(/^\//, '')}`}
+          alt=""
+          className={styles.listItemThumb}
+          draggable={false}
+        />
+      )}
+      <div className={styles.listItemOverlay} />
+      {isSelected && <div className={styles.listItemActiveLine} />}
+      {project.logo && (
+        <img
+          src={`${base}${project.logo.replace(/^\//, '')}`}
+          alt=""
+          className={styles.listItemLogo}
+          draggable={false}
+        />
+      )}
+      <div className={styles.listItemContent}>
+        <span className={styles.listItemTitle}>
+          {t(`project_items.${project.id}.title`)}
+        </span>
+      </div>
+      <div className={styles.listItemTags}>
+        {project.tags.map(tag => (
+          <span key={tag} className={styles.listItemTag}>{tag}</span>
+        ))}
+      </div>
+    </button>
+  )
+}
+
+// ── Sortable wrapper ─────────────────────────────────────────────────────────
+
+function SortableProjectListItem({
+  project,
+  isSelected,
+  onClick,
+}: {
+  project: Project
+  isSelected: boolean
+  onClick: () => void
+}) {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: project.id })
+
+  return (
+    <div
+      ref={setNodeRef}
+      className={styles.sortableItem}
+      style={{
+        transform: CSS.Transform.toString(transform),
+        transition,
+        opacity: isDragging ? 0.45 : 1,
+        zIndex: isDragging ? 10 : undefined,
+      }}
+      {...attributes}
+      {...listeners}
+    >
+      <ProjectListItem project={project} isSelected={isSelected} onClick={onClick} />
+    </div>
+  )
+}
+
+// ── Projects section ─────────────────────────────────────────────────────────
 
 export function Projects() {
   const { ref, inView } = useInView()
   const { t } = useTranslation()
+
+  const [orderedProjects, setOrderedProjects] = useState(initialProjects)
+  const [isUnlocked, setIsUnlocked] = useState(false)
+  const [selectedId, setSelectedId] = useState(initialProjects[0].id)
+  const [mobileViewerOpen, setMobileViewerOpen] = useState(false)
+  const selectedProject = orderedProjects.find(p => p.id === selectedId) ?? orderedProjects[0]
+
+  function handleProjectClick(id: number) {
+    setSelectedId(id)
+    if (window.innerWidth <= 900) {
+      setMobileViewerOpen(true)
+    }
+  }
+
   const { unlock } = useAchievements()
 
-  const [items, setItems] = useState(initialProjects)
-  const [locked, setLocked] = useState(true)
-  const [viewerProject, setViewerProject] = useState<Project | null>(null)
-  const [activeId, setActiveId] = useState<number | null>(null)
-  const activeProject = activeId != null ? items.find(p => p.id === activeId) ?? null : null
-
   const sensors = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 8 } })
+    useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
   )
 
-  useEffect(() => {
-    document.body.style.cursor = activeId ? 'grabbing' : ''
-    return () => { document.body.style.cursor = '' }
-  }, [activeId])
+  function handleDragStart() {
+    document.documentElement.style.scrollSnapType = 'none'
+    document.documentElement.style.overflow = 'hidden'
+    document.body.style.overflow = 'hidden'
+  }
 
-  const handleUnlock = useCallback(() => setLocked(false), [])
-  const handleLock   = useCallback(() => setLocked(true),  [])
-
-  const handleDragOver = (event: DragOverEvent) => {
+  function handleDragEnd(event: DragEndEvent) {
+    document.documentElement.style.scrollSnapType = ''
+    document.documentElement.style.overflow = ''
+    document.body.style.overflow = ''
     const { active, over } = event
     if (over && active.id !== over.id) {
-      setItems(prev => {
-        const oldIndex = prev.findIndex(p => p.id === active.id)
-        const newIndex = prev.findIndex(p => p.id === over.id)
-        return arrayMove(prev, oldIndex, newIndex)
+      setOrderedProjects(items => {
+        const oldIndex = items.findIndex(p => p.id === active.id)
+        const newIndex = items.findIndex(p => p.id === over.id)
+        return arrayMove(items, oldIndex, newIndex)
       })
       unlock('reorder')
     }
   }
 
-  const handleDragStart = (event: DragStartEvent) => {
-    setActiveId(event.active.id as number)
-  }
-
-  const handleDragEnd = (_event: DragEndEvent) => {
-    setActiveId(null)
+  function handleDragCancel() {
+    document.documentElement.style.scrollSnapType = ''
+    document.documentElement.style.overflow = ''
+    document.body.style.overflow = ''
   }
 
   return (
@@ -356,85 +283,95 @@ export function Projects() {
               {t('projects.title')} <span className="accent">{t('projects.title_accent')}</span>
             </h2>
             <div className={styles.titleActions}>
-              <div className={`${styles.dragHintRow} ${locked ? styles.dragHintHidden : ''}`}>
-                <TbTrophy className={styles.dragHintTrophy} aria-hidden />
-                <p className={styles.dragHint}>{t('projects.drag_hint')}</p>
-              </div>
+              {isUnlocked && (
+                <span className={styles.dragHint}>
+                  <TbTrophy />
+                  {t('projects.drag_hint')}
+                </span>
+              )}
               <button
-                className={`${styles.unlockBtn} ${locked ? styles.unlockBtnLocked : styles.unlockBtnUnlocked}`}
-                onClick={locked ? handleUnlock : handleLock}
-                aria-label={locked ? t('projects.unlock') : t('projects.lock')}
+                className={`${styles.unlockBtn} ${isUnlocked ? styles.unlockBtnActive : ''}`}
+                onClick={() => setIsUnlocked(u => !u)}
+                aria-label={isUnlocked ? 'Bloquear orden' : 'Reordenar proyectos'}
               >
-                {locked ? <Lock size={14} /> : <Unlock size={14} />}
-                <span>{locked ? t('projects.unlock') : t('projects.lock')}</span>
+                {isUnlocked ? <Lock size={13} /> : <Unlock size={13} />}
+                {isUnlocked ? t('projects.lock') : t('projects.unlock')}
               </button>
             </div>
           </div>
         </motion.div>
 
         <motion.div
+          className={styles.layout}
           initial={{ opacity: 0, y: 28 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] as const }}
         >
-          <DndContext
-            sensors={sensors}
-            collisionDetection={closestCenter}
-            onDragStart={handleDragStart}
-            onDragOver={handleDragOver}
-            onDragEnd={handleDragEnd}
-          >
-            <SortableContext items={items.map(p => p.id)} strategy={rectSortingStrategy}>
-              <div className={styles.grid}>
-                {items.map((project, index) => (
-                  <SortableCard
+          {/* Izquierda: lista de proyectos */}
+          <div className={styles.projectListWrapper}>
+            {isUnlocked ? (
+              <DndContext sensors={sensors} collisionDetection={closestCenter} autoScroll={false} onDragStart={handleDragStart} onDragEnd={handleDragEnd} onDragCancel={handleDragCancel}>
+                <SortableContext items={orderedProjects.map(p => p.id)} strategy={verticalListSortingStrategy}>
+                  <nav className={styles.projectList} aria-label="Proyectos">
+                    {orderedProjects.map(project => (
+                      <SortableProjectListItem
+                        key={project.id}
+                        project={project}
+                        isSelected={project.id === selectedId}
+                        onClick={() => handleProjectClick(project.id)}
+                      />
+                    ))}
+                  </nav>
+                </SortableContext>
+              </DndContext>
+            ) : (
+              <nav className={styles.projectList} aria-label="Proyectos">
+                {orderedProjects.map(project => (
+                  <ProjectListItem
                     key={project.id}
                     project={project}
-                    locked={locked}
-                    trembleDelay={(index * 73) % 200}
-                    onCardClick={() => setViewerProject(project)}
-                    onCardHover={project.featured ? () => setViewerProject(project) : undefined}
+                    isSelected={project.id === selectedId}
+                    onClick={() => handleProjectClick(project.id)}
                   />
                 ))}
-              </div>
-            </SortableContext>
-            <DragOverlay dropAnimation={null}>
-              {activeProject ? (
-                <div style={{ height: '100%', transform: 'scale(1.05)', boxShadow: '0 20px 48px rgba(0,0,0,0.5)', borderRadius: 12 }}>
-                  <ProjectCard
-                    project={activeProject}
-                    locked={false}
-                    trembleDelay={0}
-                    onCardClick={() => {}}
-                  />
-                </div>
-              ) : null}
-            </DragOverlay>
-          </DndContext>
+              </nav>
+            )}
+          </div>
+
+          {/* Derecha: carrusel */}
+          <div className={styles.projectDetail}>
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={selectedProject.id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.18, ease: 'easeInOut' }}
+                style={{ width: '100%' }}
+              >
+                <MediaCarousel project={selectedProject} />
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </motion.div>
       </div>
 
-      {/* Visor de media */}
+      {/* Visor fullscreen mobile — usa el mismo MediaViewer que la sección 3D */}
       <AnimatePresence>
-        {viewerProject && (() => {
-          const mediaImages = viewerProject.media
+        {mobileViewerOpen && (() => {
+          const base = import.meta.env.BASE_URL
+          const videoItem = selectedProject.media?.find(m => m.type === 'video')
+          const videoSrc = videoItem ? `${base}${videoItem.src.replace(/^\//, '')}` : undefined
+          const imageSrcs = selectedProject.media
             ?.filter(m => m.type === 'image')
-            .map(m => `${import.meta.env.BASE_URL}${m.src.replace(/^\//, '')}`)
-          const mediaVideoSrc = viewerProject.media?.find(m => m.type === 'video')?.src
-          const mediaVideo = mediaVideoSrc
-            ? `${import.meta.env.BASE_URL}${mediaVideoSrc.replace(/^\//, '')}`
-            : undefined
-
-          const images = mediaImages?.length ? mediaImages : undefined
-
+            .map(m => `${base}${m.src.replace(/^\//, '')}`)
           return (
             <MediaViewer
-              key={viewerProject.id}
-              title={t(`project_items.${viewerProject.id}.title`)}
-              description={t(`project_items.${viewerProject.id}.description`)}
-              video={mediaVideo}
-              images={images}
-              onClose={() => setViewerProject(null)}
+              title={t(`project_items.${selectedProject.id}.title`)}
+              description={t(`project_items.${selectedProject.id}.description`)}
+              video={videoSrc}
+              images={imageSrcs}
+              onClose={() => setMobileViewerOpen(false)}
             />
           )
         })()}
