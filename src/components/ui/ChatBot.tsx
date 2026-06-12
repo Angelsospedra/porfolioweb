@@ -15,6 +15,8 @@ export function ChatBot() {
   const [hasStarted, setHasStarted] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLTextAreaElement>(null)
+  const panelRef = useRef<HTMLDivElement>(null)
+  const messagesRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (isOpen && !hasStarted) {
@@ -30,6 +32,29 @@ export function ChatBot() {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 300)
     }
+  }, [isOpen])
+
+  // Contiene el scroll dentro del chat: con el ratón encima, la rueda nunca
+  // navega secciones de la web ni desplaza la página por debajo. Solo scrollea
+  // la lista de mensajes (y solo mientras le quede recorrido en esa dirección).
+  useEffect(() => {
+    const panel = panelRef.current
+    if (!panel) return
+
+    function onWheel(e: WheelEvent) {
+      e.stopPropagation()
+      const list = messagesRef.current
+      if (list && list.contains(e.target as Node)) {
+        const atTop = list.scrollTop <= 0
+        const atBottom = list.scrollTop + list.clientHeight >= list.scrollHeight - 1
+        const canConsume = (e.deltaY < 0 && !atTop) || (e.deltaY > 0 && !atBottom)
+        if (canConsume) return
+      }
+      e.preventDefault()
+    }
+
+    panel.addEventListener('wheel', onWheel, { passive: false })
+    return () => panel.removeEventListener('wheel', onWheel)
   }, [isOpen])
 
   async function handleSend() {
@@ -71,6 +96,7 @@ export function ChatBot() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            ref={panelRef}
             className={styles.panel}
             initial={{ opacity: 0, y: 16, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -100,7 +126,7 @@ export function ChatBot() {
             </div>
 
             {/* Messages */}
-            <div className={styles.messages}>
+            <div ref={messagesRef} className={styles.messages}>
               {!hasStarted || messages.length === 0 ? (
                 <div className={styles.welcomeWrapper}>
                   <div className={styles.welcomeAvatar}>

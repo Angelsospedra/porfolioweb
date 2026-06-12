@@ -7,7 +7,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
   scroll-padding-top: 70px;
   font-size: 16px;
@@ -64,6 +63,7 @@ img {
 .section {
   padding: 6rem 0;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .section-title {

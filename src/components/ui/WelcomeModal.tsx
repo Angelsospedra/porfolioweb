@@ -21,6 +21,16 @@ export function WelcomeModal() {
     }
   }, [])
 
+  // Bloquea el scroll del documento mientras el modal está abierto.
+  useEffect(() => {
+    document.documentElement.style.overflow = visible ? 'hidden' : ''
+    document.body.style.overflow = visible ? 'hidden' : ''
+    return () => {
+      document.documentElement.style.overflow = ''
+      document.body.style.overflow = ''
+    }
+  }, [visible])
+
   const handleClose = () => {
     try { localStorage.setItem(STORAGE_KEY, '1') } catch { /* noop */ }
     setVisible(false)
