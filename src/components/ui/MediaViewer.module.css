@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: clamp(1rem, 5vw, 2rem);
   backdrop-filter: blur(4px);
 }
 
@@ -17,17 +17,35 @@
   border: 1px solid var(--border);
   border-radius: 18px;
   width: 100%;
-  max-width: 1060px;
+  max-width: clamp(280px, 60vw, 700px);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 1200px) {
+  .modal {
+    max-width: 65vw;
+  }
+}
+
+@media (max-width: 1024px) {
+  .modal {
+    max-width: 70vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal {
+    max-width: 85vw;
+  }
 }
 
 .modalHeader {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  padding: 1.25rem 1.5rem;
+  padding: clamp(0.875rem, 3vw, 1.25rem) clamp(1rem, 3vw, 1.5rem);
   border-bottom: 1px solid var(--border);
 }
 
@@ -39,21 +57,21 @@
 }
 
 .modalTitle {
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.2rem;
 }
 
 .modalDesc {
-  font-size: 0.82rem;
+  font-size: clamp(0.75rem, 1.5vw, 0.82rem);
   color: var(--text-secondary);
 }
 
 .closeBtn {
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
+  width: clamp(28px, 6vw, 32px);
+  height: clamp(28px, 6vw, 32px);
   border-radius: 8px;
   border: 1px solid var(--border);
   background: transparent;
@@ -74,13 +92,25 @@
 .contentWrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   background: var(--surface);
   overflow: hidden;
 }
 
+@media (max-width: 1024px) {
+  .contentWrap {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 768px) {
+  .contentWrap {
+    aspect-ratio: 16 / 10;
+  }
+}
+
 .modalFooter {
-  padding: 0.75rem 1.5rem;
+  padding: clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem);
   border-top: 1px solid var(--border);
   display: flex;
   justify-content: flex-end;
