@@ -3,7 +3,7 @@
 }
 
 .carouselWrap {
-  margin-top: 2.75rem;
+  margin-top: clamp(1.5rem, 4vw, 2.75rem);
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -14,6 +14,20 @@
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1.5rem;
   padding-bottom: 0.5rem;
+}
+
+@media (max-width: 1024px) {
+  .track {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .track {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
 }
 
 .card {

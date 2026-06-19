@@ -239,16 +239,49 @@ export function MediaViewer({ title, description, video, images, onClose, footer
   const hasMedia = !!video || !!images?.length
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden'
-    document.documentElement.style.overflow = 'hidden'
+    // Guardar posición actual del scroll
+    const scrollPos = window.scrollY || document.documentElement.scrollTop
+    
+    // Deshabilitar scroll en la página
+    const html = document.documentElement
+    const body = document.body
+    
+    html.style.overflow = 'hidden'
+    html.style.overflowY = 'hidden'
+    body.style.overflow = 'hidden'
+    body.style.overflowY = 'hidden'
+
+    // Prevenir eventos de scroll/wheel
+    const preventWheel = (e: WheelEvent) => e.preventDefault()
+    const preventTouch = (e: TouchEvent) => e.preventDefault()
+    const preventKeys = (e: KeyboardEvent) => {
+      if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(e.key)) {
+        e.preventDefault()
+      }
+    }
+
+    window.addEventListener('wheel', preventWheel, { passive: false })
+    document.addEventListener('touchmove', preventTouch, { passive: false })
+    window.addEventListener('keydown', preventKeys, { passive: false })
 
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
     window.addEventListener('keydown', onKey)
 
     return () => {
-      document.body.style.overflow = ''
-      document.documentElement.style.overflow = ''
+      html.style.overflow = ''
+      html.style.overflowY = ''
+      body.style.overflow = ''
+      body.style.overflowY = ''
+      
+      window.removeEventListener('wheel', preventWheel)
+      document.removeEventListener('touchmove', preventTouch)
+      window.removeEventListener('keydown', preventKeys)
       window.removeEventListener('keydown', onKey)
+      
+      // Restaurar scroll a la posición anterior
+      setTimeout(() => {
+        window.scrollTo(0, scrollPos)
+      }, 0)
     }
   }, [onClose])
 
