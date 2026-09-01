@@ -157,15 +157,6 @@
     "locked": "Color bloqueado — completa todos los logros",
     "locked_short": "Completa todos los logros"
   },
-  "chatbot": {
-    "toggle": "Abrir chat",
-    "title": "Pregúntame sobre Ángel",
-    "subtitle": "IA · Responde en tu idioma",
-    "welcome": "¡Hola! Soy un asistente IA con información sobre Ángel. Puedes preguntarme cosas como \"¿qué proyectos ha hecho con React?\" o \"¿tiene experiencia con Next.js?\"",
-    "placeholder": "Escribe tu pregunta...",
-    "send": "Enviar",
-    "error": "Error al conectar. Inténtalo de nuevo."
-  },
   "footer": {
     "built_by": "Diseñado y desarrollado por"
   },

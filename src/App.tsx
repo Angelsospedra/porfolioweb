@@ -10,7 +10,6 @@ import { Contact } from './components/sections/Contact'
 import { AchievementsProvider } from './context/AchievementsContext'
 import { AchievementToast } from './components/ui/AchievementToast'
 import { WelcomeModal } from './components/ui/WelcomeModal'
-import { ChatBot } from './components/ui/ChatBot'
 
 function App() {
   // Scroll suave para los clics en links internos
@@ -51,7 +50,6 @@ function App() {
       <Footer />
       <AchievementToast />
       <WelcomeModal />
-      <ChatBot />
     </AchievementsProvider>
   )
 }

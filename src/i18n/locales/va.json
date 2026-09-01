@@ -174,15 +174,6 @@
     "locked": "Color bloquejat — completa tots els assoliments",
     "locked_short": "Completa tots els assoliments"
   },
-  "chatbot": {
-    "toggle": "Obrir xat",
-    "title": "Pregunta'm sobre l'Àngel",
-    "subtitle": "IA · Respon en el teu idioma",
-    "welcome": "Hola! Soc un assistent IA amb informació sobre l'Àngel. Pots preguntar coses com \"quins projectes ha fet amb React?\" o \"té experiència amb Next.js?\"",
-    "placeholder": "Escriu la teua pregunta...",
-    "send": "Enviar",
-    "error": "Error de connexió. Torna-ho a intentar."
-  },
   "footer": {
     "built_by": "Dissenyat i desenvolupat per"
   },

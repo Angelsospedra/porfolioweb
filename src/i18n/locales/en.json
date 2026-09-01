@@ -157,15 +157,6 @@
     "locked": "Color locked — complete all achievements",
     "locked_short": "Complete all achievements"
   },
-  "chatbot": {
-    "toggle": "Open chat",
-    "title": "Ask me about Ángel",
-    "subtitle": "AI · Replies in your language",
-    "welcome": "Hi! I'm an AI assistant with info about Ángel. You can ask things like \"what React projects has he built?\" or \"does he have Next.js experience?\"",
-    "placeholder": "Type your question...",
-    "send": "Send",
-    "error": "Connection error. Please try again."
-  },
   "footer": {
     "built_by": "Designed & built by"
   },
